@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖繩六天五夜自駕行程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a2e3b;
+    --ink-soft:#3a5763;
+    --sea:#0e7c86;
+    --lagoon:#13a89e;
+    --coral:#ea5a47;
+    --gold:#e29a2e;
+    --sand:#faf4e7;
+    --sand-2:#f2e8d4;
+    --card:#fffdf7;
+    --line:#e4d9c1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans TC",sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 18px 80px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(160deg,#0a2e3b 0%,#0e6f79 55%,#13a89e 100%);
+    color:#fff;border-radius:0 0 26px 26px;
+    padding:46px 26px 66px;margin-bottom:26px;
+  }
+  .hero .eyebrow{
+    font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
+    color:#bdeee6;font-weight:700;margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:clamp(2rem,7vw,3.1rem);line-height:1.12;letter-spacing:.01em;
+  }
+  .hero h1 span{color:#ffe0a3}
+  .hero .sub{margin-top:14px;color:#d7f2ee;font-size:1rem;max-width:34em}
+  .hero .meta{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;
+  }
+  .hero .chip{
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+    padding:6px 13px;border-radius:999px;font-size:.82rem;font-weight:500;
+    backdrop-filter:blur(2px);
+  }
+  .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;display:block}
+
+  /* ---------- DAY NAV ---------- */
+  .daynav{
+    display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+    margin:0 0 30px;
+  }
+  .daynav a{
+    text-decoration:none;color:var(--sea);font-weight:700;font-size:.85rem;
+    border:1.5px solid var(--line);background:var(--card);
+    padding:7px 14px;border-radius:999px;transition:.15s;
+  }
+  .daynav a:hover{background:var(--sea);color:#fff;border-color:var(--sea)}
+
+  /* ---------- DAY CARD ---------- */
+  .day{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:20px;overflow:hidden;margin-bottom:26px;
+    box-shadow:0 10px 30px -22px rgba(10,46,59,.5);
+    scroll-margin-top:14px;
+  }
+  .day-head{
+    position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--ink) 0%,var(--sea) 100%);
+    color:#fff;padding:22px 24px 30px;
+  }
+  .day-head .num{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:2.6rem;line-height:1;opacity:.9;
+  }
+  .day-head .num small{font-size:.9rem;letter-spacing:.2em;display:block;opacity:.75;font-weight:700}
+  .day-head .row{display:flex;align-items:flex-start;gap:16px;justify-content:space-between;flex-wrap:wrap}
+  .day-head h2{
+    font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.35rem;margin-top:4px;
+  }
+  .day-head .theme{color:#cdeee9;font-size:.9rem;margin-top:3px}
+  .day-head .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+  .tag{
+    font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:999px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);white-space:nowrap;
+  }
+  .tag.stay{background:var(--gold);border-color:var(--gold);color:#3a2600}
+  .day-head .wave2{position:absolute;left:0;right:0;bottom:-1px;width:100%}
+
+  /* ---------- TIMELINE ---------- */
+  .body{padding:20px 22px 8px}
+  .stop{position:relative;padding:0 0 6px 26px}
+  .stop::before{
+    content:"";position:absolute;left:6px;top:9px;width:9px;height:9px;
+    background:var(--sea);border-radius:50%;box-shadow:0 0 0 3px rgba(19,168,158,.18);
+  }
+  .stop::after{
+    content:"";position:absolute;left:10px;top:20px;bottom:-2px;width:1.5px;
+    background:var(--line);
+  }
+  .stop:last-child::after{display:none}
+  .stop .t{
+    font-weight:700;color:var(--sea);font-size:.82rem;letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;
+  }
+  .stop .n{font-weight:700;font-size:1.02rem;margin:1px 0 2px}
+  .stop .d{color:var(--ink-soft);font-size:.92rem}
+  .stop .d b{color:var(--coral)}
+  .drive{
+    display:inline-flex;align-items:center;gap:6px;margin:8px 0 12px 26px;
+    font-size:.78rem;color:var(--ink-soft);font-weight:500;
+    background:var(--sand-2);padding:3px 11px;border-radius:999px;
+  }
+  .badge{
+    display:inline-block;font-size:.68rem;font-weight:700;vertical-align:middle;
+    padding:2px 8px;border-radius:6px;margin-left:6px;
+    background:#fdeceenot;background:#fdecea;color:var(--coral);border:1px solid #f6c7bf;
+  }
+  .badge.food{background:#fdf3e0;color:#b5760f;border-color:#f0d7a4}
+  .badge.play{background:#e5f5f3;color:#0b7d75;border-color:#bde6e0}
+
+  /* ---------- GENERIC SECTION ---------- */
+  .sec{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:22px}
+  .sec h3{
+    font-family:"Noto Serif TC",serif;font-size:1.25rem;font-weight:700;
+    display:flex;align-items:center;gap:10px;margin-bottom:16px;
+  }
+  .sec h3::before{content:"";width:5px;height:22px;background:var(--coral);border-radius:3px;display:inline-block}
+
+  .check{list-style:none;display:grid;gap:10px}
+  .check li{display:flex;gap:11px;align-items:flex-start;font-size:.93rem}
+  .check li .box{
+    flex:none;width:18px;height:18px;border:2px solid var(--sea);border-radius:5px;margin-top:3px;
+  }
+  .check li b{color:var(--ink)}
+  .check li span{color:var(--ink-soft)}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--sea);font-weight:700;font-size:.82rem;letter-spacing:.03em}
+  td.amt{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
+  tr.total td{border-top:2px solid var(--ink);border-bottom:none;font-weight:900;font-size:.98rem;padding-top:12px}
+  tr.total td.amt{color:var(--coral)}
+
+  .tips{list-style:none;display:grid;gap:12px}
+  .tips li{padding-left:26px;position:relative;font-size:.93rem;color:var(--ink-soft)}
+  .tips li::before{content:"◆";position:absolute;left:0;top:0;color:var(--gold);font-size:.8rem;top:2px}
+  .tips li b{color:var(--ink)}
+
+  .note{background:var(--sand-2);border-left:4px solid var(--gold);padding:12px 15px;border-radius:0 10px 10px 0;font-size:.88rem;color:var(--ink-soft);margin-top:14px}
+  .note b{color:var(--ink)}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:.8rem;margin-top:34px;line-height:1.9}
+  footer .mark{font-family:"Noto Serif TC",serif;color:var(--sea);font-weight:700;font-size:.95rem}
+
+  @media print{
+    body{background:#fff}
+    .daynav{display:none}
+    .hero{border-radius:0}
+    .day,.sec{box-shadow:none;break-inside:avoid}
+    a[href]{color:inherit}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">Okinawa · Self-Drive</div>
+  <h1>沖繩<span>六天五夜</span><br>自駕行程</h1>
+  <p class="sub">三人同行 · 南→中→北→回南單向繞一圈，不走回頭路。含一天水上活動分流、週六美國村煙火、北部水族館一開門就衝。</p>
+  <div class="meta">
+    <span class="chip">📅 9/24（四）– 9/29（二）</span>
+    <span class="chip">👥 3 人</span>
+    <span class="chip">🚗 Day 2 下午取車 · Day 6 機場還車</span>
+    <span class="chip">✈️ 去 17:30 抵達 · 回 18:00 起飛</span>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" height="40"><path fill="#faf4e7" d="M0,32 C180,60 360,4 600,20 C840,36 1020,58 1260,40 C1350,33 1400,30 1440,28 L1440,60 L0,60 Z"></path></svg>
+</div>
+
+<div class="wrap">
+
+  <nav class="daynav">
+    <a href="#d1">Day 1 那霸</a>
+    <a href="#d2">Day 2 恩納</a>
+    <a href="#d3">Day 3 水上·煙火</a>
+    <a href="#d4">Day 4 水族館</a>
+    <a href="#d5">Day 5 購物·香水</a>
+    <a href="#d6">Day 6 貓島·返程</a>
+  </nav>
+
+  <!-- DAY 1 -->
+  <section class="day" id="d1">
+    <div class="day-head">
+      <div class="row">
+        <div>
+          <div class="num">01<small>9 / 24　週四</small></div>
+          <h2>抵達那霸 · 國際通之夜</h2>
+          <div class="theme">傍晚落地，單軌進市區，先把沖繩的胃暖起來</div>
+        </div>
+        <div class="tags">
+          <span class="tag">那霸市區</span>
+          <span class="tag">無車 · 單軌</span>
+          <span class="tag stay">宿 那霸</span>
+        </div>
+      </div>
+      <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
+    </div>
+    <div class="body">
+      <div class="stop"><div class="t">17:30</div><div class="n">抵達那霸機場</div><div class="d">搭單軌電車（Yui-Rail）到「県庁前／牧志」站，飯店 check-in。今晚不取車，住單軌旁最方便。</div></div>
+      <div class="stop"><div class="t">19:00</div><div class="n">晚餐：Ocean BOO!<span class="badge">需訂位</span><span class="badge food">阿古豬</span></div><div class="d">那霸民謠居酒屋，招牌<b>阿古豬涮涮鍋</b>——涮幾下入口、鮮甜不腥，最後加飯做雜炊收尾。還能配沖繩三味線現場表演。</div></div>
+      <div class="stop"><div class="t">20:30</div><div class="n">國際通散步</div><div class="d">屋台村（21 間屋台串燒/小壽司）、唐吉訶德藥妝補貨、伴手禮探路。</div></div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day" id="d2">
+    <div class="day-head">
+      <div class="row">
+        <div>
+          <div class="num">02<small>9 / 25　週五</small></div>
+          <h2>那霸半日 · 下午取車北上</h2>
+          <div class="theme">上午逛完首里城，午後開車進恩納村度假基地</div>
+        </div>
+        <div class="tags">
+          <span class="tag">那霸 → 恩納</span>
+          <span class="tag">午後取車</span>
+          <span class="tag stay">宿 恩納村</span>
+        </div>
+      </div>
+      <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
+    </div>
+    <div class="body">
+      <div class="stop"><div class="t">08:30</div><div class="n">早餐：豬肉蛋飯糰（ポーたま）<span class="badge food">在地早餐</span></div><div class="d">國際通元祖店，沖繩人的經典早餐，約 ¥300。</div></div>
+      <div class="stop"><div class="t">09:30</div><div class="n">首里城公園</div><div class="d">正殿仍在復建中，守禮門、城牆與園區開放，重建工程本身也是難得一見。（或改去海崖上的<b>波上宮</b>更輕鬆）</div></div>
+      <div class="stop"><div class="t">12:00</div><div class="n">午餐：第一牧志公設市場 / 波照間<span class="badge food">沖繩鄉土</span></div><div class="d">市場樓下買海鮮、樓上代客料理；或「波照間」阿古豬、海葡萄、生麵。</div></div>
+      <div class="stop"><div class="t">14:00</div><div class="n">那霸市區取車<span class="badge">租車</span></div><div class="d">市區店取車後上高速北上恩納村。取還安排：<b>Day 2 市區取車 · Day 6 機場還車</b>。</div></div>
+      <div class="drive">🚗 那霸 → 恩納村　約 60 分</div>
+      <div class="stop"><div class="t">16:00</div><div class="n">殘波岬燈塔</div><div class="d">沿海斷崖看夕陽，順路小停。</div></div>
+      <div class="stop"><div class="t">18:30</div><div class="n">晚餐 + 入住恩納村海景飯店</div><div class="d">早點 check-in 享受度假飯店，明天玩水直接出發。</div></div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day" id="d3">
+    <div class="day-head">
+      <div class="row">
+        <div>
+          <div class="num">03<small>9 / 26　週六</small></div>
+          <h2>水上活動分流 · 美國村煙火</h2>
+          <div class="theme">上午一組玩水一組不濕身，晚上一起看週六煙火</div>
+        </div>
+        <div class="tags">
+          <span class="tag">恩納 ⇄ 美國村</span>
+          <span class="tag">🎆 週六煙火</span>
+          <span class="tag stay">宿 恩納村</span>
+        </div>
+      </div>
+      <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
+    </div>
+    <div class="body">
+      <div class="stop"><div class="t">上午</div><div class="n">🤿 玩水組（2 人）：青之洞窟浮潛 / SUP<span class="badge">需預約</span><span class="badge play">水上</span></div><div class="d">恩納村真榮田岬，全沖繩最知名浮潛點。選<b>早上時段</b>海面平靜、新手好上手；找有<b>中文教練</b>的行程，含裝備、接送、水中拍照，約 2.5 小時。</div></div>
+      <div class="stop"><div class="t">上午</div><div class="n">🏝️ 不玩水組（1 人）：海中公園 + 萬座毛<span class="badge play">不濕身</span></div><div class="d"><b>部瀨名海中公園</b>玻璃底船＋海中展望塔，站在海面下看珊瑚熱帶魚；再走<b>萬座毛</b>象鼻岩海崖。都在 10–20 分車程內。</div></div>
+      <div class="stop"><div class="t">12:30</div><div class="n">午餐：恩納村沖繩麵<span class="badge food">沖繩麵</span></div><div class="d">兩組會合，恩納村沖繩そば名店（如 なかむらそば）。</div></div>
+      <div class="drive">🚗 恩納 → 美國村　約 35 分</div>
+      <div class="stop"><div class="t">15:30</div><div class="n">美國村（北谷）</div><div class="d">美式風情商圈、Depot Island 古著小店、摩天輪。</div></div>
+      <div class="stop"><div class="t">18:00</div><div class="n">Sunset Beach 看夕陽 + 晚餐</div><div class="d">海邊夕陽超美，晚餐塔可飯、A&amp;W 漢堡、海景餐廳。</div></div>
+      <div class="stop"><div class="t">20:00</div><div class="n">🎆 日落沙灘 週六煙火</div><div class="d">每週六 20:00 施放、約 3 分鐘、<b>免費</b>。19:30 前先到 Depot Island 前海邊步道卡位，視野最好。</div></div>
+      <div class="drive">🚗 美國村 → 恩納　約 35 分（回同一間飯店）</div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day" id="d4">
+    <div class="day-head">
+      <div class="row">
+        <div>
+          <div class="num">04<small>9 / 27　週日</small></div>
+          <h2>北部 · 水族館一開門就衝</h2>
+          <div class="theme">8:30 開館前到，避開中午遊覽車團客</div>
+        </div>
+        <div class="tags">
+          <span class="tag">北部</span>
+          <span class="tag">跳島：古宇利</span>
+          <span class="tag stay">宿 本部 / 瀨底</span>
+        </div>
+      </div>
+      <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
+    </div>
+    <div class="body">
+      <div class="stop"><div class="t">07:15</div><div class="n">恩納出發</div><div class="d">早點退房北上，趕在開館前抵達。</div></div>
+      <div class="drive">🚗 恩納 → 美麗海　約 55 分</div>
+      <div class="stop"><div class="t">08:15</div><div class="n">美麗海水族館<span class="badge">先買票</span></div><div class="d">導航直接鎖定離入口最近的<b>北口 P7 立體停車場</b>。8:30 一開門先攻室內「黑潮之海」看鯨鯊、鬼蝠魟；想坐水槽旁 <b>Ocean Blue 咖啡</b>，一開館先去門口機器抽號碼牌（不可預約、限時 40 分）。門票在許田休息站或 Klook 買較便宜。</div></div>
+      <div class="stop"><div class="t">11:30</div><div class="n">備瀨福木林道</div><div class="d">水族館旁的綠色隧道散步。</div></div>
+      <div class="drive">🚗 前往屋我地島　約 25 分</div>
+      <div class="stop"><div class="t">12:30</div><div class="n">午餐：Tamaya 車海老<span class="badge">不可預約·現場排</span><span class="badge food">車海老五吃</span></div><div class="d">屋我地島養殖場直營、就在古宇利大橋旁，現撈車海老刺身／天婦羅／炸／鹽煮五吃。營業 11:30–18:00，只能現場候位。</div></div>
+      <div class="stop"><div class="t">14:30</div><div class="n">古宇利島（跳島）</div><div class="d">開車直上跨海大橋，心形岩、古宇利海灘、蝦蝦飯。</div></div>
+      <div class="stop"><div class="t">傍晚</div><div class="n">入住本部 / 瀨底</div><div class="d">住水族館附近，隔天南下不趕。</div></div>
+    </div>
+  </section>
+
+  <!-- DAY 5 -->
+  <section class="day" id="d5">
+    <div class="day-head">
+      <div class="row">
+        <div>
+          <div class="num">05<small>9 / 28　週一</small></div>
+          <h2>北 → 中 → 那霸 · 購物香水日</h2>
+          <div class="theme">回程一路買，中部逛街、浦添調香吃冰、晚上石垣牛</div>
+        </div>
+        <div class="tags">
+          <span class="tag">北 → 那霸</span>
+          <span class="tag">購物 · 文青</span>
+          <span class="tag stay">宿 那霸</span>
+        </div>
+      </div>
+      <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
+    </div>
+    <div class="body">
+      <div class="stop"><div class="t">09:30</div><div class="n">本部退房，南下</div></div>
+      <div class="drive">🚗 本部 → 北中城　約 90 分</div>
+      <div class="stop"><div class="t">11:30</div><div class="n">午餐 + 購物：永旺來客夢 AEON Rycom<span class="badge food">館內 60 餐廳</span></div><div class="d">北中城村、全沖繩最大商場，200+ 店鋪、免費停車、10:00–22:00。藥妝、服飾、家電一次補齊，午餐館內解決。</div></div>
+      <div class="drive">🚗 北中城 → 港川（浦添）　約 25 分</div>
+      <div class="stop"><div class="t">15:00</div><div class="n">港川外人住宅區<span class="badge play">調香體驗</span></div><div class="d"><b>The Flavor Design 調香</b>：試香 → 選比例 → 定色封瓶，做一瓶專屬香水約 30 分（可線上預約）。旁邊<b>Blue Seal 牧港本店</b>吃冰，巷弄文青咖啡拍照。</div></div>
+      <div class="drive">🚗 港川 → 那霸　約 20 分</div>
+      <div class="stop"><div class="t">18:00</div><div class="n">那霸 check-in</div></div>
+      <div class="stop"><div class="t">19:00</div><div class="n">晚餐：琉球的牛<span class="badge">需訂位</span><span class="badge food">A5 石垣牛</span></div><div class="d">炭火燒 A5 級石垣牛，慶祝餐。僅晚餐時段、務必官網提前訂位。</div></div>
+    </div>
+  </section>
+
+  <!-- DAY 6 -->
+  <section class="day" id="d6">
+    <div class="day-head">
+      <div class="row">
+        <div>
+          <div class="num">06<small>9 / 29　週二</small></div>
+          <h2>南城市貓島 · 洞穴咖啡 · 返程</h2>
+          <div class="theme">班機傍晚起飛，最後半天收南部亮點再往機場</div>
+        </div>
+        <div class="tags">
+          <span class="tag">南城市 → 機場</span>
+          <span class="tag">🐈 貓島</span>
+          <span class="tag stay">✈️ 18:00 返台</span>
+        </div>
+      </div>
+      <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
+    </div>
+    <div class="body">
+      <div class="stop"><div class="t">08:00</div><div class="n">那霸退房</div></div>
+      <div class="drive">🚗 那霸 → 南城市　約 40 分</div>
+      <div class="stop"><div class="t">08:50</div><div class="n">奧武島（貓島）<span class="badge food">現炸天婦羅</span></div><div class="d">橋接小島，環一圈看貓咪、吃島上名物現炸天婦羅。</div></div>
+      <div class="stop"><div class="t">10:00</div><div class="n">Gangala 之谷 · 洞穴咖啡<span class="badge">需預約導覽</span></div><div class="d">數十萬年鐘乳石洞裡喝「35 咖啡」。<b>Cave Café 現多只開放給參加山谷導覽者</b>，導覽約 80 分、需於官網 gangala.com 先預約場次（建議 10:00 場）。對面即玉泉洞可當備案。</div></div>
+      <div class="drive">🚗 南城市 → 瀨長島　約 35 分</div>
+      <div class="stop"><div class="t">13:00</div><div class="n">瀨長島 · 幸福鬆餅<span class="badge">平日可預約</span><span class="badge food">舒芙蕾鬆餅</span></div><div class="d">沖繩唯一分店（Umikaji Terrace 32 號）。舒芙蕾厚鬆餅配海景看飛機。官網 14 天前開放、僅限平日——今天週二可線上訂，一次最多 4 位。</div></div>
+      <div class="drive">🚗 瀨長島 → 機場旁還車　約 10 分</div>
+      <div class="stop"><div class="t">14:45</div><div class="n">機場旁還車</div></div>
+      <div class="stop"><div class="t">15:00</div><div class="n">抵達那霸機場，辦理登機</div></div>
+      <div class="stop"><div class="t">18:00</div><div class="n">✈️ 班機返台</div></div>
+      <div class="note"><b>Day 6 較滿又要趕飛機</b>：關鍵是 Gangala 導覽、幸福鬆餅兩個預約先鎖好。若想更輕鬆，可把奧武島挪掉、或瀨長島只留吃鬆餅。</div>
+    </div>
+  </section>
+
+  <!-- RESERVATIONS -->
+  <section class="sec">
+    <h3>預約清單（出發前先搞定）</h3>
+    <ul class="check">
+      <li><span class="box"></span><div><b>Ocean BOO! 阿古豬涮涮鍋</b> <span>— Day 1 晚餐，那霸居酒屋，先訂位</span></div></li>
+      <li><span class="box"></span><div><b>青之洞窟浮潛 / SUP（中文教練）</b> <span>— Day 3 上午，玩水組 2 人，先線上預約</span></div></li>
+      <li><span class="box"></span><div><b>美麗海水族館門票</b> <span>— Day 4，Klook/KKday 或許田休息站折扣票</span></div></li>
+      <li><span class="box"></span><div><b>Tamaya 車海老</b> <span>— Day 4 午餐，不可預約、只能現場排（11:30–18:00）</span></div></li>
+      <li><span class="box"></span><div><b>The Flavor Design 調香</b> <span>— Day 5，可線上預約較安心</span></div></li>
+      <li><span class="box"></span><div><b>琉球的牛（A5 石垣牛）</b> <span>— Day 5 晚餐，官網提前訂位</span></div></li>
+      <li><span class="box"></span><div><b>Gangala 之谷導覽</b> <span>— Day 6，gangala.com 預約 10:00 場</span></div></li>
+      <li><span class="box"></span><div><b>幸福鬆餅</b> <span>— Day 6（週二平日可訂），官網 14 天前開放、最多 4 位</span></div></li>
+      <li><span class="box"></span><div><b>住宿 × 3 區 + 租車</b> <span>— 那霸／恩納（2 晚）／本部；租車 Day 2 市區取、Day 6 機場還</span></div></li>
+    </ul>
+  </section>
+
+  <!-- BUDGET -->
+  <section class="sec">
+    <h3>花費估算（每人 · 不含機票 · 台幣）</h3>
+    <table>
+      <tr><th>項目</th><th class="amt">概估</th></tr>
+      <tr><td>住宿（5 晚，3 人分攤）</td><td class="amt">7,000–9,000</td></tr>
+      <tr><td>餐飲（含石垣牛、車海老）</td><td class="amt">7,000–8,500</td></tr>
+      <tr><td>租車（5 天含油／保險／停車，分攤）</td><td class="amt">3,000–3,800</td></tr>
+      <tr><td>那霸單軌（Day 1–2）</td><td class="amt">300</td></tr>
+      <tr><td>水上活動 / 海中公園</td><td class="amt">900–1,500</td></tr>
+      <tr><td>門票（水族館、Gangala 導覽 等）</td><td class="amt">1,200–1,800</td></tr>
+      <tr><td>購物 · 香水 · 伴手禮</td><td class="amt">3,000–6,000+</td></tr>
+      <tr class="total"><td>合計</td><td class="amt">約 22,000–30,000</td></tr>
+    </table>
+    <div class="note">Day 5 逛永旺＋做香水，購物金額彈性大，抓寬一點比較保險。</div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="sec">
+    <h3>出發前重點提醒</h3>
+    <ul class="tips">
+      <li><b>駕照日文譯本（最重要）</b>：台灣駕照要先在監理站辦免費日文譯本，帶正本＋譯本＋護照才能租車。</li>
+      <li><b>租車保險</b>：CDW（碰撞）＋NOC（營業損失）務必加保；右駕靠左行駛、路較窄，導航用 MapCode 最準。</li>
+      <li><b>取車 5 證件</b>：駕照正本、日文譯本、護照、預約確認信、主駕駛人信用卡。</li>
+      <li><b>入境</b>：護照效期滿 6 個月、台灣免簽 90 天；事先填好 Visit Japan Web 通關更快。</li>
+      <li><b>行動電源</b>：2026 年 4 月起日本國內線管制更嚴，隨身攜帶、勿托運。</li>
+      <li><b>玩水（9 月下旬）</b>：水溫仍溫暖適合浮潛，但秋季留意颱風與海況，青之洞窟依當天狀況可能改「船潛」，出發前跟店家確認。</li>
+      <li><b>網路</b>：eSIM 或網卡先買；那霸市區靠單軌、可買一日券。</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="mark">めんそーre 沖繩 🌺</div>
+    行程可依當天天氣、海況、預約狀況彈性調整 · 祝旅途愉快
+  </footer>
+
+</div>
+</body>
+</html>
