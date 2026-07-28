@@ -166,6 +166,18 @@
   footer{text-align:center;color:var(--ink-soft);font-size:.8rem;margin-top:34px;line-height:1.9}
   footer .mark{font-family:"Noto Serif TC",serif;color:var(--sea);font-weight:700;font-size:.95rem}
 
+  /* ---------- FOOD LIST ---------- */
+  .lead{color:var(--ink-soft);font-size:.92rem;margin-bottom:18px}
+  .lead b{color:var(--coral)}
+  .food-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .fcat-h{font-weight:700;color:var(--sea);font-size:.98rem;margin-bottom:9px;padding-bottom:6px;border-bottom:1.5px solid var(--line)}
+  .fcat ul{list-style:none;display:grid;gap:8px}
+  .fcat li{font-size:.9rem;line-height:1.5}
+  .fcat li b{color:var(--ink)}
+  .fcat .ar{display:inline-block;font-size:.7rem;color:var(--ink-soft);background:var(--sand-2);padding:1px 8px;border-radius:999px;margin-left:3px;white-space:nowrap;vertical-align:middle}
+  .fcat .star{color:var(--gold);font-weight:700}
+  @media(max-width:640px){.food-grid{grid-template-columns:1fr}}
+
   @media print{
     body{background:#fff}
     .daynav{display:none}
@@ -199,6 +211,7 @@
     <a href="#d4">Day 4 水族館</a>
     <a href="#d5">Day 5 購物·香水</a>
     <a href="#d6">Day 6 貓島·返程</a>
+    <a href="#food">🍜 美食</a>
   </nav>
 
   <!-- DAY 1 -->
@@ -271,8 +284,8 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
-      <div class="stop"><div class="t">上午</div><div class="n">🤿 玩水組（2 人）：青之洞窟浮潛 / SUP<span class="badge">需預約</span><span class="badge play">水上</span></div><div class="d">恩納村真榮田岬，全沖繩最知名浮潛點。選<b>早上時段</b>海面平靜、新手好上手；找有<b>中文教練</b>的行程，含裝備、接送、水中拍照，約 2.5 小時。</div></div>
-      <div class="stop"><div class="t">上午</div><div class="n">🏝️ 不玩水組（1 人）：海中公園 + 萬座毛<span class="badge play">不濕身</span></div><div class="d"><b>部瀨名海中公園</b>玻璃底船＋海中展望塔，站在海面下看珊瑚熱帶魚；再走<b>萬座毛</b>象鼻岩海崖。都在 10–20 分車程內。</div></div>
+      <div class="stop"><div class="t">上午</div><div class="n">🤿 玩水組（2 人）：青之洞窟浮潛 / SUP<span class="badge">選含接送</span><span class="badge play">水上</span></div><div class="d">恩納村真榮田岬，全沖繩最知名浮潛點。選<b>早上時段</b>海面平靜、新手好上手；<b>務必挑「含飯店接送」的中文教練行程</b>——潛店到飯店來回接送，租車完全不用動。含裝備、水中拍照，約 2.5 小時。</div></div>
+      <div class="stop"><div class="t">上午</div><div class="n">🧘 不玩水組（1 人）：留在同一據點，不用開車<span class="badge play">零移動</span></div><div class="d">只有一台車、又是玩水的人開，所以讓他<b>待在同一個地方</b>最省事：選了接送行程後，他就留在<b>恩納村海景飯店</b>——沙灘、泳池、咖啡、SPA，中午大家回飯店會合。若想陪在海邊，也可三人一起開到<b>真榮田岬公園</b>（有停車場、更衣室、觀景台），他在岬邊散步看海，或加價搭「乘船方案」在船上看藍洞、不下水。</div></div>
       <div class="stop"><div class="t">12:30</div><div class="n">午餐：恩納村沖繩麵<span class="badge food">沖繩麵</span></div><div class="d">兩組會合，恩納村沖繩そば名店（如 なかむらそば）。</div></div>
       <div class="drive">🚗 恩納 → 美國村　約 35 分</div>
       <div class="stop"><div class="t">15:30</div><div class="n">美國村（北谷）</div><div class="d">美式風情商圈、Depot Island 古著小店、摩天輪。</div></div>
@@ -369,6 +382,97 @@
       <div class="stop"><div class="t">15:00</div><div class="n">抵達那霸機場，辦理登機</div></div>
       <div class="stop"><div class="t">18:00</div><div class="n">✈️ 班機返台</div></div>
       <div class="note"><b>Day 6 較滿又要趕飛機</b>：關鍵是 Gangala 導覽、幸福鬆餅兩個預約先鎖好。若想更輕鬆，可把奧武島挪掉、或瀨長島只留吃鬆餅。</div>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="sec" id="food">
+    <h3>美食清單 · 更多選擇</h3>
+    <p class="lead">依類別整理，標好靠近哪一天，想換餐直接挑。<b>★</b> = 已排進行程。營業時間與公休出發前再確認一次。</p>
+    <div class="food-grid">
+
+      <div class="fcat">
+        <div class="fcat-h">🍜 沖繩麵（沖繩そば）</div>
+        <ul>
+          <li><b>なかむらそば</b><span class="ar">恩納 · Day 3 <span class="star">★</span></span></li>
+          <li><b>きしもと食堂</b><span class="ar">本部 · Day 4</span> 百年木灰麵</li>
+          <li><b>山原そば</b><span class="ar">本部 · Day 4</span> 古民家</li>
+          <li><b>首里そば</b><span class="ar">那霸首里 · Day 2</span></li>
+          <li><b>通堂拉麵</b><span class="ar">那霸</span> 濃厚豚骨</li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">🐖 阿古豬 · 豬肉涮涮鍋</div>
+        <ul>
+          <li><b>Ocean BOO!</b><span class="ar">那霸 · Day 1 <span class="star">★</span></span></li>
+          <li><b>豬肉料理 亞熱帶</b><span class="ar">那霸</span> あぐー涮涮鍋</li>
+          <li><b>我豚 ばぶらー</b><span class="ar">那霸</span></li>
+          <li><b>島豚 七輪燒</b><span class="ar">那霸</span></li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">🥩 沖繩牛排 · 和牛燒肉</div>
+        <ul>
+          <li><b>琉球的牛</b><span class="ar">那霸 · Day 5 <span class="star">★</span></span> A5 石垣牛</li>
+          <li><b>Jack's Steak House</b><span class="ar">那霸</span> 1953 老字號</li>
+          <li><b>ステーキハウス 88</b><span class="ar">多分店</span></li>
+          <li><b>やっぱりステーキ</b><span class="ar">多分店</span> 平價</li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">🦐 海鮮 · 市場</div>
+        <ul>
+          <li><b>Tamaya 車海老</b><span class="ar">屋我地島 · Day 4 <span class="star">★</span></span></li>
+          <li><b>第一牧志公設市場</b><span class="ar">那霸 · Day 2 <span class="star">★</span></span></li>
+          <li><b>泊いゆまち</b><span class="ar">那霸</span> 平價生魚片市場</li>
+          <li><b>海鮮食堂 太陽</b><span class="ar">今歸仁 · Day 4 順</span></li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">🌮 塔可飯 · 美式漢堡</div>
+        <ul>
+          <li><b>King Tacos（キングタコス）</b><span class="ar">金武</span> 塔可飯發源</li>
+          <li><b>GORDIE'S</b><span class="ar">北谷 · Day 3 順</span> 炭烤漢堡</li>
+          <li><b>Zooton's</b><span class="ar">那霸</span> 手作漢堡</li>
+          <li><b>A&amp;W</b><span class="ar">多分店</span> 麥根沙士</li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">🍧 冰品 · 善哉 · 鬆餅</div>
+        <ul>
+          <li><b>Blue Seal 牧港本店</b><span class="ar">浦添 · Day 5 <span class="star">★</span></span></li>
+          <li><b>幸福鬆餅</b><span class="ar">瀨長島 · Day 6 <span class="star">★</span></span></li>
+          <li><b>鶴龜堂ぜんざい</b><span class="ar">讀谷 · Day 2 順</span></li>
+          <li><b>新垣ぜんざい</b><span class="ar">本部 · Day 4 順</span></li>
+          <li><b>富士家</b><span class="ar">那霸</span> 沖繩善哉</li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">☕ 海景咖啡</div>
+        <ul>
+          <li><b>カフェくるくま</b><span class="ar">南城 · Day 6 順</span> 咖哩＋海景</li>
+          <li><b>亞熱帶茶屋</b><span class="ar">南部</span> 山崖看海</li>
+          <li><b>瀨長島 Umikaji café</b><span class="ar">Day 6 <span class="star">★</span> 區</span></li>
+          <li><b>古宇利島 café</b><span class="ar">古宇利 · Day 4 順</span></li>
+        </ul>
+      </div>
+
+      <div class="fcat">
+        <div class="fcat-h">🏮 鄉土居酒屋 · 屋台</div>
+        <ul>
+          <li><b>國際通屋台村</b><span class="ar">那霸 · Day 1 <span class="star">★</span></span></li>
+          <li><b>ゆうなんぎい</b><span class="ar">那霸</span> 鄉土料理老店</li>
+          <li><b>波照間</b><span class="ar">那霸 · Day 2</span> 沖繩鄉土</li>
+          <li><b>海葡萄丼 元祖</b><span class="ar">恩納 · Day 3 順</span></li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
