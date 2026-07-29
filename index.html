@@ -32,44 +32,75 @@
   }
   .wrap{max-width:820px;margin:0 auto;padding:0 18px 80px}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;overflow:hidden;
-    background:linear-gradient(160deg,#0a2e3b 0%,#0e6f79 55%,#13a89e 100%);
-    color:#fff;border-radius:0 0 26px 26px;
-    padding:46px 26px 66px;margin-bottom:26px;
-  }
-  .hero .eyebrow{
-    font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
-    color:#bdeee6;font-weight:700;margin-bottom:14px;
-  }
-  .hero h1{
-    font-family:"Noto Serif TC",serif;font-weight:900;
-    font-size:clamp(2rem,7vw,3.1rem);line-height:1.12;letter-spacing:.01em;
-  }
-  .hero h1 span{color:#ffe0a3}
-  .hero .sub{margin-top:14px;color:#d7f2ee;font-size:1rem;max-width:34em}
-  .hero .meta{
-    display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;
-  }
-  .hero .chip{
-    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
-    padding:6px 13px;border-radius:999px;font-size:.82rem;font-weight:500;
-    backdrop-filter:blur(2px);
-  }
-  .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;display:block}
+  /* ---------- APP SHELL ---------- */
+  .shell{display:flex;min-height:100vh}
+  .overlay{position:fixed;inset:0;background:rgba(8,20,26,.45);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:40}
+  .overlay.show{opacity:1;pointer-events:auto}
 
-  /* ---------- DAY NAV ---------- */
-  .daynav{
-    display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
-    margin:0 0 30px;
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    width:272px;flex:none;color:#fff;display:flex;flex-direction:column;
+    background:linear-gradient(180deg,#0a2e3b 0%,#0e6f79 100%);
+    position:sticky;top:0;height:100vh;overflow-y:auto;z-index:50;
   }
-  .daynav a{
-    text-decoration:none;color:var(--sea);font-weight:700;font-size:.85rem;
-    border:1.5px solid var(--line);background:var(--card);
-    padding:7px 14px;border-radius:999px;transition:.15s;
+  .side-hero{padding:30px 22px 18px}
+  .side-hero .eyebrow{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:#bdeee6;font-weight:700;margin-bottom:10px}
+  .side-hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:1.4rem;line-height:1.3}
+  .side-hero h1 span{color:#ffe0a3}
+  .side-hero .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .side-hero .chip{
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px;border-radius:999px;font-size:.68rem;font-weight:500;
   }
-  .daynav a:hover{background:var(--sea);color:#fff;border-color:var(--sea)}
+
+  .acc{padding:8px 10px 16px;flex:1}
+  .acc-group{margin-bottom:2px}
+  .acc-h{
+    width:100%;text-align:left;background:none;border:none;color:#cdeee9;
+    font-family:inherit;font-size:.76rem;font-weight:700;letter-spacing:.06em;
+    padding:12px 12px;display:flex;align-items:center;justify-content:space-between;
+    cursor:pointer;border-radius:8px;
+  }
+  .acc-h:hover{background:rgba(255,255,255,.06)}
+  .acc-h::after{content:"⌄";transition:transform .2s ease;font-size:.9rem}
+  .acc-group.open .acc-h::after{transform:rotate(180deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .acc-group.open .acc-body{max-height:640px}
+  .nav-link{
+    display:block;text-decoration:none;color:#e8f6f3;
+    font-size:.85rem;font-weight:500;padding:9px 14px;border-radius:10px;
+    margin:2px 6px;border-left:3px solid transparent;
+  }
+  .nav-link:hover{background:rgba(255,255,255,.08)}
+  .nav-link.active{background:rgba(255,255,255,.16);border-left-color:var(--gold);font-weight:700;color:#fff}
+  .nav-link small{opacity:.75;font-weight:500}
+
+  .side-foot{padding:16px 22px 20px;font-size:.72rem;color:#a9d8d2;border-top:1px solid rgba(255,255,255,.12)}
+
+  /* ---------- TOPBAR / CONTENT ---------- */
+  .content{flex:1;min-width:0}
+  .topbar{
+    position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;
+    background:var(--card);border-bottom:1px solid var(--line);padding:12px 20px;
+  }
+  .menu-btn{
+    display:none;flex:none;width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);
+    background:var(--card);font-size:1.15rem;cursor:pointer;color:var(--ink);align-items:center;justify-content:center;
+  }
+  .topbar-title{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar-nav{display:flex;gap:6px;flex:none}
+  .tb-btn{
+    width:36px;height:36px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);
+    color:var(--sea);font-weight:700;cursor:pointer;font-size:.95rem;
+  }
+  .tb-btn:disabled{opacity:.3;cursor:default}
+  .tb-btn:not(:disabled):hover{background:var(--sea);color:#fff;border-color:var(--sea)}
+
+  @media(max-width:960px){
+    .sidebar{position:fixed;top:0;left:0;width:280px;max-width:82vw;transform:translateX(-100%);transition:transform .25s ease;box-shadow:0 0 40px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .menu-btn{display:inline-flex}
+  }
 
   /* ---------- DAY CARD ---------- */
   .day{
@@ -132,6 +163,19 @@
   }
   .badge.food{background:#fdf3e0;color:#b5760f;border-color:#f0d7a4}
   .badge.play{background:#e5f5f3;color:#0b7d75;border-color:#bde6e0}
+
+  /* ---------- PANELS ---------- */
+  .panel{display:none}
+  .panel.active{display:block;animation:panelIn .25s ease}
+  @keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  .panel-nav{display:flex;gap:10px;margin:22px 0 6px}
+  .pnav-btn{
+    flex:1;text-align:center;text-decoration:none;color:var(--sea);font-weight:700;font-size:.85rem;
+    border:1.5px solid var(--line);background:var(--card);padding:12px 14px;border-radius:14px;
+    cursor:pointer;font-family:inherit;
+  }
+  .pnav-btn:hover{background:var(--sea);color:#fff;border-color:var(--sea)}
 
   /* ---------- GENERIC SECTION ---------- */
   .sec{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:22px}
@@ -196,8 +240,9 @@
 
   @media print{
     body{background:#fff}
-    .daynav{display:none}
-    .hero{border-radius:0}
+    .sidebar,.topbar,.overlay,.panel-nav,.menu-btn{display:none!important}
+    .shell{display:block}
+    .panel{display:block!important}
     .day,.sec{box-shadow:none;break-inside:avoid}
     a[href]{color:inherit}
   }
@@ -205,41 +250,60 @@
 </head>
 <body>
 
-<div class="hero">
-  <div class="eyebrow">Okinawa · Self-Drive</div>
-  <h1>沖繩<span>六天五夜</span><br>自駕行程</h1>
-  <p class="sub">三人同行 · 南→中→北→回南單向繞一圈，不走回頭路。含一天水上活動分流、週六美國村煙火、北部水族館一開門就衝。</p>
-  <div class="meta">
-    <span class="chip">📅 9/24（四）– 9/29（二）</span>
-    <span class="chip">👥 3 人</span>
-    <span class="chip">🚗 Day 2 下午取車 · Day 6 機場還車</span>
-    <span class="chip">✈️ 去 17:30 抵達 · 回 18:00 起飛</span>
-  </div>
-  <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" height="40"><path fill="#faf4e7" d="M0,32 C180,60 360,4 600,20 C840,36 1020,58 1260,40 C1350,33 1400,30 1440,28 L1440,60 L0,60 Z"></path></svg>
-</div>
+<div class="shell">
+  <div class="overlay" id="overlay"></div>
 
-<div class="wrap">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-hero">
+      <div class="eyebrow">Okinawa · Self-Drive</div>
+      <h1>沖繩<span>六天五夜</span>自駕行程</h1>
+      <div class="meta">
+        <span class="chip">📅 9/24–9/29</span>
+        <span class="chip">👥 3 人</span>
+        <span class="chip">🚗 Day2取車·Day6還車</span>
+      </div>
+    </div>
+    <nav class="acc">
+      <div class="acc-group open">
+        <button class="acc-h" type="button">📅 每日行程</button>
+        <div class="acc-body">
+          <a class="nav-link" href="#d1" data-target="d1">Day 1　<small>那霸</small></a>
+          <a class="nav-link" href="#d2" data-target="d2">Day 2　<small>恩納</small></a>
+          <a class="nav-link" href="#d3" data-target="d3">Day 3　<small>水上·煙火</small></a>
+          <a class="nav-link" href="#d4" data-target="d4">Day 4　<small>水族館</small></a>
+          <a class="nav-link" href="#d5" data-target="d5">Day 5　<small>購物·香水</small></a>
+          <a class="nav-link" href="#d6" data-target="d6">Day 6　<small>貓島·返程</small></a>
+        </div>
+      </div>
+      <div class="acc-group">
+        <button class="acc-h" type="button">📚 參考清單</button>
+        <div class="acc-body">
+          <a class="nav-link" href="#food" data-target="food">🍜 美食清單</a>
+          <a class="nav-link" href="#spots" data-target="spots">🏝 景點清單</a>
+          <a class="nav-link" href="#shopping" data-target="shopping">🛍 購物中心</a>
+          <a class="nav-link" href="#highway" data-target="highway">🚘 交通規劃</a>
+          <a class="nav-link" href="#reservations" data-target="reservations">📋 預約清單</a>
+          <a class="nav-link" href="#budget" data-target="budget">💰 花費估算</a>
+          <a class="nav-link" href="#tips" data-target="tips">💡 出發提醒</a>
+        </div>
+      </div>
+    </nav>
+    <div class="side-foot">めんそーre 沖繩 🌺</div>
+  </aside>
 
-  <nav class="daynav">
-    <a href="#d1">Day 1 那霸</a>
-    <a href="#d2">Day 2 恩納</a>
-    <a href="#d3">Day 3 水上·煙火</a>
-    <a href="#d4">Day 4 水族館</a>
-    <a href="#d5">Day 5 購物·香水</a>
-    <a href="#d6">Day 6 貓島·返程</a>
-    <a href="#food">🍜 美食</a>
-    <a href="#spots">🏝 景點</a>
-    <a href="#shopping">🛍 購物</a>
-  </nav>
-
-  <div class="legend" style="justify-content:center;margin-bottom:24px">
-    <span>📍 <b>點名稱</b> = Google Maps 導航</span>
-    <span>🚘 <b>MapCode</b> = 官方確認可直接輸入車機</span>
-    <span>📮 <b>住所</b> = 官方地址，MapCode 未經雙重驗證時，改用地址或電話輸入車機最保險</span>
-  </div>
+  <main class="content">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟選單">☰</button>
+      <div class="topbar-title" id="topbarTitle">Day 1</div>
+      <div class="topbar-nav">
+        <button class="tb-btn" id="prevBtn" type="button" aria-label="上一項">←</button>
+        <button class="tb-btn" id="nextBtn" type="button" aria-label="下一項">→</button>
+      </div>
+    </div>
+    <div class="wrap">
 
   <!-- DAY 1 -->
-  <section class="day" id="d1">
+  <section class="panel day active" id="d1" data-title="Day 1 · 9/24 週四 · 抵達那霸．國際通之夜">
     <div class="day-head">
       <div class="row">
         <div>
@@ -259,11 +323,12 @@
       <div class="stop"><div class="t">17:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">抵達那霸機場</a></div><div class="d">搭單軌電車（Yui-Rail）到「県庁前／牧志」站，飯店 check-in。今晚不取車，住單軌旁最方便。</div></div>
       <div class="stop"><div class="t">19:00</div><div class="n">晚餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=あぐー豚しゃぶしゃぶ専門店+オーシャンBoo!+那覇市久米2-11-26" target="_blank" rel="noopener">Ocean BOO!</a><span class="badge">需訂位</span><span class="badge food">阿古豬</span><span class="mc">📮 那覇市久米2-11-26</span><span class="hr warn">約 17:00–22:00・不定休</span></div><div class="d">那霸民謠居酒屋，招牌<b>阿古豬涮涮鍋</b>——涮幾下入口、鮮甜不腥，最後加飯做雜炊收尾。還能配沖繩三味線現場表演。</div></div>
       <div class="stop"><div class="t">20:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り+那覇" target="_blank" rel="noopener">國際通散步</a></div><div class="d">屋台村（21 間屋台串燒/小壽司）、唐吉訶德藥妝補貨、伴手禮探路。</div></div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" disabled>已是第一天</button><button class="pnav-btn" type="button" data-nav="d2">Day 2 恩納 →</button></div>
     </div>
   </section>
 
   <!-- DAY 2 -->
-  <section class="day" id="d2">
+  <section class="panel day" id="d2" data-title="Day 2 · 9/25 週五 · 那霸半日．下午取車北上">
     <div class="day-head">
       <div class="row">
         <div>
@@ -287,11 +352,12 @@
       <div class="drive">🚗 那霸 → 恩納村　約 60 分（走 58 號海岸線經殘波岬，不上高速）</div>
       <div class="stop"><div class="t">16:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">殘波岬燈塔</a><span class="mc">📮 読谷村字宇座</span><span class="hr">岬角公園全天開放；若想登燈塔，9月為平日9:30–16:30／假日9:30–17:30</span></div><div class="d">沿海斷崖看夕陽，順路小停。網路上流傳的 MapCode 各版本不一致，建議車機直接用地址或電話（098-958-3041，燈台管理處）搜尋，避免導錯。</div></div>
       <div class="stop"><div class="t">18:30</div><div class="n">晚餐 + 入住恩納村海景飯店</div><div class="d">早點 check-in 享受度假飯店，明天玩水直接出發。</div></div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d1">← Day 1 那霸</button><button class="pnav-btn" type="button" data-nav="d3">Day 3 水上·煙火 →</button></div>
     </div>
   </section>
 
   <!-- DAY 3 -->
-  <section class="day" id="d3">
+  <section class="panel day" id="d3" data-title="Day 3 · 9/26 週六 · 水上活動分流．美國村煙火">
     <div class="day-head">
       <div class="row">
         <div>
@@ -316,11 +382,12 @@
       <div class="stop"><div class="t">18:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=北谷公園サンセットビーチ+北谷町美浜2" target="_blank" rel="noopener">Sunset Beach</a> 看夕陽 + 晚餐<span class="mc">📮 北谷町美浜2</span></div><div class="d">海邊夕陽超美，晚餐塔可飯、A&amp;W 漢堡、海景餐廳。</div></div>
       <div class="stop"><div class="t">20:00</div><div class="n">🎆 日落沙灘 週六煙火</div><div class="d">每週六 20:00 施放、約 3 分鐘、<b>免費</b>。19:30 前先到 Depot Island 前海邊步道卡位，視野最好。</div></div>
       <div class="drive">🚗 美國村 → 恩納　約 35 分（回同一間飯店，沿海岸線不上高速）</div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d2">← Day 2 恩納</button><button class="pnav-btn" type="button" data-nav="d4">Day 4 水族館 →</button></div>
     </div>
   </section>
 
   <!-- DAY 4 -->
-  <section class="day" id="d4">
+  <section class="panel day" id="d4" data-title="Day 4 · 9/27 週日 · 北部．水族館一開門就衝">
     <div class="day-head">
       <div class="row">
         <div>
@@ -345,11 +412,12 @@
       <div class="stop"><div class="t">12:30</div><div class="n">午餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=くるまえびキッチンTAMAYA+名護市字運天原285" target="_blank" rel="noopener">Tamaya 車海老</a><span class="badge">不可預約·現場排</span><span class="badge food">車海老五吃</span><span class="mc">📮 名護市字運天原285</span></div><div class="d">屋我地島養殖場直營、就在古宇利大橋旁，現撈車海老刺身／天婦羅／炸／鹽煮五吃。營業 11:30–18:00，只能現場候位。正式店名「くるまえびキッチンTAMAYA」。</div></div>
       <div class="stop"><div class="t">14:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=古宇利大橋" target="_blank" rel="noopener">古宇利島</a>（跳島）</div><div class="d">開車直上跨海大橋，<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ハートロック+今帰仁村古宇利2610" target="_blank" rel="noopener">心形岩</a>、古宇利海灘、蝦蝦飯。</div></div>
       <div class="stop"><div class="t">傍晚</div><div class="n">入住本部 / 瀨底</div><div class="d">住水族館附近，隔天南下不趕。</div></div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d3">← Day 3 水上·煙火</button><button class="pnav-btn" type="button" data-nav="d5">Day 5 購物·香水 →</button></div>
     </div>
   </section>
 
   <!-- DAY 5 -->
-  <section class="day" id="d5">
+  <section class="panel day" id="d5" data-title="Day 5 · 9/28 週一 · 北→中→那霸．購物香水日">
     <div class="day-head">
       <div class="row">
         <div>
@@ -374,11 +442,12 @@
       <div class="drive">🚗 港川 → 那霸　約 20 分</div>
       <div class="stop"><div class="t">18:00</div><div class="n">那霸 check-in</div></div>
       <div class="stop"><div class="t">19:00</div><div class="n">晚餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=琉球の牛+那覇市松尾1-1-1" target="_blank" rel="noopener">琉球的牛</a><span class="badge">需訂位</span><span class="badge food">A5 石垣牛</span><span class="mc">📮 那覇市松尾1-1-1</span><span class="hr">16:30–23:00・無休</span></div><div class="d">炭火燒 A5 級石垣牛，慶祝餐。僅晚餐時段、務必官網提前訂位。</div></div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d4">← Day 4 水族館</button><button class="pnav-btn" type="button" data-nav="d6">Day 6 貓島·返程 →</button></div>
     </div>
   </section>
 
   <!-- DAY 6 -->
-  <section class="day" id="d6">
+  <section class="panel day" id="d6" data-title="Day 6 · 9/29 週二 · 南城市貓島．洞穴咖啡．返程">
     <div class="day-head">
       <div class="row">
         <div>
@@ -406,11 +475,12 @@
       <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">抵達那霸機場</a>，辦理登機</div></div>
       <div class="stop"><div class="t">18:00</div><div class="n">✈️ 班機返台</div></div>
       <div class="note"><b>Day 6 較滿又要趕飛機</b>：關鍵是 Gangala 導覽、幸福鬆餅兩個預約先鎖好。若想更輕鬆，可把奧武島挪掉、或瀨長島只留吃鬆餅。</div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d5">← Day 5 購物·香水</button><button class="pnav-btn" type="button" data-nav="food">美食清單 →</button></div>
     </div>
   </section>
 
   <!-- FOOD -->
-  <section class="sec" id="food">
+  <section class="panel sec" id="food" data-title="🍜 美食清單．更多選擇">
     <h3>美食清單 · 更多選擇</h3>
     <p class="lead">依類別整理，標好靠近哪一天，想換餐直接挑。<b>★</b> = 已排進行程。營業時間與公休出發前再確認一次。</p>
     <div class="legend"><span>📍 <b>點店名</b> = Google Maps 導航</span></div>
@@ -503,7 +573,7 @@
   </section>
 
   <!-- SPOTS -->
-  <section class="sec" id="spots">
+  <section class="panel sec" id="spots" data-title="🏝 景點清單．更多選擇">
     <h3>景點清單 · 更多選擇</h3>
     <p class="lead">依區域整理，方便單向繞島順路排。<b>★</b> = 已排進行程。開放時間與公休出發前再確認一次。</p>
     <div class="legend"><span>📍 <b>點景點名</b> = Google Maps 導航</span><span><b>官網</b> = 官方網站（時間 / 票價 / 預約）</span></div>
@@ -585,7 +655,7 @@
   </section>
 
   <!-- SHOPPING -->
-  <section class="sec" id="shopping">
+  <section class="panel sec" id="shopping" data-title="🛍 購物中心清單">
     <h3>購物中心清單</h3>
     <p class="lead">大型商場、Outlet、運動用品／生活五金大型店整理，依行程動線排列，方便順路補貨。</p>
     <div class="legend"><span>📍 <b>點名稱</b> = Google Maps 導航</span><span><b>官網</b> = 官方網站</span><span>📮 = 已驗證住所</span></div>
@@ -640,7 +710,7 @@
   </section>
 
   <!-- RESERVATIONS -->
-  <section class="sec">
+  <section class="panel sec" id="reservations" data-title="📋 預約清單（出發前先搞定）">
     <h3>預約清單（出發前先搞定）</h3>
     <ul class="check">
       <li><span class="box"></span><div><b>Ocean BOO! 阿古豬涮涮鍋</b> <span>— Day 1 晚餐，那霸居酒屋，先訂位</span></div></li>
@@ -656,7 +726,7 @@
   </section>
 
   <!-- BUDGET -->
-  <section class="sec">
+  <section class="panel sec" id="budget" data-title="💰 花費估算">
     <h3>花費估算（每人 · 不含機票 · 台幣）</h3>
     <table>
       <tr><th>項目</th><th class="amt">概估</th></tr>
@@ -673,7 +743,7 @@
   </section>
 
   <!-- HIGHWAY -->
-  <section class="sec">
+  <section class="panel sec" id="highway" data-title="🚘 上高速 or 走海岸線？．OTS 定額 ETC PASS 評估">
     <h3>上高速 or 走海岸線？ · OTS 定額 ETC PASS 評估</h3>
     <p class="lead">這趟刻意單向繞島、不走回頭路，大部分路段本來就沿海岸線（58號/331號等）順路看風景。整趟行程實際只有 <b>2 段</b>真的建議上「沖繩自動車道」，其餘都是一般道路，也沒有高速可走。</p>
     <table>
@@ -692,7 +762,7 @@
   </section>
 
   <!-- TIPS -->
-  <section class="sec">
+  <section class="panel sec" id="tips" data-title="💡 出發前重點提醒">
     <h3>出發前重點提醒</h3>
     <ul class="tips">
       <li><b>駕照日文譯本（最重要）</b>：台灣駕照要先在監理站辦免費日文譯本，帶正本＋譯本＋護照才能租車。</li>
@@ -710,6 +780,87 @@
     行程可依當天天氣、海況、預約狀況彈性調整 · 祝旅途愉快
   </footer>
 
+    </div>
+  </main>
 </div>
+
+<script>
+(function(){
+  var order = ['d1','d2','d3','d4','d5','d6','food','spots','shopping','highway','reservations','budget','tips'];
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('overlay');
+  var menuBtn = document.getElementById('menuBtn');
+  var topbarTitle = document.getElementById('topbarTitle');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+
+  function openGroupFor(id){
+    var link = document.querySelector('.nav-link[data-target="' + id + '"]');
+    if(!link) return;
+    var group = link.closest('.acc-group');
+    document.querySelectorAll('.acc-group').forEach(function(g){ g.classList.toggle('open', g === group); });
+  }
+
+  function closeSidebar(){
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+
+  function show(id, opts){
+    opts = opts || {};
+    if(order.indexOf(id) === -1) id = order[0];
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === id); });
+    navLinks.forEach(function(a){ a.classList.toggle('active', a.dataset.target === id); });
+    openGroupFor(id);
+
+    var panel = document.getElementById(id);
+    topbarTitle.textContent = panel ? (panel.dataset.title || '') : '';
+
+    var idx = order.indexOf(id);
+    prevBtn.disabled = idx <= 0;
+    nextBtn.disabled = idx >= order.length - 1;
+    prevBtn.dataset.nav = idx > 0 ? order[idx - 1] : '';
+    nextBtn.dataset.nav = idx < order.length - 1 ? order[idx + 1] : '';
+
+    if(opts.updateHash !== false) history.replaceState(null, '', '#' + id);
+    window.scrollTo(0, 0);
+    closeSidebar();
+  }
+
+  document.querySelectorAll('.acc-h').forEach(function(h){
+    h.addEventListener('click', function(){
+      h.closest('.acc-group').classList.toggle('open');
+    });
+  });
+
+  navLinks.forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      show(a.dataset.target);
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-nav]');
+    if(btn && btn.dataset.nav){ show(btn.dataset.nav); }
+  });
+
+  menuBtn.addEventListener('click', function(){
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+  overlay.addEventListener('click', closeSidebar);
+
+  window.addEventListener('hashchange', function(){
+    var id = location.hash.slice(1);
+    if(id) show(id);
+  });
+
+  var initial = location.hash.slice(1) || order[0];
+  show(initial, { updateHash: false });
+})();
+</script>
 </body>
 </html>
