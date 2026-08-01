@@ -193,6 +193,8 @@
   .check li b{color:var(--ink)}
   .check li span{color:var(--ink-soft)}
 
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tscroll>table{min-width:100%}
   table{width:100%;border-collapse:collapse;font-size:.9rem}
   th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
   th{color:var(--sea);font-weight:700;font-size:.82rem;letter-spacing:.03em}
@@ -238,6 +240,44 @@
   .hr.warn{color:#a54a3a;background:#fdecea;border-color:#f6c7bf}
   .hr.closed{color:#fff;background:#8a8f98;border-color:#8a8f98;font-weight:700}
 
+  /* ---------- ROUTE MAP ---------- */
+  .map-tools{display:flex;flex-wrap:wrap;gap:7px;margin:-4px 0 14px}
+  .map-btn{
+    font-family:inherit;font-size:.78rem;font-weight:700;color:var(--sea);
+    background:var(--card);border:1.5px solid var(--line);padding:5px 13px;border-radius:999px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .map-btn .sw{width:9px;height:9px;border-radius:50%;flex:none}
+  .map-btn.on{background:var(--sea);color:#fff;border-color:var(--sea)}
+  .map-btn.on .sw{box-shadow:0 0 0 2px rgba(255,255,255,.7)}
+  .map-stage{
+    background:linear-gradient(180deg,#e3f1f1 0%,#d3e7e8 100%);
+    border:1px solid var(--line);border-radius:16px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  #okimap{display:block;width:100%;min-width:430px;max-width:560px;margin:0 auto;height:auto}
+  .map-cap{text-align:center;font-size:.72rem;color:var(--ink-soft);margin-top:8px}
+  .leg-table{margin-top:20px}
+  .leg-table td.rt{color:var(--ink)}
+  .leg-table td.rt b{font-weight:700}
+  .leg-table tr.dayrow td{
+    background:var(--sand-2);font-weight:700;color:var(--sea);font-size:.82rem;
+    letter-spacing:.04em;padding:7px 8px;
+  }
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+  .way{display:inline-block;font-size:.68rem;font-weight:700;padding:1px 7px;border-radius:6px;margin-left:6px;white-space:nowrap;
+    background:#eaf6f4;color:#0b7d75;border:1px solid #bde6e0}
+  .way.hw{background:#fdf3e0;color:#b5760f;border-color:#f0d7a4}
+  .way.tr{background:#eef0f6;color:#4a5470;border-color:#ccd2e2}
+
+  @media(max-width:640px){
+    .sec{padding:20px 15px}
+    th,td{padding:8px 5px}
+    .leg-table>table{font-size:.85rem}
+    .leg-table td.amt{font-size:.82rem}
+    .map-cap{font-size:.68rem}
+  }
+
   @media print{
     body{background:#fff}
     .sidebar,.topbar,.overlay,.panel-nav,.menu-btn{display:none!important}
@@ -260,7 +300,7 @@
       <div class="meta">
         <span class="chip">📅 9/24–9/29</span>
         <span class="chip">👥 3 人</span>
-        <span class="chip">🚗 Day2取車·Day6還車</span>
+        <span class="chip">🚗 Day2 15:00取 · Day6 15:00還</span>
       </div>
     </div>
     <nav class="acc">
@@ -278,6 +318,7 @@
       <div class="acc-group">
         <button class="acc-h" type="button">📚 參考清單</button>
         <div class="acc-body">
+          <a class="nav-link" href="#map" data-target="map">🗺 路線地圖 · 距離</a>
           <a class="nav-link" href="#food" data-target="food">🍜 美食清單</a>
           <a class="nav-link" href="#spots" data-target="spots">🏝 景點清單</a>
           <a class="nav-link" href="#shopping" data-target="shopping">🛍 購物中心</a>
@@ -334,11 +375,11 @@
         <div>
           <div class="num">02<small>9 / 25　週五</small></div>
           <h2>那霸半日 · 下午取車北上</h2>
-          <div class="theme">上午逛完首里城，午後開車進恩納村度假基地</div>
+          <div class="theme">上午逛完首里城，15:00 在 OTS 豐崎取車，直奔恩納村度假基地</div>
         </div>
         <div class="tags">
           <span class="tag">那霸 → 恩納</span>
-          <span class="tag">午後取車</span>
+          <span class="tag">15:00 取車</span>
           <span class="tag stay">宿 恩納村</span>
         </div>
       </div>
@@ -347,11 +388,13 @@
     <div class="body">
       <div class="stop"><div class="t">08:30</div><div class="n">早餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ポーたま+国際通り店+那覇市牧志1-2-1" target="_blank" rel="noopener">豬肉蛋飯糰（ポーたま）</a><span class="badge food">在地早餐</span><span class="mc">📮 那覇市牧志1-2-1</span></div><div class="d">國際通元祖店，沖繩人的經典早餐，約 ¥300。</div></div>
       <div class="stop"><div class="t">09:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=首里城公園" target="_blank" rel="noopener">首里城公園</a></div><div class="d">正殿仍在復建中，守禮門、城牆與園區開放，重建工程本身也是難得一見。（或改去海崖上的<b>波上宮</b>更輕鬆）</div></div>
-      <div class="stop"><div class="t">12:00</div><div class="n">午餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=第一牧志公設市場+那覇市松尾2-10-1" target="_blank" rel="noopener">第一牧志公設市場</a> / 波照間<span class="badge food">沖繩鄉土</span></div><div class="d">市場樓下買海鮮、樓上代客料理；或「波照間」阿古豬、海葡萄、生麵。</div></div>
-      <div class="stop"><div class="t">14:00</div><div class="n">那霸市區取車<span class="badge">租車</span></div><div class="d">市區店取車後上高速北上恩納村。取還安排：<b>Day 2 市區取車 · Day 6 機場還車</b>。租車門市依訂單而定，取車地址請以租車確認信為準。</div></div>
-      <div class="drive">🚗 那霸 → 恩納村　約 60 分（走 58 號海岸線經殘波岬，不上高速）</div>
-      <div class="stop"><div class="t">16:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">殘波岬燈塔</a><span class="mc">📮 読谷村字宇座</span><span class="hr">岬角公園全天開放；若想登燈塔，9月為平日9:30–16:30／假日9:30–17:30</span></div><div class="d">沿海斷崖看夕陽，順路小停。網路上流傳的 MapCode 各版本不一致，建議車機直接用地址或電話（098-958-3041，燈台管理處）搜尋，避免導錯。</div></div>
-      <div class="stop"><div class="t">18:30</div><div class="n">晚餐 + 入住恩納村海景飯店</div><div class="d">早點 check-in 享受度假飯店，明天玩水直接出發。</div></div>
+      <div class="stop"><div class="t">11:45</div><div class="n">午餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=第一牧志公設市場+那覇市松尾2-10-1" target="_blank" rel="noopener">第一牧志公設市場</a> / 波照間<span class="badge food">沖繩鄉土</span></div><div class="d">市場樓下買海鮮、樓上代客料理；或「波照間」阿古豬、海葡萄、生麵。<b>13:20 前要離開</b>，趕去機場搭 OTS 接駁。行李記得先寄放飯店或直接帶著。</div></div>
+      <div class="stop"><div class="t">13:30</div><div class="n">單軌到 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">那霸機場</a> 轉 OTS 接駁車<span class="badge">預留 90 分</span></div><div class="d">縣廳前／牧志 → 那覇空港站，單軌約 <b>15 分</b>。出站後走到<b>國內線航廈外的租車接駁區「10-A／10 番」</b>搭 OTS 免費接駁車，<b>約每 20 分一班、車程約 20 分</b>。⚠️ 國際線航廈的租車巴士站施工中無法停靠，一律走國內線這側上車。<br>趕時間或嫌麻煩的話，三人從市區<b>直接叫計程車到豐崎約 25–30 分、¥3,000 上下</b>，分攤下來跟接駁差不多，還省一次轉乘。</div></div>
+      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=OTSレンタカー+臨空豊崎営業所+豊見城市豊崎3-37" target="_blank" rel="noopener">OTS 臨空豐崎營業所 取車</a><span class="badge">已預約</span><span class="mc">📮 豊見城市豊崎3-37</span><span class="mc">☎ 098-856-8877</span><span class="hr">營業 08:00–19:00</span></div><div class="d">取還安排：<b>Day 2 15:00 取車 · Day 6 15:00 同店還車</b>（共 96 小時）。取車帶齊 5 樣：駕照正本、日文譯本、護照、預約確認信、主駕駛人信用卡。<br>營業所就在 <b>Ashibinaa Outlet / TOMITON 旁邊</b>——但今天想趕殘波岬夕陽就先別逛，留到 Day 6 還車前再買。</div></div>
+      <div class="drive">🚗 OTS 豐崎 → 殘波岬　約 50 km · 70 分（建議走「那覇空港自動車道」免費段 → 西原JCT 上沖繩自動車道 → 沖繩南IC，繞開那霸市區下班車潮，ETC 約 ¥420）</div>
+      <div class="stop"><div class="t">16:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">殘波岬燈塔</a><span class="mc">📮 読谷村字宇座</span><span class="hr">岬角公園全天開放；若想登燈塔，9月為平日9:30–16:30／假日9:30–17:30</span></div><div class="d">沿海斷崖看夕陽（9月下旬日落約 18:30），順路小停。網路上流傳的 MapCode 各版本不一致，建議車機直接用地址或電話（098-958-3041，燈台管理處）搜尋，避免導錯。<b>取車時間改成 15:00 後這站會比較趕</b>，若路上塞車就直接跳過殘波岬、改停恩納的萬座毛（更近飯店）。</div></div>
+      <div class="drive">🚗 殘波岬 → 恩納村　約 20 km · 30 分（58 號海岸線）</div>
+      <div class="stop"><div class="t">18:00</div><div class="n">入住恩納村海景飯店 + 晚餐</div><div class="d">早點 check-in 享受度假飯店，明天玩水直接出發。</div></div>
       <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d1">← Day 1 那霸</button><button class="pnav-btn" type="button" data-nav="d3">Day 3 水上·煙火 →</button></div>
     </div>
   </section>
@@ -377,11 +420,11 @@
       <div class="stop"><div class="t">上午</div><div class="n">🤿 玩水組（2 人）：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=真栄田岬+恩納村真栄田469-1" target="_blank" rel="noopener">青之洞窟浮潛</a> / SUP<span class="badge">選含接送</span><span class="badge play">水上</span><span class="mc">📮 恩納村真栄田469-1</span></div><div class="d">恩納村真榮田岬，全沖繩最知名浮潛點。選<b>早上時段</b>海面平靜、新手好上手；<b>務必挑「含飯店接送」的中文教練行程</b>——潛店到飯店來回接送，租車完全不用動。含裝備、水中拍照，約 2.5 小時。</div></div>
       <div class="stop"><div class="t">上午</div><div class="n">🧘 不玩水組（1 人）：留在同一據點，不用開車<span class="badge play">零移動</span></div><div class="d">只有一台車、又是玩水的人開，所以讓他<b>待在同一個地方</b>最省事：選了接送行程後，他就留在<b>恩納村海景飯店</b>——沙灘、泳池、咖啡、SPA，中午大家回飯店會合。若想陪在海邊，也可三人一起開到<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=真栄田岬+恩納村真栄田469-1" target="_blank" rel="noopener">真榮田岬公園</a>（有停車場、更衣室、觀景台），他在岬邊散步看海，或加價搭「乘船方案」在船上看藍洞、不下水。</div></div>
       <div class="stop"><div class="t">12:30</div><div class="n">午餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=なかむらそば+恩納村瀬良垣1669-1" target="_blank" rel="noopener">恩納村沖繩麵</a><span class="badge food">沖繩麵</span><span class="mc">📮 恩納村瀬良垣1669-1</span></div><div class="d">兩組會合，恩納村沖繩そば名店（如 なかむらそば）。⚠️ 查到營業時間有兩種說法（官網寫 10:30–16:00，其他資料寫到 17:00），出發前打 098-966-8005 確認一下比較保險，12:30 用餐應該都還來得及。</div></div>
-      <div class="drive">🚗 恩納 → 美國村　約 35 分（沿海岸線，不上高速）</div>
+      <div class="drive">🚗 恩納 → 美國村　約 28 km · 40 分（沿海岸線，不上高速）</div>
       <div class="stop"><div class="t">15:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=美浜アメリカンビレッジ+北谷町" target="_blank" rel="noopener">美國村（北谷）</a></div><div class="d">美式風情商圈、<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=デポアイランド+北谷町美浜" target="_blank" rel="noopener">Depot Island</a> 古著小店、摩天輪。</div></div>
       <div class="stop"><div class="t">18:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=北谷公園サンセットビーチ+北谷町美浜2" target="_blank" rel="noopener">Sunset Beach</a> 看夕陽 + 晚餐<span class="mc">📮 北谷町美浜2</span></div><div class="d">海邊夕陽超美，晚餐塔可飯、A&amp;W 漢堡、海景餐廳。</div></div>
       <div class="stop"><div class="t">20:00</div><div class="n">🎆 日落沙灘 週六煙火</div><div class="d">每週六 20:00 施放、約 3 分鐘、<b>免費</b>。19:30 前先到 Depot Island 前海邊步道卡位，視野最好。</div></div>
-      <div class="drive">🚗 美國村 → 恩納　約 35 分（回同一間飯店，沿海岸線不上高速）</div>
+      <div class="drive">🚗 美國村 → 恩納　約 28 km · 40 分（回同一間飯店，沿海岸線不上高速）</div>
       <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d2">← Day 2 恩納</button><button class="pnav-btn" type="button" data-nav="d4">Day 4 水族館 →</button></div>
     </div>
   </section>
@@ -405,10 +448,10 @@
     </div>
     <div class="body">
       <div class="stop"><div class="t">07:15</div><div class="n">恩納出發</div><div class="d">早點退房北上，趕在開館前抵達。</div></div>
-      <div class="drive">🚗 恩納 → 美麗海　約 55 分（建議上沖繩自動車道：石川IC→許田IC，ETC ¥490，省時才趕得上開館）</div>
+      <div class="drive">🚗 恩納 → 美麗海　約 55 km · 55 分（建議上沖繩自動車道：石川IC→許田IC，ETC ¥490，省時才趕得上開館）</div>
       <div class="stop"><div class="t">08:15</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄美ら海水族館+北口P7駐車場+本部町石川424" target="_blank" rel="noopener">美麗海水族館</a><span class="badge">先買票</span><span class="mc">🚘 MapCode <b>553 075 797</b></span><span class="hr">8:30–18:30（最終入館17:30）・無休</span></div><div class="d">導航直接鎖定離入口最近的<b>北口 P7 立體停車場</b>。8:30 一開門先攻室內「黑潮之海」看鯨鯊、鬼蝠魟；想坐水槽旁 <b>Ocean Blue 咖啡</b>，一開館先去門口機器抽號碼牌（不可預約、限時 40 分）。門票在許田休息站或 Klook 買較便宜。</div></div>
       <div class="stop"><div class="t">11:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=備瀬のフクギ並木駐車場+本部町備瀬467" target="_blank" rel="noopener">備瀨福木林道</a><span class="mc">📮 本部町備瀬467</span></div><div class="d">水族館旁的綠色隧道散步。</div></div>
-      <div class="drive">🚗 前往屋我地島　約 25 分</div>
+      <div class="drive">🚗 備瀨 → 屋我地島　約 20 km · 30 分</div>
       <div class="stop"><div class="t">12:30</div><div class="n">午餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=くるまえびキッチンTAMAYA+名護市字運天原285" target="_blank" rel="noopener">Tamaya 車海老</a><span class="badge">不可預約·現場排</span><span class="badge food">車海老五吃</span><span class="mc">📮 名護市字運天原285</span></div><div class="d">屋我地島養殖場直營、就在古宇利大橋旁，現撈車海老刺身／天婦羅／炸／鹽煮五吃。營業 11:30–18:00，只能現場候位。正式店名「くるまえびキッチンTAMAYA」。</div></div>
       <div class="stop"><div class="t">14:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=古宇利大橋" target="_blank" rel="noopener">古宇利島</a>（跳島）</div><div class="d">開車直上跨海大橋，<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ハートロック+今帰仁村古宇利2610" target="_blank" rel="noopener">心形岩</a>、古宇利海灘、蝦蝦飯。</div></div>
       <div class="stop"><div class="t">傍晚</div><div class="n">入住本部 / 瀨底</div><div class="d">住水族館附近，隔天南下不趕。</div></div>
@@ -435,11 +478,11 @@
     </div>
     <div class="body">
       <div class="stop"><div class="t">09:30</div><div class="n">本部退房，南下</div></div>
-      <div class="drive">🚗 本部 → 北中城　約 90 分（建議上沖繩自動車道：許田IC→北中城IC，ETC ¥830，這段距離最長最省時）</div>
+      <div class="drive">🚗 本部 → 北中城　約 65 km · 90 分（建議上沖繩自動車道：許田IC→北中城IC，ETC ¥830，這段距離最長最省時）</div>
       <div class="stop"><div class="t">11:30</div><div class="n">午餐 + 購物：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=イオンモール沖縄ライカム+北中城村字ライカム1" target="_blank" rel="noopener">永旺來客夢 AEON Rycom</a><span class="badge food">館內 60 餐廳</span><span class="mc">🚘 MapCode <b>33 530 406*45</b></span></div><div class="d">北中城村、全沖繩最大商場，200+ 店鋪、免費停車、10:00–22:00。藥妝、服飾、家電一次補齊，午餐館內解決。</div></div>
-      <div class="drive">🚗 北中城 → 港川（浦添）　約 25 分</div>
+      <div class="drive">🚗 北中城 → 港川（浦添）　約 13 km · 25 分</div>
       <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=港川外人住宅+浦添市港川2丁目" target="_blank" rel="noopener">港川外人住宅區</a><span class="badge play">調香體驗</span></div><div class="d"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=THE+FLAVOR+DESIGN+STORE+OKINAWA+港川ステイツサイドタウン19" target="_blank" rel="noopener"><b>The Flavor Design 調香</b></a>：試香 → 選比例 → 定色封瓶，做一瓶專屬香水約 30 分（可線上預約）。旁邊<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+牧港本店+浦添市牧港5-5-6" target="_blank" rel="noopener"><b>Blue Seal 牧港本店</b></a>吃冰，巷弄文青咖啡拍照。<span class="mc">📮 港川ステイツサイドタウン #19</span><span class="mc">📮 牧港5-5-6</span></div></div>
-      <div class="drive">🚗 港川 → 那霸　約 20 分</div>
+      <div class="drive">🚗 港川 → 那霸　約 8 km · 20 分</div>
       <div class="stop"><div class="t">18:00</div><div class="n">那霸 check-in</div></div>
       <div class="stop"><div class="t">19:00</div><div class="n">晚餐：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=琉球の牛+那覇市松尾1-1-1" target="_blank" rel="noopener">琉球的牛</a><span class="badge">需訂位</span><span class="badge food">A5 石垣牛</span><span class="mc">📮 那覇市松尾1-1-1</span><span class="hr">16:30–23:00・無休</span></div><div class="d">炭火燒 A5 級石垣牛，慶祝餐。僅晚餐時段、務必官網提前訂位。</div></div>
       <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d4">← Day 4 水族館</button><button class="pnav-btn" type="button" data-nav="d6">Day 6 貓島·返程 →</button></div>
@@ -457,6 +500,7 @@
         </div>
         <div class="tags">
           <span class="tag">南城市 → 機場</span>
+          <span class="tag">15:00 還車</span>
           <span class="tag">🐈 貓島</span>
           <span class="tag stay">✈️ 18:00 返台</span>
         </div>
@@ -465,17 +509,38 @@
     </div>
     <div class="body">
       <div class="stop"><div class="t">08:00</div><div class="n">那霸退房</div></div>
-      <div class="drive">🚗 那霸 → 南城市　約 40 分（一般道路，沖繩自動車道最南只到那霸IC，這一帶沒有高速可走）</div>
+      <div class="drive">🚗 那霸 → 南城市　約 22 km · 40 分（一般道路，沖繩自動車道最南只到那霸IC，這一帶沒有高速可走）</div>
       <div class="stop"><div class="t">08:50</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=奥武島+南城市玉城字奥武" target="_blank" rel="noopener">奧武島（貓島）</a><span class="badge food">現炸天婦羅</span><span class="mc">📮 南城市玉城字奥武</span></div><div class="d">橋接小島，環一圈看貓咪、吃島上名物現炸天婦羅。</div></div>
+      <div class="drive">🚗 奧武島 → Gangala 之谷　約 5 km · 12 分</div>
       <div class="stop"><div class="t">10:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ガンガラーの谷+南城市玉城字前川202" target="_blank" rel="noopener">Gangala 之谷</a> · 洞穴咖啡<span class="badge">需預約導覽</span><span class="mc">📮 南城市玉城字前川202</span></div><div class="d">數十萬年鐘乳石洞裡喝「35 咖啡」。<b>Cave Café 現多只開放給參加山谷導覽者</b>，導覽約 80 分、需於官網 gangala.com 先預約場次（建議 10:00 場）。對面即玉泉洞可當備案。</div></div>
-      <div class="drive">🚗 南城市 → 瀨長島　約 35 分</div>
+      <div class="drive">🚗 Gangala 之谷 → 瀨長島　約 20 km · 35 分</div>
       <div class="stop"><div class="t">13:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬長島ウミカジテラス+豊見城市瀬長174-6" target="_blank" rel="noopener">瀨長島 · 幸福鬆餅</a><span class="badge">平日可預約</span><span class="badge food">舒芙蕾鬆餅</span><span class="mc">📮 豊見城市瀬長174-6</span></div><div class="d">沖繩唯一分店（Umikaji Terrace 32 號）。舒芙蕾厚鬆餅配海景看飛機。官網 14 天前開放、僅限平日——今天週二可線上訂，一次最多 4 位。</div></div>
-      <div class="drive">🚗 瀨長島 → 機場旁還車　約 10 分</div>
-      <div class="stop"><div class="t">14:45</div><div class="n">機場旁還車</div></div>
-      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">抵達那霸機場</a>，辦理登機</div></div>
+      <div class="drive">🚗 瀨長島 → 豐崎（Outlet／OTS 還車處）　約 5 km · 10 分</div>
+      <div class="stop"><div class="t">14:30</div><div class="n">（可選）<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄アウトレットモールあしびなー+豊見城市豊崎1-188" target="_blank" rel="noopener">Ashibinaa Outlet</a> / <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=豊崎ライフスタイルセンターTOMITON+豊見城市字豊崎1-411" target="_blank" rel="noopener">TOMITON</a> 最後補貨<span class="badge">還車前順路</span></div><div class="d">兩間都在還車的豐崎，走路／一兩分鐘車程。但今天時間卡得緊，<b>建議只留 20 分鐘、或直接跳過</b>——真的想逛就把奧武島挪掉換這裡。</div></div>
+      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=OTSレンタカー+臨空豊崎営業所+豊見城市豊崎3-37" target="_blank" rel="noopener">OTS 臨空豐崎營業所 還車</a><span class="badge">已預約</span><span class="mc">📮 豊見城市豊崎3-37</span><span class="mc">☎ 098-856-8877</span></div><div class="d"><b>還車前先加滿油</b>（豐崎周邊加油站多，離店前 1–2 km 加最保險，否則會被收較貴的代加油費）。行李先從後車廂拿下來再辦手續。</div></div>
+      <div class="drive">🚌 OTS 豐崎 → 那霸機場　免費接駁約 20 分（每 20 分一班）</div>
+      <div class="stop"><div class="t">15:40</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">抵達那霸機場</a>，辦理登機</div><div class="d">⚠️ 接駁車停<b>國內線</b>航廈，要再從國內線走空橋連通道到<b>國際線</b>航廈（室內步道約 10 分，有電動步道）。18:00 的班機約 16:00 開始櫃檯作業，時間夠但沒有太多餘裕。</div></div>
       <div class="stop"><div class="t">18:00</div><div class="n">✈️ 班機返台</div></div>
-      <div class="note"><b>Day 6 較滿又要趕飛機</b>：關鍵是 Gangala 導覽、幸福鬆餅兩個預約先鎖好。若想更輕鬆，可把奧武島挪掉、或瀨長島只留吃鬆餅。</div>
-      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d5">← Day 5 購物·香水</button><button class="pnav-btn" type="button" data-nav="food">美食清單 →</button></div>
+      <div class="note"><b>Day 6 是全程最緊的一天</b>：15:00 還車 → 接駁 20 分 → 走到國際線 10 分，落地機場約 15:40，離 18:00 起飛約 2 小時 20 分，剛好夠但不寬裕。<b>安全做法：Gangala 導覽、幸福鬆餅兩個預約先鎖死，並把「瀨長島 13:00 進場、14:20 離開」當硬底線。</b>若當天有任何延誤，優先砍掉的順序是：Outlet → 奧武島 → 瀨長島只吃鬆餅不逛。</div>
+      <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d5">← Day 5 購物·香水</button><button class="pnav-btn" type="button" data-nav="map">路線地圖 →</button></div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="panel sec" id="map" data-title="🗺 路線地圖．點與點大概多遠">
+    <h3>路線地圖 · 點與點大概多遠</h3>
+    <p class="lead">整趟移動一次看懂。地圖為<b>等比例示意圖</b>（依實際經緯度定位，比例尺 = 真實距離），路線用直線連接、<b>公里數與時間是實際開車路程的概估</b>。點下面的按鈕可以單看某一天。</p>
+    <div class="map-tools" id="mapTools"></div>
+    <div class="map-stage">
+      <svg id="okimap" viewBox="-75 55 890 1000" role="img" aria-label="沖繩本島行程路線示意圖"></svg>
+    </div>
+    <div class="map-cap">🚗 實線 = 自駕　·　🚈 虛線 = 單軌／免費接駁　·　⭐ = 取還車據點　·　比例尺見地圖右下</div>
+
+    <div class="tscroll leg-table"><table id="legTable"></table></div>
+
+    <div class="note">
+      <b>怎麼看這張圖：</b>沖繩本島南北長約 100 km，我們的行程最北到本部半島（美麗海）、最南到南城市，<b>單程最長的一段是 Day 5「本部 → 北中城」約 65 km、90 分</b>，其次是 Day 4「恩納 → 美麗海」55 km。<br>
+      Day 2 因為改在<b>機場南邊的豐崎</b>取車，第一段就要往北開 50 km 穿過那霸——這是全程唯一一段「往回開」，所以特別建議走免費的那覇空港自動車道接高速，不然卡在市區 58 號會多花 30 分鐘。
     </div>
   </section>
 
@@ -721,14 +786,15 @@
       <li><span class="box"></span><div><b>琉球的牛（A5 石垣牛）</b> <span>— Day 5 晚餐，官網提前訂位</span></div></li>
       <li><span class="box"></span><div><b>Gangala 之谷導覽</b> <span>— Day 6，gangala.com 預約 10:00 場</span></div></li>
       <li><span class="box"></span><div><b>幸福鬆餅</b> <span>— Day 6（週二平日可訂），官網 14 天前開放、最多 4 位</span></div></li>
-      <li><span class="box"></span><div><b>住宿 × 3 區 + 租車</b> <span>— 那霸／恩納（2 晚）／本部；租車 Day 2 市區取、Day 6 機場還</span></div></li>
+      <li><span class="box"></span><div><b>住宿 × 3 區</b> <span>— 那霸／恩納（2 晚）／本部</span></div></li>
+      <li><span class="box"></span><div><b>租車：OTS 臨空豐崎營業所（已預約 ✔）</b> <span>— Day 2 (9/25) 15:00 取車、Day 6 (9/29) 15:00 同店還車，共 96 小時。豊見城市豊崎3-37／098-856-8877／08:00–19:00。機場↔營業所免費接駁，<b>國內線航廈「10-A」上下車</b></span></div></li>
     </ul>
   </section>
 
   <!-- BUDGET -->
   <section class="panel sec" id="budget" data-title="💰 花費估算">
     <h3>花費估算（每人 · 不含機票 · 台幣）</h3>
-    <table>
+    <div class="tscroll"><table>
       <tr><th>項目</th><th class="amt">概估</th></tr>
       <tr><td>住宿（5 晚，3 人分攤）</td><td class="amt">7,000–9,000</td></tr>
       <tr><td>餐飲（含石垣牛、車海老）</td><td class="amt">7,000–8,500</td></tr>
@@ -738,26 +804,27 @@
       <tr><td>門票（水族館、Gangala 導覽 等）</td><td class="amt">1,200–1,800</td></tr>
       <tr><td>購物 · 香水 · 伴手禮</td><td class="amt">3,000–6,000+</td></tr>
       <tr class="total"><td>合計</td><td class="amt">約 22,000–30,000</td></tr>
-    </table>
+    </table></div>
     <div class="note">Day 5 逛永旺＋做香水，購物金額彈性大，抓寬一點比較保險。</div>
   </section>
 
   <!-- HIGHWAY -->
   <section class="panel sec" id="highway" data-title="🚘 上高速 or 走海岸線？．OTS 定額 ETC PASS 評估">
     <h3>上高速 or 走海岸線？ · OTS 定額 ETC PASS 評估</h3>
-    <p class="lead">這趟刻意單向繞島、不走回頭路，大部分路段本來就沿海岸線（58號/331號等）順路看風景。整趟行程實際只有 <b>2 段</b>真的建議上「沖繩自動車道」，其餘都是一般道路，也沒有高速可走。</p>
-    <table>
+    <p class="lead">這趟刻意單向繞島、不走回頭路，大部分路段本來就沿海岸線（58號/331號等）順路看風景。整趟行程實際有 <b>3 段</b>建議上「沖繩自動車道」，其餘都是一般道路，也沒有高速可走。</p>
+    <div class="tscroll"><table>
       <tr><th>路段</th><th>建議</th><th class="amt">高速過路費（ETC）</th></tr>
-      <tr><td>Day 2　那霸 → 恩納村（經殘波岬）</td><td>走 58 號海岸線，不上高速</td><td class="amt">—</td></tr>
+      <tr><td>Day 2　OTS 豐崎 → 殘波岬　<b>★建議上高速</b></td><td>那覇空港自動車道（<b>全線免費</b>）→ 西原JCT → 沖繩道 → 沖繩南IC，繞開那霸市區下班車潮</td><td class="amt">約 ¥420</td></tr>
       <tr><td>Day 3　恩納 ⇄ 美國村（來回）</td><td>沿海岸線，距離短不需要</td><td class="amt">—</td></tr>
       <tr><td>Day 4　恩納 → 美麗海　<b>★建議上高速</b></td><td>石川IC → 許田IC</td><td class="amt">¥490</td></tr>
       <tr><td>Day 5　本部 → 北中城　<b>★建議上高速</b></td><td>許田IC → 北中城IC</td><td class="amt">¥830</td></tr>
-      <tr><td>Day 6　那霸 → 南城市 → 瀨長島 → 機場</td><td>全程一般道路（沖繩自動車道最南只到那霸IC，這一帶沒有高速）</td><td class="amt">—</td></tr>
-      <tr class="total"><td colspan="2">整趟實際過路費（一般 ETC 卡，非定額）</td><td class="amt">約 ¥1,320</td></tr>
-    </table>
+      <tr><td>Day 6　那霸 → 南城市 → 瀨長島 → 豐崎還車</td><td>全程一般道路（沖繩自動車道最南只到那霸IC，這一帶沒有高速）</td><td class="amt">—</td></tr>
+      <tr class="total"><td colspan="2">整趟實際過路費（一般 ETC 卡，非定額）</td><td class="amt">約 ¥1,740</td></tr>
+    </table></div>
     <div class="note">
-      <b>OTS 定額 ETC PASS 值不值得買？</b> OTS 有一款「定額 ETC 卡」：120 小時內固定 ¥3,000（超過每 24 小時加收 ¥1,000），外國護照可申請，涵蓋沖繩全島高速（僅限沖繩，非全日本）不限次數。你們的租車時間是 Day 2 14:00 取車到 Day 6 14:45 還車，約 96.75 小時，一張 PASS 剛好夠用整趟。<br><br>
-      但這趟真正會上高速的只有 Day 4、Day 5 這兩段單程，過路費合計約 <b>¥1,320</b>；就算另外加上 OTS 一般（非定額）ETC 卡的每日租借費（各資料查到 ¥200–300/日不等，5 天約 ¥1,000–1,500），總計約 ¥2,320–2,820，大機率還是比 ¥3,000 定額 PASS 便宜一些。<b>結論：以這個路線規劃來說，不太需要額外加購定額 PASS</b>，一般 ETC 卡照實際使用付費更划算——但差距不大，且每日租借費實際報價會因取車時方案而異，建議取車時直接問清楚現場報價，圖方便不想事後對帳的話，選定額 PASS 也不會吃虧太多。
+      <b>OTS 定額 ETC PASS 值不值得買？</b> OTS 有一款「定額 ETC 卡」：120 小時內固定 ¥3,000（超過每 24 小時加收 ¥1,000），外國護照可申請，涵蓋沖繩全島高速（僅限沖繩，非全日本）不限次數。你們是 <b>Day 2 15:00 取車 → Day 6 15:00 還車，剛好 96 小時</b>，一張 PASS 涵蓋整趟沒問題。<br><br>
+      實際會上高速的是 Day 2、Day 4、Day 5 這三段單程，過路費合計約 <b>¥1,740</b>；再加上 OTS 一般（非定額）ETC 卡的每日租借費（各資料查到 ¥200–300/日不等，5 天約 ¥1,000–1,500），總計約 <b>¥2,740–3,240</b>——跟 ¥3,000 定額 PASS 幾乎打平。<b>結論：兩種選擇差價在 ¥300 以內，怎麼選都不會虧。</b>如果你們可能臨時加開高速（例如 Day 3 想跑遠一點、Day 6 改走高速回南部），選定額 PASS 更省心；如果就照這份行程走，一般 ETC 卡也一樣划算。實際每日租借費會因取車方案而異，<b>取車時直接問櫃檯現場報價再決定即可</b>。<br><br>
+      ⚠️ 補充：Day 2 的「那覇空港自動車道」（豊見城・名嘉地IC ↔ 西原JCT，約 20 km）本身<b>完全免費</b>，¥420 是接上沖繩自動車道後那一段的費用（以那霸IC 起算，實際從西原JCT 進入會再低一些）。
     </div>
   </section>
 
@@ -786,7 +853,7 @@
 
 <script>
 (function(){
-  var order = ['d1','d2','d3','d4','d5','d6','food','spots','shopping','highway','reservations','budget','tips'];
+  var order = ['d1','d2','d3','d4','d5','d6','map','food','spots','shopping','highway','reservations','budget','tips'];
   var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
   var sidebar = document.getElementById('sidebar');
@@ -860,6 +927,263 @@
 
   var initial = location.hash.slice(1) || order[0];
   show(initial, { updateHash: false });
+})();
+
+/* ---------- ROUTE MAP ---------- */
+(function(){
+  var svg = document.getElementById('okimap');
+  var tools = document.getElementById('mapTools');
+  var table = document.getElementById('legTable');
+  if(!svg || !tools || !table) return;
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var C = {1:'#8a8f98',2:'#0e7c86',3:'#13a89e',4:'#d9901f',5:'#ea5a47',6:'#7b5ea7'};
+  var DAY = {
+    1:'Day 1 · 那霸',
+    2:'Day 2 · 那霸 → 恩納',
+    3:'Day 3 · 恩納 ⇄ 美國村',
+    4:'Day 4 · 北部水族館',
+    5:'Day 5 · 北部 → 那霸',
+    6:'Day 6 · 南部 → 機場'
+  };
+
+  /* 經緯度 → 畫布座標，10 單位 = 1 公里（等比例） */
+  function P(lat,lng){ return [ (lng-127.60)*996, (26.95-lat)*1109 ]; }
+  function el(tag,attr){
+    var e = document.createElementNS(NS,tag);
+    for(var k in attr){ e.setAttribute(k, attr[k]); }
+    return e;
+  }
+  /* 粗略字寬：全形算 1、半形算 0.54 */
+  function tw(s,size){
+    var n = 0;
+    for(var i=0;i<s.length;i++){ n += s.charCodeAt(i) > 0x2e80 ? 1 : 0.54; }
+    return n * size;
+  }
+
+  /* 沖繩本島簡化海岸線（順時針，由辺戸岬起） */
+  var COAST = [
+    [128.257,26.872],[128.325,26.840],[128.330,26.790],[128.300,26.745],
+    [128.283,26.700],[128.255,26.655],[128.215,26.600],[128.160,26.545],
+    [128.060,26.520],[128.020,26.500],[127.990,26.485],[127.925,26.456],
+    [127.825,26.425],[127.855,26.375],[127.920,26.330],[127.945,26.300],
+    [127.830,26.270],[127.790,26.250],[127.755,26.195],[127.780,26.170],
+    [127.830,26.170],[127.790,26.140],[127.750,26.130],[127.710,26.110],
+    [127.675,26.080],[127.665,26.125],[127.648,26.160],[127.640,26.196],
+    [127.665,26.215],[127.695,26.270],[127.735,26.320],[127.745,26.360],
+    [127.706,26.443],[127.730,26.418],[127.777,26.444],[127.850,26.509],
+    [127.964,26.534],[127.960,26.585],[127.900,26.620],[127.876,26.660],
+    [127.879,26.710],[127.960,26.700],[128.010,26.690],[128.060,26.690],
+    [128.120,26.705],[128.170,26.760],[128.215,26.820]
+  ];
+
+  var PL = [
+    {k:'apt',   n:'那霸機場',      lat:26.196, lng:127.652, dx:-16, dy:-2,  a:'end',   t:'spot'},
+    {k:'naha',  n:'那霸市區',      lat:26.215, lng:127.688, dx:-16, dy:-14, a:'end',   t:'stay'},
+    {k:'shuri', n:'首里城',        lat:26.217, lng:127.719, dx: 16, dy: 5,  a:'start', t:'spot'},
+    {k:'ots',   n:'⭐ OTS 豐崎',   lat:26.163, lng:127.657, dx: 18, dy: 8,  a:'start', t:'hub'},
+    {k:'sena',  n:'瀨長島',        lat:26.181, lng:127.638, dx:-16, dy: 26, a:'end',   t:'spot'},
+    {k:'gang',  n:'Gangala 之谷',  lat:26.142, lng:127.748, dx:-16, dy: 26, a:'end',   t:'spot'},
+    {k:'ou',    n:'奧武島',        lat:26.140, lng:127.766, dx: 16, dy: 16, a:'start', t:'spot'},
+    {k:'mina',  n:'港川外人住宅',  lat:26.271, lng:127.712, dx: 14, dy:-6,  a:'start', t:'spot'},
+    {k:'ameri', n:'美國村',        lat:26.316, lng:127.756, dx:-16, dy: 16, a:'end',   t:'spot'},
+    {k:'rycom', n:'AEON Rycom',   lat:26.318, lng:127.792, dx: 16, dy:-2,  a:'start', t:'spot'},
+    {k:'zanpa', n:'殘波岬',        lat:26.442, lng:127.708, dx:-16, dy: 5,  a:'end',   t:'spot'},
+    {k:'maeda', n:'真榮田岬·藍洞', lat:26.443, lng:127.774, dx:  6, dy:-14, a:'start', t:'spot'},
+    {k:'onna',  n:'恩納村（宿）',  lat:26.498, lng:127.856, dx: 16, dy: 5,  a:'start', t:'stay'},
+    {k:'motob', n:'本部·瀨底（宿）',lat:26.653, lng:127.876, dx:-16, dy: 14, a:'end',  t:'stay'},
+    {k:'chura', n:'美麗海水族館',  lat:26.694, lng:127.878, dx:-16, dy: 10, a:'end',   t:'spot'},
+    {k:'bise',  n:'備瀨並木',      lat:26.706, lng:127.879, dx:-16, dy:-14, a:'end',   t:'spot'},
+    {k:'tama',  n:'車海老 TAMAYA', lat:26.664, lng:128.017, dx: 16, dy: 14, a:'start', t:'spot'},
+    {k:'kouri', n:'古宇利島',      lat:26.701, lng:128.017, dx: 16, dy:-4,  a:'start', t:'spot'}
+  ];
+
+  /* lbl / lx / ly 只影響地圖上的標籤位置，表格數字一律取 km、min */
+  var LEGS = [
+    {d:1,a:'apt',  b:'naha', km:12, min:15, m:'rail',    lbl:'單軌 15 分', lx:40, note:'Yui-Rail 到縣廳前／牧志'},
+    {d:2,a:'naha', b:'shuri',km:4,  min:15, m:'rail',    lbl:'', note:'單軌首里站下車再走 15 分，或叫計程車'},
+    {d:2,a:'naha', b:'apt',  km:12, min:15, m:'rail',    lbl:'', note:'13:30 出發，去機場轉接駁'},
+    {d:2,a:'apt',  b:'ots',  km:6,  min:20, m:'shuttle', lbl:'單軌＋接駁 約40分', ly:4, note:'國內線「10-A」搭 OTS 免費接駁，每 20 分一班'},
+    {d:2,a:'ots',  b:'zanpa',km:50, min:70, m:'hw',      lbl:'50km · 70分', ly:-30, note:'那覇空港道（免費）→ 沖繩道 → 沖繩南IC'},
+    {d:2,a:'zanpa',b:'onna', km:20, min:30, m:'road',    lbl:'20km · 30分', ly:-25, note:'58 號海岸線'},
+    {d:3,a:'onna', b:'maeda',km:10, min:15, m:'road',    lbl:'10km · 15分', lx:-45, ly:-18, note:'浮潛行程若含接送，這段不用自己開'},
+    {d:3,a:'onna', b:'ameri',km:28, min:40, m:'road',    lbl:'28km · 40分（來回）', note:'下午去、晚上煙火後原路折返'},
+    {d:4,a:'onna', b:'chura',km:55, min:55, m:'hw',      lbl:'55km · 55分', note:'石川IC → 許田IC（ETC ¥490）'},
+    {d:4,a:'chura',b:'bise', km:2,  min:5,  m:'road',    lbl:'2km', lx:22, ly:-8, note:'水族館旁邊，走路也行'},
+    {d:4,a:'bise', b:'tama', km:20, min:30, m:'road',    lbl:'20km · 30分', note:'往屋我地島'},
+    {d:4,a:'tama', b:'kouri',km:6,  min:10, m:'road',    lbl:'6km · 10分', lx:55, note:'過古宇利大橋'},
+    {d:4,a:'kouri',b:'motob',km:22, min:35, m:'road',    lbl:'22km · 35分', ly:35, note:'回本部／瀨底住宿'},
+    {d:5,a:'motob',b:'rycom',km:65, min:90, m:'hw',      lbl:'65km · 90分', note:'全程最長一段，許田IC → 北中城IC（ETC ¥830）'},
+    {d:5,a:'rycom',b:'mina', km:13, min:25, m:'road',    lbl:'13km · 25分', lx:-25, ly:-22, note:'一般道路'},
+    {d:5,a:'mina', b:'naha', km:8,  min:20, m:'road',    lbl:'8km · 20分', lx:60, ly:-8, note:'進那霸市區'},
+    {d:6,a:'naha', b:'ou',   km:22, min:40, m:'road',    lbl:'22km · 40分', ly:-6, note:'331 號往南城'},
+    {d:6,a:'ou',   b:'gang', km:5,  min:12, m:'road',    lbl:'5km', ly:10, note:''},
+    {d:6,a:'gang', b:'sena', km:20, min:35, m:'road',    lbl:'20km · 35分', lx:20, ly:-50, note:''},
+    {d:6,a:'sena', b:'ots',  km:5,  min:10, m:'road',    lbl:'5km', lx:2, ly:22, note:'還車前先加滿油'},
+    {d:6,a:'ots',  b:'apt',  km:6,  min:20, m:'shuttle', lbl:'接駁 20 分', lx:-70, note:'停國內線，再走 10 分到國際線'}
+  ];
+
+  var byKey = {};
+  PL.forEach(function(p){ byKey[p.k] = p; });
+
+  /* ---- 底圖 ---- */
+  var gBase  = el('g',{});
+  var gRoute = el('g',{});
+  var gDot   = el('g',{});
+  var gLabel = el('g',{});
+  var gName  = el('g',{});
+
+  function poly(pts){
+    return pts.map(function(c,i){
+      var xy = P(c[1],c[0]);
+      return (i?'L':'M') + xy[0].toFixed(1) + ',' + xy[1].toFixed(1);
+    }).join(' ') + ' Z';
+  }
+  gBase.appendChild(el('path',{d:poly(COAST),fill:'#f6efdd',stroke:'#c9b992','stroke-width':2.5,'stroke-linejoin':'round'}));
+  /* 古宇利島 / 瀨長島 */
+  var kr = P(26.701,128.017), sn = P(26.181,127.638);
+  gBase.appendChild(el('circle',{cx:kr[0],cy:kr[1],r:13,fill:'#f6efdd',stroke:'#c9b992','stroke-width':2.5}));
+  gBase.appendChild(el('circle',{cx:sn[0],cy:sn[1],r:8,fill:'#f6efdd',stroke:'#c9b992','stroke-width':2.5}));
+
+  /* 指北針 */
+  gBase.appendChild(el('path',{d:'M -38,132 L -30,112 L -22,132 L -30,126 Z',fill:'#0a2e3b',opacity:.6}));
+  var nt = el('text',{x:-30,y:152,'text-anchor':'middle','font-size':20,fill:'#0a2e3b',opacity:.6,'font-weight':'700'});
+  nt.textContent = 'N'; gBase.appendChild(nt);
+
+  /* 比例尺：200 單位 = 20 km */
+  var sx = 545, sy = 990;
+  gBase.appendChild(el('path',{d:'M '+sx+','+(sy-7)+' L '+sx+','+sy+' L '+(sx+200)+','+sy+' L '+(sx+200)+','+(sy-7),
+    fill:'none',stroke:'#0a2e3b','stroke-width':2.5,opacity:.65}));
+  gBase.appendChild(el('path',{d:'M '+(sx+100)+','+(sy-5)+' L '+(sx+100)+','+sy,fill:'none',stroke:'#0a2e3b','stroke-width':2,opacity:.65}));
+  var st = el('text',{x:sx+100,y:sy+22,'text-anchor':'middle','font-size':21,fill:'#0a2e3b',opacity:.75,'font-weight':'700'});
+  st.textContent = '20 km'; gBase.appendChild(st);
+
+  /* ---- 路線 ---- */
+  LEGS.forEach(function(g){
+    var A = P(byKey[g.a].lat, byKey[g.a].lng), B = P(byKey[g.b].lat, byKey[g.b].lng);
+    var line = el('line',{x1:A[0],y1:A[1],x2:B[0],y2:B[1],
+      stroke:C[g.d],'stroke-width':4.5,'stroke-linecap':'round',opacity:.75});
+    if(g.m === 'rail' || g.m === 'shuttle'){ line.setAttribute('stroke-dasharray','11 9'); }
+    line.dataset.day = g.d;
+    gRoute.appendChild(line);
+    g._line = line;
+
+    /* 路段標籤（選定某天才顯示；lbl 為空則不畫） */
+    if(!g.lbl) return;
+    var mx = (A[0]+B[0])/2 + (g.lx||0), my = (A[1]+B[1])/2 + (g.ly||0);
+    var fs = 17, W = tw(g.lbl,fs) + 14, H = 23;
+    var lg = el('g',{opacity:0});
+    lg.appendChild(el('rect',{x:mx-W/2,y:my-H/2,width:W,height:H,rx:8,
+      fill:'#fffdf7',stroke:C[g.d],'stroke-width':1.6}));
+    var t = el('text',{x:mx,y:my+6,'text-anchor':'middle','font-size':fs,'font-weight':'700',fill:C[g.d]});
+    t.textContent = g.lbl;
+    lg.appendChild(t);
+    gLabel.appendChild(lg);
+    g._lbl = lg;
+  });
+
+  /* ---- 地點 ---- */
+  PL.forEach(function(p){
+    var xy = P(p.lat,p.lng);
+    var days = {};
+    LEGS.forEach(function(g){ if(g.a===p.k||g.b===p.k){ days[g.d] = 1; } });
+    p._days = days;
+
+    var grp = el('g',{});
+    if(p.t === 'hub'){
+      grp.appendChild(el('circle',{cx:xy[0],cy:xy[1],r:11,fill:'#e29a2e',stroke:'#0a2e3b','stroke-width':3}));
+    } else if(p.t === 'stay'){
+      grp.appendChild(el('circle',{cx:xy[0],cy:xy[1],r:8,fill:'#e29a2e',stroke:'#0a2e3b','stroke-width':2.6}));
+    } else {
+      grp.appendChild(el('circle',{cx:xy[0],cy:xy[1],r:7,fill:'#fffdf7',stroke:'#0a2e3b','stroke-width':2.6}));
+    }
+    /* 標籤離點較遠時補一條牽引線 */
+    if(Math.abs(p.dy) > 18){
+      grp.appendChild(el('path',{d:'M '+xy[0]+','+xy[1]+' L '+(xy[0]+p.dx)+','+(xy[1]+p.dy-6),
+        stroke:'#0a2e3b','stroke-width':1.4,opacity:.4,fill:'none'}));
+    }
+    var fs = 25;
+    var txt = el('text',{x:xy[0]+p.dx, y:xy[1]+p.dy+8,'text-anchor':p.a,
+      'font-size':fs,'font-weight':'700',fill:'#0a2e3b',
+      stroke:'#ffffff','stroke-opacity':.85,'stroke-width':5.5,'paint-order':'stroke'});
+    txt.textContent = p.n;
+    gDot.appendChild(grp);
+    gName.appendChild(txt);
+    p._g = grp;
+    p._t = txt;
+  });
+
+  svg.appendChild(gBase);
+  svg.appendChild(gRoute);
+  svg.appendChild(gDot);
+  svg.appendChild(gLabel);
+  svg.appendChild(gName);
+
+  /* ---- 篩選 ---- */
+  function render(day){
+    LEGS.forEach(function(g){
+      var on = (day === 0 || g.d === day);
+      g._line.setAttribute('opacity', on ? (day === 0 ? .7 : 1) : .08);
+      g._line.setAttribute('stroke-width', (day !== 0 && on) ? 6 : 4.5);
+      if(g._lbl){ g._lbl.setAttribute('opacity', (day !== 0 && on) ? 1 : 0); }
+    });
+    PL.forEach(function(p){
+      var on = (day === 0 || p._days[day]);
+      p._g.setAttribute('opacity', on ? 1 : .3);
+      p._t.setAttribute('opacity', on ? 1 : .3);
+    });
+    Array.prototype.forEach.call(tools.children, function(b){
+      b.classList.toggle('on', Number(b.dataset.day) === day);
+    });
+    buildTable(day);
+  }
+
+  /* ---- 按鈕 ---- */
+  function addBtn(day,label,color){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'map-btn';
+    b.dataset.day = day;
+    if(color){
+      var sw = document.createElement('span');
+      sw.className = 'sw';
+      sw.style.background = color;
+      b.appendChild(sw);
+    }
+    b.appendChild(document.createTextNode(label));
+    b.addEventListener('click', function(){ render(day); });
+    tools.appendChild(b);
+  }
+  addBtn(0,'全部路線','');
+  [1,2,3,4,5,6].forEach(function(d){ addBtn(d,'Day '+d,C[d]); });
+
+  /* ---- 距離表 ---- */
+  var WAY = {hw:['高速','hw'], road:['一般道路',''], rail:['單軌','tr'], shuttle:['免費接駁','tr']};
+  function buildTable(day){
+    var html = '<tr><th>路段</th><th class="amt">距離</th><th class="amt">時間</th></tr>';
+    [1,2,3,4,5,6].forEach(function(d){
+      if(day !== 0 && d !== day) return;
+      var rows = LEGS.filter(function(g){ return g.d === d; });
+      if(!rows.length) return;
+      var km = 0, min = 0;
+      rows.forEach(function(g){
+        if(g.m === 'hw' || g.m === 'road'){ km += g.km; }
+        min += g.min;
+      });
+      html += '<tr class="dayrow"><td><span class="dot" style="background:' + C[d] + '"></span>' +
+              DAY[d] + '</td><td class="amt">自駕 ' + km + ' km</td><td class="amt">移動 ' + min + ' 分</td></tr>';
+      rows.forEach(function(g){
+        var wy = WAY[g.m];
+        var pill = g.m === 'road' ? '' : '<span class="way ' + wy[1] + '">' + wy[0] + '</span>';
+        html += '<tr><td class="rt"><b>' + byKey[g.a].n.replace('⭐ ','') + ' → ' + byKey[g.b].n.replace('⭐ ','') + '</b>' + pill +
+                (g.note ? '<br><span style="font-size:.8rem;color:var(--ink-soft)">' + g.note + '</span>' : '') +
+                '</td><td class="amt">' + g.km + ' km</td><td class="amt">' + g.min + ' 分</td></tr>';
+      });
+    });
+    table.innerHTML = html;
+  }
+
+  render(0);
 })();
 </script>
 </body>
