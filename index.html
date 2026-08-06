@@ -164,6 +164,82 @@
   .badge.food{background:#fdf3e0;color:#b5760f;border-color:#f0d7a4}
   .badge.play{background:#e5f5f3;color:#0b7d75;border-color:#bde6e0}
 
+  /* ---------- DAY HERO PHOTO ---------- */
+  .day-head{isolation:isolate}
+  .day-hero{position:absolute;inset:0;z-index:0}
+  .day-hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .day-head::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(120deg,rgba(8,38,49,.92) 0%,rgba(10,64,74,.78) 45%,rgba(14,124,134,.55) 100%);
+  }
+  .day-head .row,.day-head .wave2{position:relative;z-index:2}
+  .day-head .shot-credit{
+    position:absolute;right:10px;bottom:30px;z-index:2;
+    font-size:.6rem;color:rgba(255,255,255,.6);letter-spacing:.02em;
+  }
+
+  /* ---------- PHOTO CARDS ---------- */
+  .pcards{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:12px;margin:0 0 20px;
+  }
+  .pcards.wide{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .pcard{
+    display:flex;flex-direction:column;min-width:0;
+    background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    text-decoration:none;color:inherit;box-shadow:0 6px 16px -14px rgba(10,46,59,.7);
+  }
+  .pcard .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--sand-2)}
+  .pcard .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+  .pcard:hover .ph img{transform:scale(1.07)}
+  .pcard .pin{
+    position:absolute;left:7px;top:7px;font-size:.62rem;font-weight:700;
+    background:rgba(8,38,49,.72);color:#fff;padding:2px 7px;border-radius:999px;backdrop-filter:blur(2px);
+  }
+  .pcard:not(a) .ph img{cursor:zoom-in}
+  .pcard .tx{padding:9px 11px 11px}
+  .pcard .tt{font-weight:700;font-size:.88rem;line-height:1.35}
+  .pcard .ds{font-size:.76rem;color:var(--ink-soft);line-height:1.55;margin-top:3px}
+  .pcards-h{
+    font-size:.76rem;font-weight:700;letter-spacing:.08em;color:var(--sea);
+    margin:0 0 10px;display:flex;align-items:center;gap:8px;
+  }
+  .pcards-h::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* ---------- INLINE PHOTO ---------- */
+  .shot{margin:11px 0 4px;max-width:430px;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--sand-2)}
+  .shot img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;cursor:zoom-in}
+  .shot figcaption{font-size:.72rem;color:var(--ink-soft);padding:6px 11px;line-height:1.5}
+  .shot figcaption b{color:var(--ink)}
+
+  /* ---------- COLLAPSIBLE ---------- */
+  details.alt{margin-top:9px;background:var(--sand-2);border-radius:10px;padding:7px 11px}
+  details.alt>summary{
+    cursor:pointer;font-size:.82rem;font-weight:700;color:var(--sea);
+    list-style:none;display:flex;align-items:center;gap:6px;
+  }
+  details.alt>summary::-webkit-details-marker{display:none}
+  details.alt>summary::before{content:"▸";display:inline-block;transition:transform .2s ease;font-size:.8rem}
+  details.alt[open]>summary::before{transform:rotate(90deg)}
+  details.alt .ab{font-size:.88rem;color:var(--ink-soft);margin-top:7px;line-height:1.65}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lb{
+    position:fixed;inset:0;z-index:100;background:rgba(6,18,24,.92);
+    display:none;align-items:center;justify-content:center;padding:22px;cursor:zoom-out;
+  }
+  .lb.show{display:flex}
+  .lb figure{max-width:1000px;width:100%}
+  .lb img{width:100%;max-height:78vh;object-fit:contain;border-radius:10px;display:block}
+  .lb figcaption{color:#dcefec;font-size:.82rem;text-align:center;margin-top:12px;line-height:1.6}
+  .lb figcaption small{display:block;color:#8fb6b3;font-size:.7rem;margin-top:4px}
+
+  /* ---------- CREDITS ---------- */
+  .credits{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:9px}
+  .credits li{font-size:.76rem;color:var(--ink-soft);line-height:1.6;border-left:2px solid var(--line);padding-left:9px}
+  .credits li b{color:var(--ink);font-weight:700}
+  .credits a{color:var(--sea)}
+
   /* ---------- PANELS ---------- */
   .panel{display:none}
   .panel.active{display:block;animation:panelIn .25s ease}
@@ -218,7 +294,8 @@
   .lead b{color:var(--coral)}
   .food-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
   .fcat{min-width:0}
-  .fcat-h{font-weight:700;color:var(--sea);font-size:.98rem;margin-bottom:9px;padding-bottom:6px;border-bottom:1.5px solid var(--line)}
+  .fcat-h{font-weight:700;color:var(--sea);font-size:.98rem;margin-bottom:9px;padding-bottom:6px;border-bottom:1.5px solid var(--line);display:flex;align-items:center;gap:9px}
+  .fcat-h img{width:44px;height:44px;flex:none;border-radius:11px;object-fit:cover;border:1px solid var(--line);cursor:zoom-in}
   .fcat ul{list-style:none;display:grid;gap:8px}
   .fcat li{font-size:.9rem;line-height:1.5;overflow-wrap:break-word}
   .fcat li b{color:var(--ink)}
@@ -271,6 +348,10 @@
   .way.tr{background:#eef0f6;color:#4a5470;border-color:#ccd2e2}
 
   @media(max-width:640px){
+    .pcards{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+    .pcards.wide{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+    .pcard .tt{font-size:.83rem}
+    .pcard .ds{font-size:.72rem}
     .sec{padding:20px 15px}
     th,td{padding:8px 5px}
     .leg-table>table{font-size:.85rem}
@@ -280,7 +361,11 @@
 
   @media print{
     body{background:#fff}
-    .sidebar,.topbar,.overlay,.panel-nav,.menu-btn{display:none!important}
+    .sidebar,.topbar,.overlay,.panel-nav,.menu-btn,.lb{display:none!important}
+    details.alt[open],details.alt{background:none;padding:0}
+    details.alt>summary{color:#000}
+    details.alt .ab{display:block!important}
+    .pcard{break-inside:avoid}
     .shell{display:block}
     .panel{display:block!important}
     .day,.sec{box-shadow:none;break-inside:avoid}
@@ -328,6 +413,7 @@
           <a class="nav-link" href="#reservations" data-target="reservations">📋 預約清單</a>
           <a class="nav-link" href="#budget" data-target="budget">💰 花費估算</a>
           <a class="nav-link" href="#tips" data-target="tips">💡 出發提醒</a>
+          <a class="nav-link" href="#photos" data-target="photos">📷 圖片來源</a>
         </div>
       </div>
     </nav>
@@ -348,6 +434,7 @@
   <!-- DAY 1 -->
   <section class="panel day active" id="d1" data-title="Day 1 · 9/24 週四 · 抵達那霸．國際通之夜">
     <div class="day-head">
+      <div class="day-hero"><img src="images/kokusai-dori.jpg" alt="那霸國際通夜景" loading="lazy"></div>
       <div class="row">
         <div>
           <div class="num">01<small>9 / 24　週四</small></div>
@@ -363,12 +450,27 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
+      <div class="pcards-h">今天長這樣</div>
+      <div class="pcards">
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ゆいレール+県庁前駅" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">17:30</span><img src="images/yui-rail.jpg" alt="沖繩單軌電車 Yui Rail" loading="lazy"></div>
+          <div class="tx"><div class="tt">Yui Rail 單軌</div><div class="ds">機場到市區只要 15 分，今晚不取車最輕鬆</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り+那覇" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">20:30</span><img src="images/kokusai-dori.jpg" alt="國際通夜景" loading="lazy"></div>
+          <div class="tx"><div class="tt">國際通</div><div class="ds">1.6 公里的伴手禮大街，先摸行情、別急著買</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+国際通り店" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">21:30</span><img src="images/blue-seal.jpg" alt="Blue Seal 冰淇淋" loading="lazy"></div>
+          <div class="tx"><div class="tt">Blue Seal</div><div class="ds">沖繩美式冰淇淋，紅芋與鹽味餅乾必點</div></div>
+        </a>
+      </div>
       <div class="stop"><div class="t">17:30</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">抵達那霸機場</a> → 單軌</div><div class="d">Yui-Rail 到「県庁前／牧志」站約 15 分。今晚不取車，住單軌旁最方便。</div></div>
       <div class="stop"><div class="t">18:15</div><div class="n"><a class="ml" href="https://maps.app.goo.gl/ijafNfSHq6aonnLs5" target="_blank" rel="noopener">里士滿酒店那霸久茂地</a> check-in<span class="badge">已預訂</span></div><div class="d">飯店位於久茂地、美榮橋一帶，從機場搭單軌後順路入住。只放行李、不拆行李，20 分鐘內再次出門。</div></div>
-      <div class="stop"><div class="t">19:00</div><div class="n">🍖 <b>晚餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=あぐー豚しゃぶしゃぶ専門店+オーシャンBoo!+那覇市久米2-11-26" target="_blank" rel="noopener">Ocean BOO!</a><span class="badge">需訂位</span><span class="badge food">阿古豬</span><span class="mc">📮 那覇市久米2-11-26</span><span class="hr warn">約 17:00–22:00・不定休</span></div><div class="d">那霸民謠居酒屋，招牌<b>阿古豬涮涮鍋</b>——涮幾下入口、鮮甜不腥，最後加飯做雜炊收尾，配沖繩三味線現場表演。<br><b>換這家也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ゆうなんぎい+那覇" target="_blank" rel="noopener">ゆうなんぎい</a>（鄉土料理老店，17:30–22:30・週日休）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+波照間+那覇" target="_blank" rel="noopener">波照間</a>（11:00–24:00 無休，人多可直接走進去）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ステーキハウス88+辻本店+那覇" target="_blank" rel="noopener">Steak House 88 辻本店</a>（11:00–翌2:00，想第一天就吃牛排）</div></div>
-      <div class="stop"><div class="t">20:30</div><div class="n">🛍 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り+那覇" target="_blank" rel="noopener">國際通</a> + <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ドン・キホーテ+国際通り店" target="_blank" rel="noopener">唐吉訶德</a><span class="badge play">購物</span><span class="hr">唐吉訶德約 9:00–翌5:00・無休</span></div><div class="d">先把藥妝、零食、伴手禮的行情摸清楚——<b>重的東西別今天買</b>，Day 5、Day 6 有車再掃貨。<br><b>順路加碼：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=パレットくもじ+那覇市久茂地1-1-1" target="_blank" rel="noopener">Palette 久茂地</a>（縣廳前站，無印良品，百貨約至 20:30，要趕）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇OPA+那覇市泉崎1-20-1" target="_blank" rel="noopener">那霸 OPA</a>（旭橋站，10:00–20:00，今天大概來不及）</div></div>
-      <div class="stop"><div class="t">21:30</div><div class="n">🍧 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+国際通り店+那覇市牧志1-2-32" target="_blank" rel="noopener">Blue Seal 國際通店</a><span class="badge food">冰淇淋</span><span class="hr warn">約 10:00–22:30（分店時間略異，現場確認）</span></div><div class="d">沖繩美式冰淇淋，紅芋、鹽味餅乾口味必點。<br><b>換這家也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=富士家+ぜんざい+那覇" target="_blank" rel="noopener">富士家 善哉</a>（沖繩剉冰，約 10:00–19:00 → 今晚太晚，留給 Day 2 中午）／國際通沿路的紅芋塔、雪鹽霜淇淋試吃攤</div></div>
-      <div class="stop"><div class="t">22:00</div><div class="n">🍢 <b>宵夜</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り屋台村" target="_blank" rel="noopener">國際通屋台村</a><span class="badge food">串燒·小壽司</span><span class="hr">21 間屋台，多數營業至 24:00 前後</span></div><div class="d">一區 21 間小屋台，串燒、關東煮、小壽司、泡盛，一攤點一兩樣邊走邊吃最爽。<br><b>換這家也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=通堂+らーめん+那覇" target="_blank" rel="noopener">通堂拉麵 小祿本店</a>（濃厚豚骨，約 11:00–翌0:30）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=Tachinomiya+BAR+那覇市牧志1-2-32" target="_blank" rel="noopener">Tachinomiya Bar</a>（10:00–翌1:00，黑糖咖啡與泡盛）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=A%26W+牧志" target="_blank" rel="noopener">A&amp;W</a>（多為 24 小時）</div></div>
+      <div class="stop"><div class="t">19:00</div><div class="n">🍖 <b>晚餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=あぐー豚しゃぶしゃぶ専門店+オーシャンBoo!+那覇市久米2-11-26" target="_blank" rel="noopener">Ocean BOO!</a><span class="badge">需訂位</span><span class="badge food">阿古豬</span><span class="mc">📮 那覇市久米2-11-26</span><span class="hr warn">約 17:00–22:00・不定休</span></div><div class="d">那霸民謠居酒屋，招牌<b>阿古豬涮涮鍋</b>——涮幾下入口、鮮甜不腥，最後加飯做雜炊收尾，配沖繩三味線現場表演。<details class="alt"><summary>換這家也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ゆうなんぎい+那覇" target="_blank" rel="noopener">ゆうなんぎい</a>（鄉土料理老店，17:30–22:30・週日休）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+波照間+那覇" target="_blank" rel="noopener">波照間</a>（11:00–24:00 無休，人多可直接走進去）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ステーキハウス88+辻本店+那覇" target="_blank" rel="noopener">Steak House 88 辻本店</a>（11:00–翌2:00，想第一天就吃牛排）</div></details></div></div>
+      <div class="stop"><div class="t">20:30</div><div class="n">🛍 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り+那覇" target="_blank" rel="noopener">國際通</a> + <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ドン・キホーテ+国際通り店" target="_blank" rel="noopener">唐吉訶德</a><span class="badge play">購物</span><span class="hr">唐吉訶德約 9:00–翌5:00・無休</span></div><div class="d">先把藥妝、零食、伴手禮的行情摸清楚——<b>重的東西別今天買</b>，Day 5、Day 6 有車再掃貨。<details class="alt"><summary>順路加碼</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=パレットくもじ+那覇市久茂地1-1-1" target="_blank" rel="noopener">Palette 久茂地</a>（縣廳前站，無印良品，百貨約至 20:30，要趕）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇OPA+那覇市泉崎1-20-1" target="_blank" rel="noopener">那霸 OPA</a>（旭橋站，10:00–20:00，今天大概來不及）</div></details></div></div>
+      <div class="stop"><div class="t">21:30</div><div class="n">🍧 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+国際通り店+那覇市牧志1-2-32" target="_blank" rel="noopener">Blue Seal 國際通店</a><span class="badge food">冰淇淋</span><span class="hr warn">約 10:00–22:30（分店時間略異，現場確認）</span></div><div class="d">沖繩美式冰淇淋，紅芋、鹽味餅乾口味必點。<details class="alt"><summary>換這家也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=富士家+ぜんざい+那覇" target="_blank" rel="noopener">富士家 善哉</a>（沖繩剉冰，約 10:00–19:00 → 今晚太晚，留給 Day 2 中午）／國際通沿路的紅芋塔、雪鹽霜淇淋試吃攤</div></details></div></div>
+      <div class="stop"><div class="t">22:00</div><div class="n">🍢 <b>宵夜</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り屋台村" target="_blank" rel="noopener">國際通屋台村</a><span class="badge food">串燒·小壽司</span><span class="hr">21 間屋台，多數營業至 24:00 前後</span></div><div class="d">一區 21 間小屋台，串燒、關東煮、小壽司、泡盛，一攤點一兩樣邊走邊吃最爽。<details class="alt"><summary>換這家也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=通堂+らーめん+那覇" target="_blank" rel="noopener">通堂拉麵 小祿本店</a>（濃厚豚骨，約 11:00–翌0:30）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=Tachinomiya+BAR+那覇市牧志1-2-32" target="_blank" rel="noopener">Tachinomiya Bar</a>（10:00–翌1:00，黑糖咖啡與泡盛）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=A%26W+牧志" target="_blank" rel="noopener">A&amp;W</a>（多為 24 小時）</div></details></div></div>
       <div class="stop"><div class="t">23:00</div><div class="n">回飯店</div><div class="d">明天 07:00 起床，早點睡。</div></div>
       <div class="panel-nav"><button class="pnav-btn" type="button" disabled>已是第一天</button><button class="pnav-btn" type="button" data-nav="d2">Day 2 北上本部 →</button></div>
     </div>
@@ -377,6 +479,7 @@
   <!-- DAY 2 -->
   <section class="panel day" id="d2" data-title="Day 2 · 9/25 週五 · 那霸半日．取完車直奔本部">
     <div class="day-head">
+      <div class="day-hero"><img src="images/shurijo.jpg" alt="首里城守禮門" loading="lazy"></div>
       <div class="row">
         <div>
           <div class="num">02<small>9 / 25　週五</small></div>
@@ -393,21 +496,48 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
-      <div class="stop"><div class="t">08:00</div><div class="n">🍙 <b>早餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ポーたま+国際通り店+那覇市牧志1-2-1" target="_blank" rel="noopener">豬肉蛋飯糰（ポーたま）</a><span class="badge food">在地早餐</span><span class="mc">📮 那覇市牧志1-2-1</span></div><div class="d">國際通元祖店，沖繩人的經典早餐，約 ¥300，外帶邊走邊吃最省時。<br><b>換這家也行：</b>飯店早餐（最省事）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=泊いゆまち" target="_blank" rel="noopener">泊いゆまち</a>（漁市場，早上就有超便宜生魚片，約 6:00 起）／街角 A&amp;W 早餐套餐</div></div>
+      <div class="pcards-h">今天長這樣</div>
+      <div class="pcards">
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=首里城公園" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">08:40</span><img src="images/shurijo.jpg" alt="首里城守禮門" loading="lazy"></div>
+          <div class="tx"><div class="tt">首里城 · 守禮門</div><div class="ds">正殿復建中，但守禮門與城牆照拍</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=首里金城町石畳道" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">09:40</span><img src="images/kinjo-ishidatami.jpg" alt="金城町石疊道" loading="lazy"></div>
+          <div class="tx"><div class="tt">金城町石疊道</div><div class="ds">琉球王朝石板古道，免費、綠蔭、最好拍</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=玉陵+那覇" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">10:20</span><img src="images/tamaudun.jpg" alt="玉陵" loading="lazy"></div>
+          <div class="tx"><div class="tt">玉陵</div><div class="ds">1501 年琉球王室陵墓，世界遺產、人少</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=波上宮+那覇" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">11:10</span><img src="images/naminoue.jpg" alt="波上宮與波之上海灘" loading="lazy"></div>
+          <div class="tx"><div class="tt">波上宮</div><div class="ds">蓋在海蝕崖上的紅色神社，下面就是海灘</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=第一牧志公設市場+那覇市松尾2-10-1" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">12:10</span><img src="images/makishi-market.jpg" alt="第一牧志公設市場" loading="lazy"></div>
+          <div class="tx"><div class="tt">牧志公設市場</div><div class="ds">樓下挑活海鮮，樓上付加工費請店家料理</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=瀬底ビーチ+本部町瀬底" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">17:50</span><img src="images/sesoko.jpg" alt="瀨底島" loading="lazy"></div>
+          <div class="tx"><div class="tt">瀨底海灘夕陽</div><div class="ds">開兩小時車的獎賞，日落約 18:25</div></div>
+        </a>
+      </div>
+      <div class="stop"><div class="t">08:00</div><div class="n">🍙 <b>早餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ポーたま+国際通り店+那覇市牧志1-2-1" target="_blank" rel="noopener">豬肉蛋飯糰（ポーたま）</a><span class="badge food">在地早餐</span><span class="mc">📮 那覇市牧志1-2-1</span></div><div class="d">國際通元祖店，沖繩人的經典早餐，約 ¥300，外帶邊走邊吃最省時。<details class="alt"><summary>換這家也行</summary><div class="ab">飯店早餐（最省事）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=泊いゆまち" target="_blank" rel="noopener">泊いゆまち</a>（漁市場，早上就有超便宜生魚片，約 6:00 起）／街角 A&amp;W 早餐套餐</div></details></div></div>
       <div class="stop"><div class="t">08:40</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=首里城公園" target="_blank" rel="noopener">首里城公園</a> + <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=首里金城町石畳道" target="_blank" rel="noopener">金城町石疊道</a><span class="badge">一開門就到</span><span class="hr">收費區 8:30–19:00（夏季，售票至18:30）・無休</span></div><div class="d">8:30 一開門就進去，人最少、也最不熱。正殿復建中，守禮門、城牆、園區都開放，工地本身是難得一見的畫面。<br>出來走 5 分鐘接<b>金城町石疊道</b>——琉球王朝時代的石板古道，免費、24 小時、綠蔭很美，是首里最好拍的一段。</div></div>
       <div class="stop"><div class="t">10:20</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=玉陵+那覇" target="_blank" rel="noopener">玉陵（たまうどぅん）</a><span class="badge">世界遺產</span><span class="hr">9:00–18:00（最終入場17:30）・無休</span></div><div class="d">首里城旁走路 3 分鐘，琉球王室陵墓，1501 年建、也是世界遺產。人少、20–30 分逛完，跟首里城一起收掉最划算。<br><b>不想連看兩個古蹟？</b>直接跳到下一站，多留 40 分鐘給市場和國際通。</div></div>
       <div class="stop"><div class="t">11:10</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=波上宮+那覇" target="_blank" rel="noopener">波上宮</a> + <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=波の上ビーチ" target="_blank" rel="noopener">波之上海灘</a><span class="hr">境內自由參拜（授與所約 9:00–17:00）・海灘 24 小時免費</span></div><div class="d">蓋在海蝕崖上的紅色神社，沖繩總鎮守，下面就是那霸市區唯一的海灘。單軌旭橋站走過去約 15 分，或直接叫計程車（¥800 上下）。<br><b>時間不夠就二選一：</b>波上宮拍照 20 分 → 直接去市場。</div></div>
-      <div class="stop"><div class="t">12:10</div><div class="n">🦐 <b>午餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=第一牧志公設市場+那覇市松尾2-10-1" target="_blank" rel="noopener">第一牧志公設市場</a><span class="badge food">代客料理</span><span class="mc">📮 那覇市松尾2-10-1</span><span class="hr">8:00–22:00・每月第4週日休（12月除外）</span></div><div class="d">樓下挑活海鮮（夜光貝、龍蝦、彩色魚），樓上付加工費請店家料理，沖繩觀光的經典體驗。<br><b>換這家也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+波照間+那覇" target="_blank" rel="noopener">波照間</a>（鄉土料理，11:00–24:00 無休）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=首里そば" target="_blank" rel="noopener">首里そば</a>（首里城附近，11:30–14:00 賣完為止，改早上吃完首里城直接殺過去）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=Zooton%27s+那覇" target="_blank" rel="noopener">Zooton's</a>（手作漢堡，11:00–20:00）</div></div>
-      <div class="stop"><div class="t">13:00</div><div class="n">🍧 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=富士家+ぜんざい+那覇" target="_blank" rel="noopener">富士家 善哉</a><span class="badge food">沖繩剉冰</span><span class="hr">約 10:00–19:00（季節性延長）・無休（元旦除外）</span></div><div class="d">沖繩式善哉＝黑糖煮金時豆上面堆一座刨冰，熱天必吃、¥400 有找。就在國際通旁邊，吃完直接走去單軌站。<br><b>換這家也行：</b>國際通的紅芋塔／雪鹽霜淇淋／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+国際通り店" target="_blank" rel="noopener">Blue Seal</a></div></div>
+      <div class="stop"><div class="t">12:10</div><div class="n">🦐 <b>午餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=第一牧志公設市場+那覇市松尾2-10-1" target="_blank" rel="noopener">第一牧志公設市場</a><span class="badge food">代客料理</span><span class="mc">📮 那覇市松尾2-10-1</span><span class="hr">8:00–22:00・每月第4週日休（12月除外）</span></div><div class="d">樓下挑活海鮮（夜光貝、龍蝦、彩色魚），樓上付加工費請店家料理，沖繩觀光的經典體驗。<details class="alt"><summary>換這家也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+波照間+那覇" target="_blank" rel="noopener">波照間</a>（鄉土料理，11:00–24:00 無休）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=首里そば" target="_blank" rel="noopener">首里そば</a>（首里城附近，11:30–14:00 賣完為止，改早上吃完首里城直接殺過去）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=Zooton%27s+那覇" target="_blank" rel="noopener">Zooton's</a>（手作漢堡，11:00–20:00）</div></details></div></div>
+      <div class="stop"><div class="t">13:00</div><div class="n">🍧 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=富士家+ぜんざい+那覇" target="_blank" rel="noopener">富士家 善哉</a><span class="badge food">沖繩剉冰</span><span class="hr">約 10:00–19:00（季節性延長）・無休（元旦除外）</span></div><div class="d">沖繩式善哉＝黑糖煮金時豆上面堆一座刨冰，熱天必吃、¥400 有找。就在國際通旁邊，吃完直接走去單軌站。<details class="alt"><summary>換這家也行</summary><div class="ab">國際通的紅芋塔／雪鹽霜淇淋／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+国際通り店" target="_blank" rel="noopener">Blue Seal</a></div></details></div></div>
       <div class="stop"><div class="t">13:25</div><div class="n">單軌到 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=那覇空港" target="_blank" rel="noopener">那霸機場</a> 轉 OTS 接駁車<span class="badge">預留 90 分</span></div><div class="d">縣廳前／牧志 → 那覇空港站，單軌約 <b>15 分</b>。出站後走到<b>國內線航廈外的租車接駁區「10-A／10 番」</b>搭 OTS 免費接駁車，<b>約每 20 分一班、車程約 20 分</b>。⚠️ 國際線航廈的租車巴士站施工中無法停靠，一律走國內線這側上車。<br>趕時間或嫌麻煩的話，三人從市區<b>直接叫計程車到豐崎約 25–30 分、¥3,000 上下</b>，分攤下來跟接駁差不多，還省一次轉乘。</div></div>
       <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=OTSレンタカー+臨空豊崎営業所+豊見城市豊崎3-37" target="_blank" rel="noopener">OTS 臨空豐崎營業所 取車</a><span class="badge">已預約</span><span class="mc">📮 豊見城市豊崎3-37</span><span class="mc">☎ 098-856-8877</span><span class="hr">營業 08:00–19:00</span></div><div class="d">取還安排：<b>Day 2 15:00 取車 · Day 6 15:00 同店還車</b>（共 96 小時）。取車帶齊 5 樣：駕照正本、日文譯本、護照、預約確認信、主駕駛人信用卡。<br>營業所就在 <b>Ashibinaa Outlet / TOMITON 旁邊</b>——<b>今天完全別逛</b>，還有 100 公里要開，留到 Day 6 還車前再買。<br>⚠️ 手續抓 20–25 分，<b>15:25 一定要上路</b>，這是今天唯一的硬時間點。</div></div>
       <div class="drive">🚗 OTS 豐崎 → 道の駅 許田　約 78 km · 80 分（那覇空港自動車道免費段 → 西原JCT 上沖繩自動車道 → <b>許田IC</b> 下，ETC 約 ¥1,020）<br>這是全程最長的一段，取完車<b>直接上高速、別走 58 號市區</b>，不然會多花 40 分卡在下班車潮裡。</div>
-      <div class="stop"><div class="t">16:50</div><div class="n">🍤 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=道の駅許田+名護市許田17-1" target="_blank" rel="noopener">道の駅 許田</a><span class="badge">買明天的水族館票</span><span class="mc">📮 名護市許田17-1</span><span class="hr">9:00–19:00・無休</span></div><div class="d">下許田IC 後第一個休息站，也是這趟<b>唯一一次「順路買到水族館折扣票」的機會</b>——這裡的窗口賣美麗海入場券，比現場票便宜（大人約省 ¥400／人），明天一開門就能直接進場、不用排售票口。<br>順便上廁所、吃現炸天婦羅與炸雞（沖繩人自己最愛的休息站）、喝現榨果汁。<b>停 20 分就走</b>，別逛到忘記夕陽。</div></div>
+      <div class="stop"><div class="t">16:50</div><div class="n">🍤 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=道の駅許田+名護市許田17-1" target="_blank" rel="noopener">道の駅 許田</a><span class="badge">買明天的水族館票</span><span class="mc">📮 名護市許田17-1</span><span class="hr">9:00–19:00・無休</span></div><div class="d">下許田IC 後第一個休息站，也是這趟<b>唯一一次「順路買到水族館折扣票」的機會</b>——這裡的窗口賣美麗海入場券，比現場票便宜（大人約省 ¥400／人），明天一開門就能直接進場、不用排售票口。<br>順便上廁所、吃現炸天婦羅與炸雞（沖繩人自己最愛的休息站）、喝現榨果汁。<b>停 20 分就走</b>，別逛到忘記夕陽。<figure class="shot"><img src="images/michinoeki-kyoda.jpg" alt="道の駅 許田" loading="lazy" data-cap="道の駅 許田｜下許田IC 後第一個休息站，也是全程唯一順路買到美麗海折扣票的地方"><figcaption><b>道の駅 許田</b>｜這裡的窗口賣美麗海入場券，比現場票便宜約 ¥400／人</figcaption></figure></div></div>
       <div class="drive">🚗 道の駅 許田 → 瀨底海灘　約 28 km · 40 分（58 號北上轉 449 號，過瀨底大橋）</div>
-      <div class="stop"><div class="t">17:50</div><div class="n">🌅 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬底ビーチ+本部町瀬底" target="_blank" rel="noopener">瀨底海灘</a> 看夕陽<span class="badge play">北部第一夕陽</span><span class="hr warn">救生員泳季約 9:00–17:00；沙灘散步不限時</span></div><div class="d">過瀨底大橋就到，沖繩本島數一數二透明的沙灘，<b>正對西邊、9 月下旬日落約 18:25</b>，是北部看夕陽的第一名。開了兩小時車，走進海水裡泡泡腳剛好把疲勞洗掉。這時段救生員已下班，只散步拍照別游泳。<br><b>換這裡也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=備瀬崎" target="_blank" rel="noopener">備瀨崎</a>（福木林道盡頭的礁岩海岸，看得到伊江島）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬底大橋" target="_blank" rel="noopener">瀨底大橋</a>橋頭停車看落日<br>⚠️ 若取車或路上延誤到 18:10 還沒到，直接放棄夕陽<b>先去 check-in</b>，明天早上還會再看到海。</div></div>
+      <div class="stop"><div class="t">17:50</div><div class="n">🌅 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬底ビーチ+本部町瀬底" target="_blank" rel="noopener">瀨底海灘</a> 看夕陽<span class="badge play">北部第一夕陽</span><span class="hr warn">救生員泳季約 9:00–17:00；沙灘散步不限時</span></div><div class="d">過瀨底大橋就到，沖繩本島數一數二透明的沙灘，<b>正對西邊、9 月下旬日落約 18:25</b>，是北部看夕陽的第一名。開了兩小時車，走進海水裡泡泡腳剛好把疲勞洗掉。這時段救生員已下班，只散步拍照別游泳。<details class="alt"><summary>換這裡也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=備瀬崎" target="_blank" rel="noopener">備瀨崎</a>（福木林道盡頭的礁岩海岸，看得到伊江島）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬底大橋" target="_blank" rel="noopener">瀨底大橋</a>橋頭停車看落日</div></details><br>⚠️ 若取車或路上延誤到 18:10 還沒到，直接放棄夕陽<b>先去 check-in</b>，明天早上還會再看到海。</div></div>
       <div class="drive">🚗 瀨底海灘 → Churaumi On The Beach Motobu　約 8 km · 15 分</div>
-      <div class="stop"><div class="t">19:00</div><div class="n">🍢 <a class="ml" href="https://maps.app.goo.gl/z4hCzqUshMuYyNzC9" target="_blank" rel="noopener">Churaumi On The Beach Motobu</a> check-in + <b>晚餐</b><span class="badge">已預訂</span></div><div class="d">飯店在本部崎本部海岸，從瀨底回程順路。北部晚上餐廳收得早，若住宿方案不含餐，建議<b>入住前先買晚餐與隔天早餐</b>。<br><b>想外食：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=島豚七輪焼+満味+名護市" target="_blank" rel="noopener">島豚七輪燒 満味</a>／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=百年古家+大家+うふや+名護市中山90" target="_blank" rel="noopener">百年古家 大家（うふや）</a>，兩間都建議先訂位。</div></div>
-      <div class="stop"><div class="t">21:00</div><div class="n">🌙 <b>宵夜</b>：超市掃貨帶回房間<span class="badge food">沖繩限定</span></div><div class="d">本部、瀨底晚上非常安靜，<b>沒有夜市也沒有屋台</b>——但這才是買零食最好的時機：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=かねひで+本部" target="_blank" rel="noopener">かねひで</a>／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=サンエー+本部" target="_blank" rel="noopener">San-A</a> 超市（多營業到 22:00–24:00）買 <b>Orion 啤酒、海葡萄、島豆腐、沖繩限定泡麵、紅芋點心</b>，比國際通便宜一大截。<br><b>更懶的版本：</b>沿線的 Lawson／FamilyMart 24 小時，沖繩限定御飯糰、金楚糕、A&amp;W 罐裝麥根沙士。<br>⏰ <b>今晚早點睡</b>，明天 08:20 要卡水族館開門。</div></div>
+      <div class="stop"><div class="t">19:00</div><div class="n">🍢 <a class="ml" href="https://maps.app.goo.gl/z4hCzqUshMuYyNzC9" target="_blank" rel="noopener">Churaumi On The Beach Motobu</a> check-in + <b>晚餐</b><span class="badge">已預訂</span></div><div class="d">飯店在本部崎本部海岸，從瀨底回程順路。北部晚上餐廳收得早，若住宿方案不含餐，建議<b>入住前先買晚餐與隔天早餐</b>。<details class="alt"><summary>想外食</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=島豚七輪焼+満味+名護市" target="_blank" rel="noopener">島豚七輪燒 満味</a>／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=百年古家+大家+うふや+名護市中山90" target="_blank" rel="noopener">百年古家 大家（うふや）</a>，兩間都建議先訂位。</div></details></div></div>
+      <div class="stop"><div class="t">21:00</div><div class="n">🌙 <b>宵夜</b>：超市掃貨帶回房間<span class="badge food">沖繩限定</span></div><div class="d">本部、瀨底晚上非常安靜，<b>沒有夜市也沒有屋台</b>——但這才是買零食最好的時機：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=かねひで+本部" target="_blank" rel="noopener">かねひで</a>／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=サンエー+本部" target="_blank" rel="noopener">San-A</a> 超市（多營業到 22:00–24:00）買 <b>Orion 啤酒、海葡萄、島豆腐、沖繩限定泡麵、紅芋點心</b>，比國際通便宜一大截。<details class="alt"><summary>更懶的版本</summary><div class="ab">沿線的 Lawson／FamilyMart 24 小時，沖繩限定御飯糰、金楚糕、A&amp;W 罐裝麥根沙士。</div></details><br>⏰ <b>今晚早點睡</b>，明天 08:20 要卡水族館開門。</div></div>
       <div class="note"><b>今天的重點只有一件事：把車開到北部。</b>15:25 從豐崎出發、17:50 到瀨底，中間只停一個休息站——やちむんの里與座喜味城改為 Day 3 南下時的備選，殘波岬與萬座毛移到 Day 4 的恩納日，今天硬塞只會兩頭空。<br><b>如果取車延誤或下雨</b>：直接砍掉夕陽，一路開到飯店，19:00 前 check-in 反而更輕鬆；許田休息站也可以縮成 10 分鐘（票一定要買）。</div>
       <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d1">← Day 1 那霸</button><button class="pnav-btn" type="button" data-nav="d3">Day 3 美麗海·煙火 →</button></div>
     </div>
@@ -416,6 +546,7 @@
   <!-- DAY 3 -->
   <section class="panel day" id="d3" data-title="Day 3 · 9/26 週六 · 美麗海．古宇利島．美國村煙火">
     <div class="day-head">
+      <div class="day-hero"><img src="images/churaumi.jpg" alt="美麗海水族館黑潮之海" loading="lazy"></div>
       <div class="row">
         <div>
           <div class="num">03<small>9 / 26　週六</small></div>
@@ -432,6 +563,29 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
+      <div class="pcards-h">今天長這樣</div>
+      <div class="pcards">
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄美ら海水族館" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">08:20</span><img src="images/churaumi.jpg" alt="美麗海水族館 黑潮之海" loading="lazy"></div>
+          <div class="tx"><div class="tt">美麗海 · 黑潮之海</div><div class="ds">8:30 一開門先攻鯨鯊，團客 10:30 才進來</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=古宇利大橋" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">11:20</span><img src="images/kouri-bridge.jpg" alt="古宇利大橋" loading="lazy"></div>
+          <div class="tx"><div class="tt">古宇利大橋</div><div class="ds">2 公里跨海大橋，兩側是透明到底的淺灘</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ハートロック+古宇利島" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">選配</span><img src="images/kouri-rock.jpg" alt="古宇利島心形岩" loading="lazy"></div>
+          <div class="tx"><div class="tt">心形岩</div><div class="ds">要多算停車與步行時間，趕就直接放棄</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=美浜アメリカンビレッジ+北谷町" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">15:30</span><img src="images/american-village.jpg" alt="美國村" loading="lazy"></div>
+          <div class="tx"><div class="tt">美國村（北谷）</div><div class="ds">彩色牆、摩天輪、古著店，停一次車全逛完</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=北谷公園サンセットビーチ" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">18:10</span><img src="images/sunset-beach.jpg" alt="北谷 Sunset Beach" loading="lazy"></div>
+          <div class="tx"><div class="tt">Sunset Beach</div><div class="ds">日落約 18:25，接著 20:00 就是煙火</div></div>
+        </a>
+      </div>
       <div class="stop"><div class="t">07:00</div><div class="n">🥐 <b>早餐</b>：Churaumi On The Beach Motobu</div><div class="d">07:45 前吃完並退房，<b>07:50 準時開車</b>；飯店到水族館需預留約 25–30 分鐘。行李全部裝上車，今晚換住讀谷。</div></div>
       <div class="stop"><div class="t">08:20</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄美ら海水族館+北口P7駐車場+本部町石川424" target="_blank" rel="noopener">美麗海水族館</a><span class="badge">票昨天已買</span><span class="mc">🚘 MapCode <b>553 075 797</b></span><span class="hr">8:30–18:30（最終入館17:30）・無休</span></div><div class="d">導航直接鎖定離入口最近的<b>北口 P7 立體停車場</b>。8:30 一開門先攻室內「黑潮之海」看鯨鯊、鬼蝠魟——<b>開館後第一個小時人最少</b>，遊覽車團客大約 10:30 才進來，這是住在旁邊唯一的、也是最大的優勢。<br>想坐水槽旁的 <b>Ocean Blue 咖啡</b>，一開館先去門口機器抽號碼牌（不可預約、限時 40 分）。10:00 / 11:30 有<b>黑潮之海餵食解說</b>，可以卡一場。<br>票昨天在道の駅許田已經買好，直接刷進場、不用排售票口。</div></div>
       <div class="drive">🚗 美麗海水族館 → 古宇利島　約 20 km · 32 分</div>
@@ -455,6 +609,7 @@
   <!-- DAY 4 -->
   <section class="panel day" id="d4" data-title="Day 4 · 9/27 週日 · 讀谷出發．青之洞窟．萬座毛夕陽">
     <div class="day-head">
+      <div class="day-hero"><img src="images/manzamo.jpg" alt="萬座毛象鼻岩" loading="lazy"></div>
       <div class="row">
         <div>
           <div class="num">04<small>9 / 27　週日</small></div>
@@ -471,21 +626,40 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
+      <div class="pcards-h">今天長這樣</div>
+      <div class="pcards">
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=琉球村+恩納村字山田1130" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">13:20</span><img src="images/ryukyu-mura.jpg" alt="琉球村" loading="lazy"></div>
+          <div class="tx"><div class="tt">琉球村</div><div class="ds">百年古民家聚落＋エイサー太鼓，最好砍的一站</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">15:00</span><img src="images/zanpa.jpg" alt="殘波岬燈塔" loading="lazy"></div>
+          <div class="tx"><div class="tt">殘波岬燈塔</div><div class="ds">30 公尺高斷崖連綿 2 公里，登塔 ¥300</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=御菓子御殿+恩納店" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">16:40</span><img src="images/okashi-goten.jpg" alt="御菓子御殿" loading="lazy"></div>
+          <div class="tx"><div class="tt">御菓子御殿</div><div class="ds">現烤熱紅芋塔，跟機場常溫版完全兩回事</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=万座毛+恩納村恩納2767" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">17:45</span><img src="images/manzamo.jpg" alt="萬座毛象鼻岩" loading="lazy"></div>
+          <div class="tx"><div class="tt">萬座毛</div><div class="ds">象鼻岩＋木棧步道，日落約 18:25</div></div>
+        </a>
+      </div>
       <div class="stop"><div class="t">07:30</div><div class="n">🥐 <b>早餐</b>：Yomitan Kukuru Resort</div><div class="d">今天上午下水，<b>吃七分飽就好</b>。連住第二晚，不用退房或搬行李。</div></div>
       <div class="stop"><div class="t">08:30</div><div class="n">🤿 玩水組（2 人）：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=真栄田岬+恩納村真栄田469-1" target="_blank" rel="noopener">青之洞窟浮潛</a> / SUP<span class="badge">選含接送</span><span class="badge play">水上</span><span class="mc">📮 恩納村真栄田469-1</span></div><div class="d">恩納村真榮田岬，全沖繩最知名浮潛點。選<b>早上時段</b>海面平靜、新手好上手；<b>務必挑「含飯店接送」的中文教練行程</b>——潛店到飯店來回接送，租車完全不用動。含裝備、水中拍照，約 2.5 小時。<br>💡 <b>行程改成今天下水其實變安全了</b>：9 月下旬海況一天一個樣，藍洞常因浪大改「船潛」或停辦，排在第 4 天等於多了兩天緩衝——真的取消還能挪到 Day 5 上午補。</div></div>
       <div class="stop"><div class="t">08:30</div><div class="n">🧘 不玩水組（1 人）：留在 Kukuru Resort<span class="badge play">零移動</span></div><div class="d">可在飯店休息，或就近逛相鄰的<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=体験王国むら咲むら+読谷村" target="_blank" rel="noopener">體驗王國むら咲むら</a>；不用另外開車。若想陪同，也可三人一起前往真榮田岬，在觀景台與海邊散步。</div></div>
-      <div class="stop"><div class="t">12:00</div><div class="n">🍜 <b>午餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=なかむらそば+恩納村瀬良垣1669-1" target="_blank" rel="noopener">なかむらそば</a><span class="badge food">沖繩麵</span><span class="mc">📮 恩納村瀬良垣1669-1</span></div><div class="d">兩組會合，恩納村最有名的沖繩そば，海景座位配軟骨そば。⚠️ 查到營業時間有兩種說法（官網 10:30–16:00，其他資料寫到 17:00），出發前打 098-966-8005 確認比較保險。<br><b>換這家也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=元祖海ぶどう+恩納" target="_blank" rel="noopener">元祖海葡萄丼</a>（海葡萄鋪滿一整碗，約 11:00–22:00）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=おんなの駅+なかゆくい市場" target="_blank" rel="noopener">恩納の駅 なかゆくい市場</a>（在地小吃攤集合，約 10:00–19:00，便宜快速）／飯店午餐（浮潛完最省力）</div></div>
+      <div class="stop"><div class="t">12:00</div><div class="n">🍜 <b>午餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=なかむらそば+恩納村瀬良垣1669-1" target="_blank" rel="noopener">なかむらそば</a><span class="badge food">沖繩麵</span><span class="mc">📮 恩納村瀬良垣1669-1</span></div><div class="d">兩組會合，恩納村最有名的沖繩そば，海景座位配軟骨そば。⚠️ 查到營業時間有兩種說法（官網 10:30–16:00，其他資料寫到 17:00），出發前打 098-966-8005 確認比較保險。<details class="alt"><summary>換這家也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=元祖海ぶどう+恩納" target="_blank" rel="noopener">元祖海葡萄丼</a>（海葡萄鋪滿一整碗，約 11:00–22:00）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=おんなの駅+なかゆくい市場" target="_blank" rel="noopener">恩納の駅 なかゆくい市場</a>（在地小吃攤集合，約 10:00–19:00，便宜快速）／飯店午餐（浮潛完最省力）</div></details></div></div>
       <div class="drive">🚗 恩納（瀬良垣）→ 琉球村　約 12 km · 20 分（58 號南下）</div>
       <div class="stop"><div class="t">13:20</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=琉球村+恩納村字山田1130" target="_blank" rel="noopener">琉球村</a><span class="badge play">傳統文化村</span><span class="mc">📮 恩納村字山田1130</span><span class="mc">☎ 098-965-1234</span><span class="hr">9:30–17:00（最終受付 16:00）・年中無休</span></div><div class="d">百年琉球古民家聚落，看<b>エイサー太鼓表演</b>、水牛榨糖、琉裝體驗。大人 ¥2,000，逛 <b>1–1.5 小時</b>剛好。<br>⚠️ 若上午浮潛完已經軟掉，這站是<b>最好砍的一個</b>（要門票又最花時間），砍掉就直接去殘波岬吹風，或乾脆回飯店泡泳池睡到傍晚再出門看夕陽。</div></div>
       <div class="drive">🚗 琉球村 → 殘波岬　約 12 km · 20 分（58 號南下轉讀谷）</div>
-      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">殘波岬燈塔</a><span class="badge play">斷崖</span><span class="mc">📮 読谷村字宇座</span><span class="hr">岬角公園全天開放；9 月登塔 平日9:30–16:30／假日9:30–17:30（<b>今天週日到 17:30</b>）</span></div><div class="d">30 公尺高的珊瑚礁斷崖連綿 2 公里，白燈塔配深藍海，是沖繩最有氣勢的岬角。停 <b>50–60 分</b>，登塔 ¥300。網路流傳的 MapCode 各版本不一致，車機直接用地址或電話（098-958-3041 燈台管理處）搜尋比較保險。<br><b>換這裡也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=Nirai+Beach+読谷村" target="_blank" rel="noopener">Nirai Beach</a>（讀谷白沙灘，躺著就好）／回飯店泳池發呆（浮潛完最誠實的選擇）</div></div>
+      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">殘波岬燈塔</a><span class="badge play">斷崖</span><span class="mc">📮 読谷村字宇座</span><span class="hr">岬角公園全天開放；9 月登塔 平日9:30–16:30／假日9:30–17:30（<b>今天週日到 17:30</b>）</span></div><div class="d">30 公尺高的珊瑚礁斷崖連綿 2 公里，白燈塔配深藍海，是沖繩最有氣勢的岬角。停 <b>50–60 分</b>，登塔 ¥300。網路流傳的 MapCode 各版本不一致，車機直接用地址或電話（098-958-3041 燈台管理處）搜尋比較保險。<details class="alt"><summary>換這裡也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=Nirai+Beach+読谷村" target="_blank" rel="noopener">Nirai Beach</a>（讀谷白沙灘，躺著就好）／回飯店泳池發呆（浮潛完最誠實的選擇）</div></details></div></div>
       <div class="drive">🚗 殘波岬 → 恩納（瀬良垣）　約 30 km · 40–50 分（傍晚沿 58 號北上）</div>
-      <div class="stop"><div class="t">16:40</div><div class="n">🍠 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=御菓子御殿+恩納店+恩納村瀬良垣100" target="_blank" rel="noopener">御菓子御殿 恩納店</a><span class="badge food">現烤紅芋塔</span><span class="mc">📮 恩納村瀬良垣100</span><span class="hr warn">約 9:00–18:00（季節略異，出發前再查）</span></div><div class="d">紅芋塔的本家，<b>恩納店可以買到剛出爐的熱紅芋塔</b>——跟機場賣的常溫版完全兩回事。後面就是海，露台可以坐著吃。伴手禮在這裡買比機場輕鬆。<br><b>換這家也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=おんなの駅+なかゆくい市場" target="_blank" rel="noopener">恩納の駅 なかゆくい市場</a>（現切水果、山田饅頭，約 10:00–19:00）／萬座毛園區內的輕食攤／飯店下午茶</div></div>
+      <div class="stop"><div class="t">16:40</div><div class="n">🍠 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=御菓子御殿+恩納店+恩納村瀬良垣100" target="_blank" rel="noopener">御菓子御殿 恩納店</a><span class="badge food">現烤紅芋塔</span><span class="mc">📮 恩納村瀬良垣100</span><span class="hr warn">約 9:00–18:00（季節略異，出發前再查）</span></div><div class="d">紅芋塔的本家，<b>恩納店可以買到剛出爐的熱紅芋塔</b>——跟機場賣的常溫版完全兩回事。後面就是海，露台可以坐著吃。伴手禮在這裡買比機場輕鬆。<details class="alt"><summary>換這家也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=おんなの駅+なかゆくい市場" target="_blank" rel="noopener">恩納の駅 なかゆくい市場</a>（現切水果、山田饅頭，約 10:00–19:00）／萬座毛園區內的輕食攤／飯店下午茶</div></details></div></div>
       <div class="drive">🚗 御菓子御殿 → 萬座毛　約 4 km · 8 分</div>
       <div class="stop"><div class="t">17:45</div><div class="n">🌅 <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=万座毛+恩納村恩納2767" target="_blank" rel="noopener">萬座毛</a> 看夕陽<span class="badge play">象鼻岩</span><span class="mc">📮 恩納村恩納2767</span><span class="hr">3–10月 8:00–20:00・無休（颱風除外）</span></div><div class="d">木棧步道約 30–40 分，9 月下旬日落約 18:25。<b>住宿在讀谷，不在萬座毛旁</b>，看完仍需南下約 45–55 分鐘；不要再安排恩納北部晚餐。</div></div>
       <div class="drive">🚗 萬座毛 → Yomitan Kukuru Resort　約 35 km · 45–55 分</div>
       <div class="stop"><div class="t">19:30</div><div class="n">🐟 回 Kukuru Resort + <b>晚餐</b><span class="badge">不用搬行李</span></div><div class="d">建議預約度假村餐廳，或回讀谷沿線用餐。若怕晚餐太晚，可在萬座毛看夕陽前先於恩納吃早晚餐，或準備可帶回房間的餐點。</div></div>
-      <div class="stop"><div class="t">21:00</div><div class="n">🌙 <b>宵夜</b>：超市掃貨帶回房間<span class="badge food">沖繩限定</span></div><div class="d">恩納沒有夜生活，但這是買零食最好的時機——<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=サンエー+恩納" target="_blank" rel="noopener">San-A</a> / <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=かねひで+恩納" target="_blank" rel="noopener">かねひで</a> 超市（多營業到 22:00–24:00）買 <b>Orion 啤酒、海葡萄、沖繩限定泡麵、紅芋點心</b>，比國際通便宜一大截。<br><b>更懶的版本：</b>58 號沿線的 Lawson／FamilyMart 24 小時；或飯店 lounge 喝一杯看海。<br>💡 住公寓式飯店的話，<b>今晚把泳衣和毛巾洗一洗烘乾</b>，後面兩晚都在市區用不到洗衣機。</div></div>
+      <div class="stop"><div class="t">21:00</div><div class="n">🌙 <b>宵夜</b>：超市掃貨帶回房間<span class="badge food">沖繩限定</span></div><div class="d">恩納沒有夜生活，但這是買零食最好的時機——<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=サンエー+恩納" target="_blank" rel="noopener">San-A</a> / <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=かねひで+恩納" target="_blank" rel="noopener">かねひで</a> 超市（多營業到 22:00–24:00）買 <b>Orion 啤酒、海葡萄、沖繩限定泡麵、紅芋點心</b>，比國際通便宜一大截。<details class="alt"><summary>更懶的版本</summary><div class="ab">58 號沿線的 Lawson／FamilyMart 24 小時；或飯店 lounge 喝一杯看海。</div></details><br>💡 住公寓式飯店的話，<b>今晚把泳衣和毛巾洗一洗烘乾</b>，後面兩晚都在市區用不到洗衣機。</div></div>
       <div class="note"><b>住宿改為讀谷後，今天不再是只有 58 km 的超輕鬆版本。</b>萬座毛位於飯店北方，往返會增加車程。<br><b>真的累就這樣走：</b>浮潛 → 讀谷午餐 → 回飯店休息 → 16:45 出門 → 萬座毛夕陽 → 回讀谷晚餐。琉球村與殘波岬都是可砍景點。</div>
       <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d3">← Day 3 美麗海·煙火</button><button class="pnav-btn" type="button" data-nav="d5">Day 5 購物·香水 →</button></div>
     </div>
@@ -494,6 +668,7 @@
   <!-- DAY 5 -->
   <section class="panel day" id="d5" data-title="Day 5 · 9/28 週一 · 讀谷→中部→那霸．購物香水日">
     <div class="day-head">
+      <div class="day-hero"><img src="images/rycom.jpg" alt="AEON MALL 沖繩來客夢" loading="lazy"></div>
       <div class="row">
         <div>
           <div class="num">05<small>9 / 28　週一</small></div>
@@ -509,21 +684,40 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
+      <div class="pcards-h">今天長這樣</div>
+      <div class="pcards">
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ブセナ海中公園+名護市喜瀬1744-1" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">09:00</span><img src="images/busena.jpg" alt="部瀨名海中展望塔" loading="lazy"></div>
+          <div class="tx"><div class="tt">部瀨名海中展望塔</div><div class="ds">走下 24 階到海面下 5 公尺，不濕身看熱帶魚</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=イオンモール沖縄ライカム" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">11:20</span><img src="images/rycom.jpg" alt="AEON MALL 沖繩來客夢" loading="lazy"></div>
+          <div class="tx"><div class="tt">AEON 來客夢</div><div class="ds">全沖繩最大商場，200+ 店，留 3 小時</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+牧港本店" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">16:15</span><img src="images/blue-seal.jpg" alt="Blue Seal 冰淇淋" loading="lazy"></div>
+          <div class="tx"><div class="tt">Blue Seal 牧港本店</div><div class="ds">1948 年創業的本店，口味最齊</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=栄町市場+那覇市安里" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">21:00</span><img src="images/sakaemachi.jpg" alt="榮町市場" loading="lazy"></div>
+          <div class="tx"><div class="tt">榮町市場</div><div class="ds">白天是老市場，晚上整條巷子變居酒屋街</div></div>
+        </a>
+      </div>
       <div class="stop"><div class="t">07:00</div><div class="n">🥐 <b>早餐</b>：飯店早餐</div><div class="d">今天是購物日，體力要留著。</div></div>
       <div class="stop"><div class="t">07:45</div><div class="n">Kukuru Resort 退房，往北前往部瀨名</div><div class="d">住宿在讀谷，比原訂恩納飯店更南；若保留部瀨名，今天必須提早約 35 分鐘出發。</div></div>
       <div class="drive">🚗 讀谷 → 部瀨名（名護喜瀬）　約 55 km · 65–75 分（依導航接石川 IC 北上）</div>
-      <div class="stop"><div class="t">09:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブセナ海中公園+名護市喜瀬1744-1" target="_blank" rel="noopener">部瀨名海中公園</a><span class="badge play">不濕身看海底</span><span class="mc">📮 名護市喜瀬1744-1</span><span class="hr">4–10月 9:00–17:30・無休</span></div><div class="d">前天在水族館隔著玻璃看、昨天下水親眼看，今天用第三種方式收尾：<b>海中展望塔</b>（走下 24 階到海面下 5 公尺，360 度看熱帶魚）＋<b>玻璃底遊覽船</b>（20 分，看珊瑚礁）。一開門就到人最少，兩個一起約 ¥2,100、留 60–75 分。<b>昨天沒下水的那位，這是他的補償場。</b><br>💡 部瀨名就在許田IC 旁邊，逛完直接上高速南下，這 18 km 的「回頭路」其實只多花 20 分鐘。<br><b>不想繞就直接南下：</b>從恩納走高速到 Rycom 約 40 km · 55 分，可以 10:15 就開始逛商場，多出的 1.5 小時全部留給購物。<br><b>換這裡也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=オリオンハッピーパーク+名護" target="_blank" rel="noopener">Orion Happy Park</a>（名護啤酒工廠見學＋試飲，約 9:30–16:30，<b>需事先預約</b>；開車的人不能喝）</div></div>
+      <div class="stop"><div class="t">09:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブセナ海中公園+名護市喜瀬1744-1" target="_blank" rel="noopener">部瀨名海中公園</a><span class="badge play">不濕身看海底</span><span class="mc">📮 名護市喜瀬1744-1</span><span class="hr">4–10月 9:00–17:30・無休</span></div><div class="d">前天在水族館隔著玻璃看、昨天下水親眼看，今天用第三種方式收尾：<b>海中展望塔</b>（走下 24 階到海面下 5 公尺，360 度看熱帶魚）＋<b>玻璃底遊覽船</b>（20 分，看珊瑚礁）。一開門就到人最少，兩個一起約 ¥2,100、留 60–75 分。<b>昨天沒下水的那位，這是他的補償場。</b><br>💡 部瀨名就在許田IC 旁邊，逛完直接上高速南下，這 18 km 的「回頭路」其實只多花 20 分鐘。<br><b>不想繞就直接南下：</b>從恩納走高速到 Rycom 約 40 km · 55 分，可以 10:15 就開始逛商場，多出的 1.5 小時全部留給購物。<details class="alt"><summary>換這裡也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=オリオンハッピーパーク+名護" target="_blank" rel="noopener">Orion Happy Park</a>（名護啤酒工廠見學＋試飲，約 9:30–16:30，<b>需事先預約</b>；開車的人不能喝）</div></details></div></div>
       <div class="drive">🚗 部瀨名 → 北中城　約 45 km · 60 分（許田IC 上沖繩自動車道 → 北中城IC，ETC ¥830）</div>
-      <div class="stop"><div class="t">11:20</div><div class="n">🍱 <b>午餐 + 購物</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=イオンモール沖縄ライカム+北中城村字ライカム1" target="_blank" rel="noopener">永旺來客夢 AEON Rycom</a><span class="badge food">館內 60 餐廳</span><span class="badge play">最大商場</span><span class="mc">🚘 MapCode <b>33 530 406*45</b></span><span class="hr">專門店 10:00–22:00・年中無休</span></div><div class="d">全沖繩最大商場，200+ 店鋪、免費停車，<b>留 3 小時</b>：藥妝、UNIQLO/GU、無印、電器、超市伴手禮一次補齊，午餐在館內 60 間餐廳解決（美食街最快）。<br><b>吃膩商場美食街？</b>Rycom 一樓有壽司、和牛燒肉、沖繩そば專門店；不想在裡面吃就開 10 分鐘到<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=キングタコス+金武" target="_blank" rel="noopener">中部的塔可飯店</a>。</div></div>
+      <div class="stop"><div class="t">11:20</div><div class="n">🍱 <b>午餐 + 購物</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=イオンモール沖縄ライカム+北中城村字ライカム1" target="_blank" rel="noopener">永旺來客夢 AEON Rycom</a><span class="badge food">館內 60 餐廳</span><span class="badge play">最大商場</span><span class="mc">🚘 MapCode <b>33 530 406*45</b></span><span class="hr">專門店 10:00–22:00・年中無休</span></div><div class="d">全沖繩最大商場，200+ 店鋪、免費停車，<b>留 3 小時</b>：藥妝、UNIQLO/GU、無印、電器、超市伴手禮一次補齊，午餐在館內 60 間餐廳解決（美食街最快）。<details class="alt"><summary>吃膩商場美食街？</summary><div class="ab">Rycom 一樓有壽司、和牛燒肉、沖繩そば專門店；不想在裡面吃就開 10 分鐘到<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=キングタコス+金武" target="_blank" rel="noopener">中部的塔可飯店</a>。</div></details></div></div>
       <div class="drive">🚗 北中城 → 港川（浦添）　約 13 km · 25 分</div>
-      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=港川外人住宅+浦添市港川2丁目" target="_blank" rel="noopener">港川外人住宅區</a><span class="badge play">調香體驗</span></div><div class="d"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=THE+FLAVOR+DESIGN+STORE+OKINAWA+港川ステイツサイドタウン19" target="_blank" rel="noopener"><b>The Flavor Design 調香</b></a>：試香 → 選比例 → 定色封瓶，做一瓶專屬香水約 30 分（可線上預約）。<span class="mc">📮 港川ステイツサイドタウン #19</span><br>美軍舊宿舍改造的白色平房群，每間都是選物店或咖啡廳，巷弄超好拍。<br><b>順路加碼：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=oHacorte+港川本店+浦添市港川2-17-1" target="_blank" rel="noopener">oHacorté 水果塔</a>（招牌店，港川本店）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ippe+coppe+浦添市port川2-16-1" target="_blank" rel="noopener">ippe coppe</a>（人氣天然酵母吐司，常提早賣完）</div></div>
-      <div class="stop"><div class="t">16:15</div><div class="n">🍦 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+牧港本店+浦添市牧港5-5-6" target="_blank" rel="noopener">Blue Seal 牧港本店</a><span class="badge food">1948 老店</span><span class="mc">📮 浦添市牧港5-5-6</span><span class="hr">10:00–22:00・無休</span></div><div class="d">Blue Seal 的<b>本店</b>，50 年代美式復古裝潢，冰淇淋口味最齊（紅芋、鹽味餅乾、扶桑花雪酪）。就在港川旁邊。<br><b>換這家也行：</b>oHacorté 的水果塔（港川店內）／PARCO CITY 內的甜點櫃</div></div>
+      <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=港川外人住宅+浦添市港川2丁目" target="_blank" rel="noopener">港川外人住宅區</a><span class="badge play">調香體驗</span></div><div class="d"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=THE+FLAVOR+DESIGN+STORE+OKINAWA+港川ステイツサイドタウン19" target="_blank" rel="noopener"><b>The Flavor Design 調香</b></a>：試香 → 選比例 → 定色封瓶，做一瓶專屬香水約 30 分（可線上預約）。<span class="mc">📮 港川ステイツサイドタウン #19</span><br>美軍舊宿舍改造的白色平房群，每間都是選物店或咖啡廳，巷弄超好拍。<details class="alt"><summary>順路加碼</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=oHacorte+港川本店+浦添市港川2-17-1" target="_blank" rel="noopener">oHacorté 水果塔</a>（招牌店，港川本店）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ippe+coppe+浦添市port川2-16-1" target="_blank" rel="noopener">ippe coppe</a>（人氣天然酵母吐司，常提早賣完）</div></details></div></div>
+      <div class="stop"><div class="t">16:15</div><div class="n">🍦 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ブルーシール+牧港本店+浦添市牧港5-5-6" target="_blank" rel="noopener">Blue Seal 牧港本店</a><span class="badge food">1948 老店</span><span class="mc">📮 浦添市牧港5-5-6</span><span class="hr">10:00–22:00・無休</span></div><div class="d">Blue Seal 的<b>本店</b>，50 年代美式復古裝潢，冰淇淋口味最齊（紅芋、鹽味餅乾、扶桑花雪酪）。就在港川旁邊。<details class="alt"><summary>換這家也行</summary><div class="ab">oHacorté 的水果塔（港川店內）／PARCO CITY 內的甜點櫃</div></details></div></div>
       <div class="drive">🚗 港川 → 浦添西海岸　約 5 km · 12 分</div>
       <div class="stop"><div class="t">16:50</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=サンエー浦添西海岸パルコシティ+浦添市西洲3-1-1" target="_blank" rel="noopener">San-A 浦添西海岸 PARCO CITY</a><span class="badge play">大型商場</span><span class="mc">📮 浦添市西洲3-1-1</span><span class="hr">商場 10:00–22:00・超市至 23:00・無休</span></div><div class="d">2019 開幕、沖繩最新的大型商場，250 間店、免費停車。跟港川只隔 5 分鐘車程，調香做完順路殺過來。<b>藥妝、UNIQLO/GU、無印、電器、超市伴手禮</b>一次收——這裡也是最後一次能大量補貨的機會（Day 6 只剩豐崎 Outlet 那一小時）。</div></div>
       <div class="drive">🚗 浦添西海岸 → 那霸　約 8 km · 18 分</div>
       <div class="stop"><div class="t">18:15</div><div class="n"><a class="ml" href="https://maps.app.goo.gl/LsJRQF2ui4uekVDx7" target="_blank" rel="noopener">La’gent Hotel Okinawa Naha Kokusai-dori</a> check-in<span class="badge">已預訂</span></div><div class="d">飯店在國際通／久茂地一帶，從 PARCO CITY 進那霸後順路先放行李。入住前先確認飯店停車場入口、費用與滿車時的合作停車場。</div></div>
-      <div class="stop"><div class="t">19:00</div><div class="n">🥩 <b>晚餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=琉球の牛+那覇市松尾1-1-1" target="_blank" rel="noopener">琉球的牛</a><span class="badge">需訂位</span><span class="badge food">A5 石垣牛</span><span class="mc">📮 那覇市松尾1-1-1</span><span class="hr">16:30–23:00・無休</span></div><div class="d">炭火燒 A5 級石垣牛，全程的慶祝餐。僅晚餐時段、<b>務必官網提前訂位</b>。<br><b>訂不到的話：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ジャッキーステーキハウス+那覇" target="_blank" rel="noopener">Jack's Steak House</a>（1953 老字號牛排，11:00–22:30・週三休）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=やっぱりステーキ+松山+那覇" target="_blank" rel="noopener">やっぱりステーキ</a>（¥1,000 有找的平價牛排，約 11:00–翌5:00）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ゆうなんぎい+那覇" target="_blank" rel="noopener">ゆうなんぎい</a>（鄉土料理，週日休）</div></div>
-      <div class="stop"><div class="t">21:00</div><div class="n">🍶 <b>宵夜</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=栄町市場+那覇市安里" target="_blank" rel="noopener">榮町市場</a> 深夜屋台街<span class="badge food">在地感最強</span><span class="hr warn">白天是市場，晚上變居酒屋街，各店約 18:00 後陸續開到深夜</span></div><div class="d">單軌安里站旁，白天是老市場、晚上整條巷子變成居酒屋與立飲屋，<b>觀光客少、在地人多</b>，是那霸最有味道的夜晚去處。串燒、關東煮、泡盛，一攤喝一杯換下一攤。<br><b>換這裡也行：</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り屋台村" target="_blank" rel="noopener">國際通屋台村</a>（走路可到，最方便）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=通堂+らーめん+那覇" target="_blank" rel="noopener">通堂拉麵</a>（約至翌 0:30）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ドン・キホーテ+国際通り店" target="_blank" rel="noopener">唐吉訶德</a>（開到翌 5:00，最後補貨）</div></div>
+      <div class="stop"><div class="t">19:00</div><div class="n">🥩 <b>晚餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=琉球の牛+那覇市松尾1-1-1" target="_blank" rel="noopener">琉球的牛</a><span class="badge">需訂位</span><span class="badge food">A5 石垣牛</span><span class="mc">📮 那覇市松尾1-1-1</span><span class="hr">16:30–23:00・無休</span></div><div class="d">炭火燒 A5 級石垣牛，全程的慶祝餐。僅晚餐時段、<b>務必官網提前訂位</b>。<details class="alt"><summary>訂不到的話</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ジャッキーステーキハウス+那覇" target="_blank" rel="noopener">Jack's Steak House</a>（1953 老字號牛排，11:00–22:30・週三休）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=やっぱりステーキ+松山+那覇" target="_blank" rel="noopener">やっぱりステーキ</a>（¥1,000 有找的平價牛排，約 11:00–翌5:00）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ゆうなんぎい+那覇" target="_blank" rel="noopener">ゆうなんぎい</a>（鄉土料理，週日休）</div></details></div></div>
+      <div class="stop"><div class="t">21:00</div><div class="n">🍶 <b>宵夜</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=栄町市場+那覇市安里" target="_blank" rel="noopener">榮町市場</a> 深夜屋台街<span class="badge food">在地感最強</span><span class="hr warn">白天是市場，晚上變居酒屋街，各店約 18:00 後陸續開到深夜</span></div><div class="d">單軌安里站旁，白天是老市場、晚上整條巷子變成居酒屋與立飲屋，<b>觀光客少、在地人多</b>，是那霸最有味道的夜晚去處。串燒、關東煮、泡盛，一攤喝一杯換下一攤。<details class="alt"><summary>換這裡也行</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り屋台村" target="_blank" rel="noopener">國際通屋台村</a>（走路可到，最方便）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=通堂+らーめん+那覇" target="_blank" rel="noopener">通堂拉麵</a>（約至翌 0:30）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ドン・キホーテ+国際通り店" target="_blank" rel="noopener">唐吉訶德</a>（開到翌 5:00，最後補貨）</div></details></div></div>
       <div class="stop"><div class="t">22:30</div><div class="n">回飯店，整理行李</div><div class="d">明天是最後一天且時間緊，<b>今晚就把行李打包好</b>，隔天只要拎了就走。</div></div>
       <div class="panel-nav"><button class="pnav-btn" type="button" data-nav="d4">← Day 4 藍洞·恩納</button><button class="pnav-btn" type="button" data-nav="d6">Day 6 貓島·返程 →</button></div>
     </div>
@@ -532,6 +726,7 @@
   <!-- DAY 6 -->
   <section class="panel day" id="d6" data-title="Day 6 · 9/29 週二 · 南城市貓島．洞穴咖啡．返程">
     <div class="day-head">
+      <div class="day-hero"><img src="images/nirai-kanai.jpg" alt="南城市二ライカナイ橋" loading="lazy"></div>
       <div class="row">
         <div>
           <div class="num">06<small>9 / 29　週二</small></div>
@@ -549,6 +744,33 @@
       <svg class="wave2" viewBox="0 0 1440 40" preserveAspectRatio="none" height="26"><path fill="#fffdf7" d="M0,22 C240,40 480,6 720,16 C960,26 1200,40 1440,24 L1440,40 L0,40 Z"></path></svg>
     </div>
     <div class="body">
+      <div class="pcards-h">今天長這樣</div>
+      <div class="pcards">
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ニライカナイ橋+南城市知念" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">08:00</span><img src="images/nirai-kanai.jpg" alt="二ライカナイ橋" loading="lazy"></div>
+          <div class="tx"><div class="tt">二ライカナイ橋</div><div class="ds">從山上盤旋下海的高架公路，免費 24h</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=知念岬公園+南城市知念久手堅" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">08:25</span><img src="images/chinen-misaki.jpg" alt="知念岬公園" loading="lazy"></div>
+          <div class="tx"><div class="tt">知念岬公園</div><div class="ds">三面環海的草地岬角，完全免費幾乎沒人</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=斎場御嶽+南城市知念久手堅539" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">09:00</span><img src="images/sefa-utaki.jpg" alt="齋場御嶽" loading="lazy"></div>
+          <div class="tx"><div class="tt">齋場御嶽</div><div class="ds">琉球王國最高聖地，三庫理巨岩望久高島</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ガンガラーの谷+南城市玉城字前川202" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">10:00</span><img src="images/gangala.jpg" alt="Gangala 之谷洞穴咖啡" loading="lazy"></div>
+          <div class="tx"><div class="tt">Gangala 之谷</div><div class="ds">數十萬年鐘乳石洞裡喝 35 咖啡，需預約</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=奥武島+南城市玉城字奥武" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">11:40</span><img src="images/oujima.jpg" alt="奧武島與奧武橋" loading="lazy"></div>
+          <div class="tx"><div class="tt">奧武島（貓島）</div><div class="ds">一橋相連的小漁村，現炸天婦羅 ¥100 一顆</div></div>
+        </a>
+        <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=瀬長島ウミカジテラス" target="_blank" rel="noopener">
+          <div class="ph"><span class="pin">13:05</span><img src="images/senagajima.jpg" alt="瀨長島 Umikaji Terrace" loading="lazy"></div>
+          <div class="tx"><div class="tt">瀨長島 Umikaji</div><div class="ds">白色階梯商圈，正下方就是機場跑道</div></div>
+        </a>
+      </div>
       <div class="stop"><div class="t">07:00</div><div class="n">🍙 <b>早餐</b>：La’gent Hotel or <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ポーたま+国際通り店" target="_blank" rel="noopener">ポーたま</a> 外帶</div><div class="d">今天最趕，早餐直接帶上車吃。</div></div>
       <div class="stop"><div class="t">07:15</div><div class="n">La’gent Hotel 退房出發</div><div class="d">行李昨晚已打包並直接放上車，避免在市區耽擱。</div></div>
       <div class="drive">🚗 那霸 → 南城（知念）　約 28 km · 45 分（331 號，一般道路，這一帶沒有高速）</div>
@@ -558,11 +780,11 @@
       <div class="drive">🚗 齋場御嶽 → Gangala 之谷　約 11 km · 20 分</div>
       <div class="stop"><div class="t">10:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=ガンガラーの谷+南城市玉城字前川202" target="_blank" rel="noopener">Gangala 之谷</a> · 洞穴咖啡<span class="badge">需預約導覽</span><span class="mc">📮 南城市玉城字前川202</span></div><div class="d">數十萬年鐘乳石洞裡喝「35 咖啡」。<b>Cave Café 現多只開放給參加山谷導覽者</b>，導覽約 80 分、需於官網 gangala.com 先預約場次（建議 10:00 場）。對面即玉泉洞可當備案。</div></div>
       <div class="drive">🚗 Gangala 之谷 → 奧武島　約 5 km · 12 分</div>
-      <div class="stop"><div class="t">11:40</div><div class="n">🐟 <b>午餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=奥武島+南城市玉城字奥武" target="_blank" rel="noopener">奧武島（貓島）</a> 現炸天婦羅<span class="badge food">¥100 一顆</span><span class="mc">📮 南城市玉城字奥武</span><span class="hr warn">島上天婦羅店約 10:00–18:00（各店不同、常有臨時休），出發前查一下</span></div><div class="d">一座橋接的小漁村島，環一圈只要 15 分。名物是<b>現炸天婦羅</b>——魚、花枝、海苔、紫芋，一顆 ¥100 左右，站在海邊配海風吃最對味。島上到處是曬太陽的貓。<br>兩間老店：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=中本鮮魚てんぷら店+南城市玉城奥武9" target="_blank" rel="noopener">中本鮮魚てんぷら店</a>（最有名，常排隊）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=大城てんぷら店+南城市玉城奥武" target="_blank" rel="noopener">大城てんぷら店</a>（人少、當地人愛）<br><b>不想吃炸物？</b><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=いまいゆ市場+奥武島" target="_blank" rel="noopener">いまいゆ市場</a>（島上漁協直營，生魚片超便宜）／撐到瀨長島吃鬆餅當正餐</div></div>
+      <div class="stop"><div class="t">11:40</div><div class="n">🐟 <b>午餐</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=奥武島+南城市玉城字奥武" target="_blank" rel="noopener">奧武島（貓島）</a> 現炸天婦羅<span class="badge food">¥100 一顆</span><span class="mc">📮 南城市玉城字奥武</span><span class="hr warn">島上天婦羅店約 10:00–18:00（各店不同、常有臨時休），出發前查一下</span></div><div class="d">一座橋接的小漁村島，環一圈只要 15 分。名物是<b>現炸天婦羅</b>——魚、花枝、海苔、紫芋，一顆 ¥100 左右，站在海邊配海風吃最對味。島上到處是曬太陽的貓。<br>兩間老店：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=中本鮮魚てんぷら店+南城市玉城奥武9" target="_blank" rel="noopener">中本鮮魚てんぷら店</a>（最有名，常排隊）／<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=大城てんぷら店+南城市玉城奥武" target="_blank" rel="noopener">大城てんぷら店</a>（人少、當地人愛）<details class="alt"><summary>不想吃炸物？</summary><div class="ab"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=いまいゆ市場+奥武島" target="_blank" rel="noopener">いまいゆ市場</a>（島上漁協直營，生魚片超便宜）／撐到瀨長島吃鬆餅當正餐</div></details><figure class="shot"><img src="images/okinawa-tempura.jpg" alt="沖繩式炸物" loading="lazy" data-cap="沖繩天婦羅｜麵衣厚、有鹹味，本身就調過味，直接吃不沾醬"><figcaption><b>沖繩天婦羅</b>｜跟日本本島的不一樣：麵衣厚、本身就有鹹味，站在海邊直接吃</figcaption></figure></div></div>
       <div class="drive">🚗 奧武島 → 瀨長島　約 22 km · 35 分</div>
-      <div class="stop"><div class="t">13:05</div><div class="n">🥞 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬長島ウミカジテラス+豊見城市瀬長174-6" target="_blank" rel="noopener">瀨長島 · 幸福鬆餅</a><span class="badge">平日可預約</span><span class="badge food">舒芙蕾鬆餅</span><span class="mc">📮 豊見城市瀬長174-6</span><span class="hr">園區約 10:00–21:00・無休</span></div><div class="d">沖繩唯一分店（Umikaji Terrace 32 號）。舒芙蕾厚鬆餅配海景，正下方就是那霸機場跑道，<b>可以邊吃邊看飛機起降</b>。官網 14 天前開放、僅限平日——今天週二可線上訂，一次最多 4 位。<b>訂 13:15 那一場，14:00 準時走人。</b><br><b>訂不到的話：</b>Umikaji Terrace 白色階梯商圈裡還有 40 多間店（義式冰淇淋、龍蝦堡、海景咖啡），隨便挑一間都有同樣的景。</div></div>
+      <div class="stop"><div class="t">13:05</div><div class="n">🥞 <b>甜點</b>：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=瀬長島ウミカジテラス+豊見城市瀬長174-6" target="_blank" rel="noopener">瀨長島 · 幸福鬆餅</a><span class="badge">平日可預約</span><span class="badge food">舒芙蕾鬆餅</span><span class="mc">📮 豊見城市瀬長174-6</span><span class="hr">園區約 10:00–21:00・無休</span></div><div class="d">沖繩唯一分店（Umikaji Terrace 32 號）。舒芙蕾厚鬆餅配海景，正下方就是那霸機場跑道，<b>可以邊吃邊看飛機起降</b>。官網 14 天前開放、僅限平日——今天週二可線上訂，一次最多 4 位。<b>訂 13:15 那一場，14:00 準時走人。</b><details class="alt"><summary>訂不到的話</summary><div class="ab">Umikaji Terrace 白色階梯商圈裡還有 40 多間店（義式冰淇淋、龍蝦堡、海景咖啡），隨便挑一間都有同樣的景。</div></details><figure class="shot"><img src="images/pancake.jpg" alt="舒芙蕾厚鬆餅" loading="lazy" data-cap="幸福鬆餅｜舒芙蕾厚鬆餅配海景，正下方就是那霸機場跑道"><figcaption><b>幸福鬆餅</b>｜舒芙蕾厚鬆餅，邊吃邊看飛機起降；訂 13:15 那場，14:00 準時走人</figcaption></figure></div></div>
       <div class="drive">🚗 瀨長島 → 豐崎（Outlet／OTS 還車處）　約 5 km · 10 分</div>
-      <div class="stop"><div class="t">14:10</div><div class="n">豐崎最後衝刺：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=豊崎ライフスタイルセンターTOMITON+豊見城市字豊崎1-411" target="_blank" rel="noopener">TOMITON</a> · <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄アウトレットモールあしびなー+豊見城市豊崎1-188" target="_blank" rel="noopener">Ashibinaa Outlet</a><span class="badge play">購物</span></div><div class="d">兩間就在還車的豐崎、彼此斜對面，走路可到：<br>・<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=スポーツデポ豊崎店+豊見城市字豊崎1-411" target="_blank" rel="noopener"><b>Sports Depo 豐崎店</b></a>（在 TOMITON 內）<span class="hr">10:00–21:00</span><br>・<b>Ashibinaa Outlet</b>：沖繩唯一 Outlet，約 100 間品牌<span class="hr warn">約 10:00–20:00・無休（出發前再查官網）</span><br>⏰ <b>14:45 一定要離開</b>，還要加油＋開到 OTS。逛不完就專攻一間。</div></div>
+      <div class="stop"><div class="t">14:10</div><div class="n">豐崎最後衝刺：<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=豊崎ライフスタイルセンターTOMITON+豊見城市字豊崎1-411" target="_blank" rel="noopener">TOMITON</a> · <a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄アウトレットモールあしびなー+豊見城市豊崎1-188" target="_blank" rel="noopener">Ashibinaa Outlet</a><span class="badge play">購物</span></div><div class="d">兩間就在還車的豐崎、彼此斜對面，走路可到：<br>・<a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=スポーツデポ豊崎店+豊見城市字豊崎1-411" target="_blank" rel="noopener"><b>Sports Depo 豐崎店</b></a>（在 TOMITON 內）<span class="hr">10:00–21:00</span><br>・<b>Ashibinaa Outlet</b>：沖繩唯一 Outlet，約 100 間品牌<span class="hr warn">約 10:00–20:00・無休（出發前再查官網）</span><br>⏰ <b>14:45 一定要離開</b>，還要加油＋開到 OTS。逛不完就專攻一間。<figure class="shot"><img src="images/ashibinaa.jpg" alt="Ashibinaa Outlet" loading="lazy" data-cap="Ashibinaa Outlet｜沖繩唯一 Outlet，就在 OTS 還車處旁邊"><figcaption><b>Ashibinaa Outlet</b>｜沖繩唯一的 Outlet，約 100 間品牌，走路就到還車處</figcaption></figure></div></div>
       <div class="stop"><div class="t">16:15</div><div class="n">🍜 <b>晚餐</b>：那霸機場美食街<span class="badge food">最後一餐</span></div><div class="d">18:00 起飛，登機前在機場吃完最省事。國內線航廈 4F 有美食街（沖繩そば、豬肉蛋飯糰、A&amp;W、Blue Seal），國際線這側選擇較少——<b>建議在國內線先吃完再走過去</b>，順便用光日幣零錢。<br>🎁 最後的伴手禮補位：國內線 2F 的沖繩特產區、紅芋塔、金楚糕、Orion 啤酒都有。</div></div>
       <div class="stop"><div class="t">15:00</div><div class="n"><a class="ml" href="https://www.google.com/maps/search/?api=1&amp;query=OTSレンタカー+臨空豊崎営業所+豊見城市豊崎3-37" target="_blank" rel="noopener">OTS 臨空豐崎營業所 還車</a><span class="badge">已預約</span><span class="mc">📮 豊見城市豊崎3-37</span><span class="mc">☎ 098-856-8877</span></div><div class="d"><b>還車前先加滿油</b>（豐崎周邊加油站多，離店前 1–2 km 加最保險，否則會被收較貴的代加油費）。行李先從後車廂拿下來再辦手續。</div></div>
       <div class="drive">🚌 OTS 豐崎 → 那霸機場　免費接駁約 20 分（每 20 分一班）</div>
@@ -705,6 +927,34 @@
   <section class="panel sec" id="food" data-title="🍜 美食清單．更多選擇">
     <h3>美食清單 · 更多選擇</h3>
     <p class="lead">依類別整理，標好靠近哪一天，想換餐直接挑。<b>★</b> = 已排進行程。營業時間與公休出發前再確認一次。<br>行程已把每天拆成 <b>早餐 → 午餐 → 甜點 → 晚餐 → 宵夜</b> 五個時段，每段都給了 2–4 個選項，這頁是更完整的備選池。</p>
+    <div class="pcards-h">沖繩非吃不可的六樣</div>
+    <div class="pcards">
+      <div class="pcard">
+        <div class="ph"><img src="images/okinawa-soba.jpg" alt="沖繩そば" loading="lazy" data-cap="沖繩そば｜小麥麵條配柴魚豬骨清湯，鋪三層軟骨或三枚肉"></div>
+        <div class="tx"><div class="tt">沖繩そば</div><div class="ds">不是蕎麥，是小麥麵。清湯配軟骨肉，撒紅薑</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/taco-rice.jpg" alt="塔可飯" loading="lazy" data-cap="塔可飯｜金武町美軍基地旁誕生，白飯上鋪塔可肉醬、生菜、起司"></div>
+        <div class="tx"><div class="tt">塔可飯</div><div class="ds">美軍基地旁誕生的沖繩靈魂食物，金武町發源</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/shabu-shabu.jpg" alt="阿古豬涮涮鍋" loading="lazy" data-cap="阿古豬｜沖繩在來種黑豬，油脂清爽，涮幾下就入口"></div>
+        <div class="tx"><div class="tt">阿古豬涮涮鍋</div><div class="ds">沖繩在來種黑豬，涮幾下入口、鮮甜不腥</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/umibudo.jpg" alt="海葡萄" loading="lazy" data-cap="海葡萄｜沖繩特產海藻，咬下去啵啵作響，沾三杯醋"></div>
+        <div class="tx"><div class="tt">海葡萄</div><div class="ds">咬下去啵啵作響，沾三杯醋，恩納村最多</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/okinawa-tempura.jpg" alt="沖繩天婦羅" loading="lazy" data-cap="沖繩天婦羅｜麵衣厚、本身有鹹味，一顆約 ¥100"></div>
+        <div class="tx"><div class="tt">沖繩天婦羅</div><div class="ds">麵衣厚、有鹹味、不沾醬，奧武島 ¥100 一顆</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/blue-seal.jpg" alt="Blue Seal 冰淇淋" loading="lazy" data-cap="Blue Seal｜1948 年為美軍而生的冰淇淋，紅芋與鹽味餅乾是招牌"></div>
+        <div class="tx"><div class="tt">Blue Seal</div><div class="ds">1948 年為美軍而生，紅芋與鹽味餅乾必點</div></div>
+      </div>
+    </div>
+
     <div class="legend"><span>📍 <b>點店名</b> = Google Maps 導航</span></div>
     <div class="food-grid">
 
@@ -810,6 +1060,59 @@
   <section class="panel sec" id="spots" data-title="🏝 景點清單．更多選擇">
     <h3>景點清單 · 更多選擇</h3>
     <p class="lead">依區域整理，方便單向繞島順路排。<b>★</b> = 已排進行程。開放時間與公休出發前再確認一次。</p>
+
+    <div class="pcards-h">先看圖：這趟會遇到的沖繩</div>
+    <div class="pcards wide">
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄美ら海水族館" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 3</span><img src="images/churaumi.jpg" alt="美麗海水族館 黑潮之海" loading="lazy"></div>
+        <div class="tx"><div class="tt">美麗海水族館</div><div class="ds">「黑潮之海」水槽 7,500 立方公尺，養著鯨鯊與鬼蝠魟。開館第一小時人最少。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=古宇利大橋" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 3</span><img src="images/kouri-bridge.jpg" alt="古宇利大橋" loading="lazy"></div>
+        <div class="tx"><div class="tt">古宇利島 · 古宇利大橋</div><div class="ds">全長近 2 公里、免過路費的跨海大橋，兩側淺灘清澈見底，沖繩最好開的一段路。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=万座毛+恩納村" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 4</span><img src="images/manzamo.jpg" alt="萬座毛象鼻岩" loading="lazy"></div>
+        <div class="tx"><div class="tt">萬座毛</div><div class="ds">名字意思是「可容萬人的草原」，招牌是那塊被海浪掏空成象鼻形狀的隆起珊瑚礁。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=残波岬灯台+読谷村" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 4</span><img src="images/zanpa.jpg" alt="殘波岬燈塔" loading="lazy"></div>
+        <div class="tx"><div class="tt">殘波岬</div><div class="ds">30 公尺高的珊瑚礁斷崖連綿 2 公里，白燈塔可登頂（¥300），風很大很舒服。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ニライカナイ橋+南城市" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 6</span><img src="images/nirai-kanai.jpg" alt="二ライカナイ橋" loading="lazy"></div>
+        <div class="tx"><div class="tt">二ライカナイ橋</div><div class="ds">名字取自琉球神話的「海的彼端樂土」。展望台在隧道口上方，不是橋下。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=斎場御嶽+南城市" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 6</span><img src="images/sefa-utaki.jpg" alt="齋場御嶽" loading="lazy"></div>
+        <div class="tx"><div class="tt">齋場御嶽</div><div class="ds">琉球王國最高聖地，兩塊巨岩夾出的三角形通道「三庫理」，盡頭正對久高島。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=ガンガラーの谷+南城市" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 6</span><img src="images/gangala.jpg" alt="Gangala 之谷洞穴咖啡" loading="lazy"></div>
+        <div class="tx"><div class="tt">Gangala 之谷</div><div class="ds">鐘乳洞崩塌後形成的亞熱帶森林谷地，洞口就是咖啡座，要參加導覽才進得去。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=知念岬公園+南城市" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 6</span><img src="images/chinen-misaki.jpg" alt="知念岬公園" loading="lazy"></div>
+        <div class="tx"><div class="tt">知念岬公園</div><div class="ds">三面環海的草地岬角，繞一圈 20 分鐘，免費、有停車場、看得到久高島。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=首里城公園" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 2</span><img src="images/shurijo.jpg" alt="首里城守禮門" loading="lazy"></div>
+        <div class="tx"><div class="tt">首里城 · 守禮門</div><div class="ds">2019 年大火後正殿仍在復建，守禮門與城牆照常開放，工地本身也是難得畫面。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=座喜味城跡+読谷村" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">備選</span><img src="images/zakimi.jpg" alt="座喜味城跡" loading="lazy"></div>
+        <div class="tx"><div class="tt">座喜味城跡</div><div class="ds">15 世紀築城名匠護佐丸的作品，最古老的拱門石造技術，免費、可以走上城牆。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=備瀬のフクギ並木+本部町" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">備選</span><img src="images/bise-fukugi.jpg" alt="備瀨福木林道" loading="lazy"></div>
+        <div class="tx"><div class="tt">備瀨福木林道</div><div class="ds">兩萬棵福木夾出的防風林小路，就在水族館旁邊，可以租單車或搭水牛車。</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=琉球村+恩納村" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 4</span><img src="images/ryukyu-mura.jpg" alt="琉球村" loading="lazy"></div>
+        <div class="tx"><div class="tt">琉球村</div><div class="ds">從沖繩各地遷建的百年古民家聚落，看エイサー太鼓、水牛榨糖、琉裝體驗。</div></div>
+      </a>
+    </div>
+
     <div class="legend"><span>📍 <b>點景點名</b> = Google Maps 導航</span><span><b>官網</b> = 官方網站（時間 / 票價 / 預約）</span></div>
     <div class="food-grid">
 
@@ -893,6 +1196,26 @@
   <section class="panel sec" id="shopping" data-title="🛍 購物中心清單">
     <h3>購物中心清單</h3>
     <p class="lead">大型商場、Outlet、運動用品／生活五金大型店整理，依行程動線排列，方便順路補貨。</p>
+
+    <div class="pcards">
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=イオンモール沖縄ライカム" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 5</span><img src="images/rycom.jpg" alt="AEON MALL 沖繩來客夢" loading="lazy"></div>
+        <div class="tx"><div class="tt">AEON 來客夢</div><div class="ds">全沖繩最大，200+ 店、免費停車，留 3 小時</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=美浜アメリカンビレッジ+北谷町" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 3</span><img src="images/american-village.jpg" alt="美國村" loading="lazy"></div>
+        <div class="tx"><div class="tt">美國村（北谷）</div><div class="ds">Depot Island＋AEON 北谷，停一次車全逛完</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=沖縄アウトレットモールあしびなー" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 6</span><img src="images/ashibinaa.jpg" alt="Ashibinaa Outlet" loading="lazy"></div>
+        <div class="tx"><div class="tt">Ashibinaa Outlet</div><div class="ds">沖繩唯一 Outlet，就在還車的豐崎，走路可到</div></div>
+      </a>
+      <a class="pcard" href="https://www.google.com/maps/search/?api=1&amp;query=国際通り+那覇" target="_blank" rel="noopener">
+        <div class="ph"><span class="pin">Day 1</span><img src="images/kokusai-dori.jpg" alt="國際通" loading="lazy"></div>
+        <div class="tx"><div class="tt">國際通 · 唐吉訶德</div><div class="ds">開到翌 5:00，最後一晚補貨的保險牌</div></div>
+      </a>
+    </div>
+
     <div class="legend"><span>📍 <b>點名稱</b> = Google Maps 導航</span><span><b>官網</b> = 官方網站</span><span>📮 = 已驗證住所</span></div>
     <div class="food-grid">
 
@@ -1065,6 +1388,23 @@
   <!-- TIPS -->
   <section class="panel sec" id="tips" data-title="💡 出發前重點提醒">
     <h3>出發前重點提醒</h3>
+
+    <div class="pcards-h">路上一定會看到的兩件事</div>
+    <div class="pcards">
+      <div class="pcard">
+        <div class="ph"><img src="images/shisa.jpg" alt="風獅爺 シーサー" loading="lazy" data-cap="シーサー（風獅爺）｜屋頂與門口成對出現，張嘴的招福、閉嘴的守財"></div>
+        <div class="tx"><div class="tt">シーサー 風獅爺</div><div class="ds">屋頂與門柱上成對出現：張嘴的招福、閉嘴的守財。陶器店買得到，是很好帶的伴手禮。</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/eisa.jpg" alt="エイサー太鼓" loading="lazy" data-cap="エイサー｜沖繩傳統祭典舞蹈，敲太鼓繞境送祖靈"></div>
+        <div class="tx"><div class="tt">エイサー 太鼓舞</div><div class="ds">沖繩盂蘭盆節送祖靈的太鼓舞。Day 4 琉球村有定時表演，是最容易看到的場合。</div></div>
+      </div>
+      <div class="pcard">
+        <div class="ph"><img src="images/naha-airport.jpg" alt="那霸機場" loading="lazy" data-cap="那霸機場｜國內線與國際線之間有室內連通步道，步行約 10 分鐘"></div>
+        <div class="tx"><div class="tt">那霸機場的動線</div><div class="ds">OTS 接駁車停<b>國內線</b>，要再走空橋到<b>國際線</b>（室內步道約 10 分，有電動步道）。</div></div>
+      </div>
+    </div>
+
     <ul class="tips">
       <li><b>駕照日文譯本（最重要）</b>：台灣駕照要先在監理站辦免費日文譯本，帶正本＋譯本＋護照才能租車。</li>
       <li><b>租車保險</b>：CDW（碰撞）＋NOC（營業損失）務必加保；右駕靠左行駛、路較窄，導航用 MapCode 最準。</li>
@@ -1074,6 +1414,56 @@
       <li><b>玩水（9 月下旬）</b>：水溫仍溫暖適合浮潛，但秋季留意颱風與海況，<b>Day 4（9/27）的青之洞窟</b>依當天狀況可能改「船潛」甚至停辦，出發前跟店家確認，並優先訂<b>可免費改期</b>的方案——排在第 4 天的好處就是前面還有兩天可以挪。</li>
       <li><b>網路</b>：eSIM 或網卡先買；那霸市區靠單軌、可買一日券。</li>
     </ul>
+  </section>
+
+
+  <!-- PHOTO CREDITS -->
+  <section class="panel sec" id="photos" data-title="📷 圖片來源．授權">
+    <h3>圖片來源 · 授權</h3>
+    <p class="lead">頁面裡的照片全部來自 <b>Wikimedia Commons</b>，皆為公有領域或創用 CC 授權，可自由使用。以下依出現順序列出作者與授權條款；點連結可到原始檔案頁確認完整授權說明。</p>
+    <ul class="credits">
+      <li><b>國際通夜景</b><br>TurnOnTheNight · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Night_at_Kokusai-dori_20250503182742.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>沖繩單軌電車 Yui Rail</b><br>MaedaAkihiko · CC0<br><a href="https://commons.wikimedia.org/wiki/File:Okinawa-Monorail_Series1000_Asahimachi.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>Blue Seal 冰淇淋</b><br>Naha Mama Pavilionz · CC0<br><a href="https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_Ashibinaa_mall_%E8%B1%90%E8%A6%8B%E5%9F%8E%E5%B8%82_Tomigusuku_shop_Blue_Seal_Ice_Cream_January_2025_R12S_14.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>首里城 守禮門</b><br>Naokijp · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:2014_Shuri_Castle_Shureimon_001.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>金城町石疊道</b><br>663highland · CC BY 2.5<br><a href="https://commons.wikimedia.org/wiki/File:Kinjocho_ishidatami-michi_Shuri_Naha01n4272.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>玉陵</b><br>663highland · CC BY 2.5<br><a href="https://commons.wikimedia.org/wiki/File:Tamaudun01s3s4592.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>波上宮與波之上海灘</b><br>Zairon · CC BY 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Naha_Naminoue_Beach_%26_Naminoue-gu_33.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>第一牧志公設市場</b><br>KQuhen · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Seafood_stall_Makishi_First_Public_Market_02.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>道の駅 許田</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Michinoeki_Kyoda_202108_01.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>瀨底島</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Sesoko_Island_202010.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>美麗海水族館 黑潮之海</b><br>そらみみ · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Main_tank_of_the_Kuroshio_Sea_in_Okinawa_Churaumi_Aquarium.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>古宇利大橋與古宇利海灘</b><br>hasano_jp · CC BY 3.0<br><a href="https://commons.wikimedia.org/wiki/File:%E5%8F%A4%E5%AE%87%E5%88%A9%E5%A4%A7%E6%A9%8B_%E5%8F%A4%E5%AE%87%E5%88%A9%E3%83%93%E3%83%BC%E3%83%81_20100814a.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>古宇利島 心形岩</b><br>CEphoto, Uwe Aranas · CC BY-SA 3.0<br><a href="https://commons.wikimedia.org/wiki/File:Nago_Okinawa_Kouri-Rock-Formation-01.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>美國村</b><br>hasano_jp · CC BY 3.0<br><a href="https://commons.wikimedia.org/wiki/File:%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%83%93%E3%83%AC%E3%83%83%E3%82%B8_-_panoramio.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>塔可飯</b><br>Nelo Hotsuma · CC BY 2.0<br><a href="https://commons.wikimedia.org/wiki/File:Taco_Rice.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>沖繩そば</b><br>Syced · CC0<br><a href="https://commons.wikimedia.org/wiki/File:Okinawa_soba_in_Yamabare_2.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>殘波岬燈塔</b><br>そらみみ (Soramimi) · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Cape_Zampa_Lighthouse_and_rocks_on_Cape_Zampa_2.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>萬座毛 象鼻岩</b><br>CEphoto, Uwe Aranas · CC BY-SA 3.0<br><a href="https://commons.wikimedia.org/wiki/File:Onna_Okinawa_Japan_Cape-Manzamo-01.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>琉球村</b><br>Yuet Man Lee · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Ryukyu_Mura_village_area_entrance.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>部瀨名 海中展望塔</b><br>663highland · CC BY 2.5<br><a href="https://commons.wikimedia.org/wiki/File:Busena_Resort22ss4272.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>AEON MALL 沖繩來客夢</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:AEON_Mall_Okinawa_Rycom_01.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>御菓子御殿</b><br>othree · CC BY 2.0<br><a href="https://commons.wikimedia.org/wiki/File:%E5%BE%A1%E6%9E%9C%E5%AD%90%E5%BE%A1%E6%AE%BF_(33884342351).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>榮町市場</b><br>Abasaa · Public domain<br><a href="https://commons.wikimedia.org/wiki/File:Naha_Sakaemachi_Ichiba_01.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>二ライカナイ橋</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Nirai_Kanai_Bridge_202208.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>知念岬公園</b><br>Hyppolyte de Saint-Rambert · CC BY 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Okinawa_Nanjo_Cape_Chinen_park_hdsr_VLux5_18.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>齋場御嶽</b><br>そらみみ · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Kudakajima_Island_from_Sangui_of_Sefa-Utaki_1.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>Gangala 之谷 洞穴咖啡</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Cave_Caffe,_the_Valley_of_Gangala_202312_01.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>奧武島與奧武橋</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Ou_Bridge_Nanjo_202208.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>沖繩炸物（グルクン唐揚げ）</b><br>Jpatokal · CC BY-SA 3.0<br><a href="https://commons.wikimedia.org/wiki/File:Fried_Gurukun_at_Yumenoya.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>瀨長島 Umikaji Terrace</b><br>Kugel~commonswiki · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Umikaji_Terrace_Senagajima.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>那霸機場</b><br>そらみみ · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Naha_Airport_Domestic_Passenger_Terminal_Building_20150318-2.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>Ashibinaa Outlet</b><br>663highland · CC BY 2.5<br><a href="https://commons.wikimedia.org/wiki/File:Okinawa_Outlet_Mall_Ashibinaa06n4592.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>座喜味城跡</b><br>Renate Hano · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Zakimi_Burg,_%C3%A4u%C3%9Ferer_Ring.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>備瀨福木林道</b><br>Abasaa · Public domain<br><a href="https://commons.wikimedia.org/wiki/File:Bise_Fukugi_Tree_Road_01.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>海葡萄</b><br>663highland · CC BY 2.5<br><a href="https://commons.wikimedia.org/wiki/File:Umibudou_at_Miyakojima01s3s2850.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>豬肉涮涮鍋</b><br>ProjectManhattan · CC BY-SA 3.0<br><a href="https://commons.wikimedia.org/wiki/File:Shabu_shabu.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>舒芙蕾鬆餅</b><br>t-mizo · CC BY 2.0<br><a href="https://commons.wikimedia.org/wiki/File:Souffle_Pan_Cake_in_Japan.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>風獅爺 シーサー</b><br>Yuet Man Lee · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Pair_of_shisa_decorating_a_building_wall_in_Naha.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>エイサー太鼓</b><br>U.S. Marine Corps photo by Lance Cpl. Joseph Kreis · Public domain<br><a href="https://commons.wikimedia.org/wiki/File:Mother%E2%80%99s_Day_Eisa_Dance_2025_(9031480).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      <li><b>北谷 Sunset Beach</b><br>そらみみ · CC BY-SA 4.0<br><a href="https://commons.wikimedia.org/wiki/File:Chatan_Sunset_Beach_(west)_20150317-2.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+    </ul>
+    <div class="note"><b>使用說明：</b>CC BY / CC BY-SA 授權要求標示作者姓名與授權條款，這一頁就是為此而設；CC0 與公有領域則無此義務，一併列出僅為方便查證。照片為示意用途，實際景色會因季節、天候與整修狀況而異——<b>尤其首里城正殿仍在復建中</b>。</div>
   </section>
 
   <footer>
@@ -1087,7 +1477,7 @@
 
 <script>
 (function(){
-  var order = ['d1','d2','d3','d4','d5','d6','map','audit','stay','food','spots','shopping','highway','reservations','budget','tips'];
+  var order = ['d1','d2','d3','d4','d5','d6','map','audit','stay','food','spots','shopping','highway','reservations','budget','tips','photos'];
   var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
   var sidebar = document.getElementById('sidebar');
@@ -1430,6 +1820,35 @@
   }
 
   render(0);
+})();
+</script>
+
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="放大照片">
+  <figure><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var img = document.getElementById('lbImg');
+  var cap = document.getElementById('lbCap');
+
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(t.tagName !== 'IMG') return;
+    if(!t.closest('.shot') && !t.closest('.fcat-h') && !t.closest('.pcard .ph')) return;
+    if(t.closest('a')) return;                       // 卡片本身是導航連結，不攔截
+    img.src = t.getAttribute('src');
+    img.alt = t.getAttribute('alt') || '';
+    cap.innerHTML = (t.dataset.cap || t.getAttribute('alt') || '') +
+                    '<small>照片來自 Wikimedia Commons，授權見「圖片來源」頁</small>';
+    lb.classList.add('show');
+  });
+
+  lb.addEventListener('click', function(){ lb.classList.remove('show'); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') lb.classList.remove('show');
+  });
 })();
 </script>
 </body>
