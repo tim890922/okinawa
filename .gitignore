@@ -1,0 +1,5 @@
+# This file is used for Git repositories to specify intentionally untracked files that Git should ignore. 
+
+
+.sf/
+.vscode/*
