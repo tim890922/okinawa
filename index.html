@@ -372,8 +372,10 @@
     a[href]{color:inherit}
   }
 </style>
+<link rel="stylesheet" href="refresh.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">跳至主要內容</a>
 
 <div class="shell">
   <div class="overlay" id="overlay"></div>
@@ -417,10 +419,10 @@
         </div>
       </div>
     </nav>
-    <div class="side-foot">めんそーre 沖繩 🌺</div>
+    <div class="side-foot">慢慢走，好好過。<br>OKINAWA · 2026</div>
   </aside>
 
-  <main class="content">
+  <main class="content" id="main-content" tabindex="-1">
     <div class="topbar">
       <button class="menu-btn" id="menuBtn" type="button" aria-label="開啟選單">☰</button>
       <div class="topbar-title" id="topbarTitle">Day 1</div>
@@ -430,6 +432,9 @@
       </div>
     </div>
     <div class="wrap">
+      <header class="trip-intro"><div><p class="kicker">THE ISLAND JOURNAL</p><h2>把日子，交給沖繩。</h2><p>09.24 — 09.29 <span>／</span> 六天五夜・三人自駕</p></div><span class="trip-seal" aria-hidden="true">沖縄<br><small>OKINAWA</small></span></header>
+      <nav class="day-switch" aria-label="選擇行程日期"><button type="button" data-nav="d1" aria-label="第 1 天，9 月 24 日"><span>DAY 01</span><strong>9/24</strong></button><button type="button" data-nav="d2" aria-label="第 2 天，9 月 25 日"><span>DAY 02</span><strong>9/25</strong></button><button type="button" data-nav="d3" aria-label="第 3 天，9 月 26 日"><span>DAY 03</span><strong>9/26</strong></button><button type="button" data-nav="d4" aria-label="第 4 天，9 月 27 日"><span>DAY 04</span><strong>9/27</strong></button><button type="button" data-nav="d5" aria-label="第 5 天，9 月 28 日"><span>DAY 05</span><strong>9/28</strong></button><button type="button" data-nav="d6" aria-label="第 6 天，9 月 29 日"><span>DAY 06</span><strong>9/29</strong></button></nav>
+
 
   <!-- DAY 1 -->
   <section class="panel day active" id="d1" data-title="Day 1 · 9/24 週四 · 抵達那霸．國際通之夜">
@@ -1464,6 +1469,8 @@
   function closeSidebar(){
     sidebar.classList.remove('open');
     overlay.classList.remove('show');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
   }
 
   function show(id, opts){
@@ -1472,6 +1479,12 @@
     panels.forEach(function(p){ p.classList.toggle('active', p.id === id); });
     navLinks.forEach(function(a){ a.classList.toggle('active', a.dataset.target === id); });
     openGroupFor(id);
+    document.querySelectorAll('[data-nav], .nav-link').forEach(function(a){
+      var active = (a.dataset.nav || a.dataset.target) === id;
+      if(active) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('.acc-h').forEach(function(h){ h.setAttribute('aria-expanded', h.closest('.acc-group').classList.contains('open')); });
+
 
     var panel = document.getElementById(id);
     topbarTitle.textContent = panel ? (panel.dataset.title || '') : '';
@@ -1482,14 +1495,16 @@
     prevBtn.dataset.nav = idx > 0 ? order[idx - 1] : '';
     nextBtn.dataset.nav = idx < order.length - 1 ? order[idx + 1] : '';
 
-    if(opts.updateHash !== false) history.replaceState(null, '', '#' + id);
+    if(opts.updateHash !== false && location.hash !== "#" + id) history.pushState(null, '', '#' + id);
     window.scrollTo(0, 0);
+    if(opts.updateHash !== false && panel){ panel.tabIndex = -1; panel.focus({preventScroll:true}); }
     closeSidebar();
   }
 
   document.querySelectorAll('.acc-h').forEach(function(h){
     h.addEventListener('click', function(){
       h.closest('.acc-group').classList.toggle('open');
+      h.setAttribute('aria-expanded', h.closest('.acc-group').classList.contains('open'));
     });
   });
 
@@ -1508,8 +1523,21 @@
   menuBtn.addEventListener('click', function(){
     sidebar.classList.toggle('open');
     overlay.classList.toggle('show');
+    menuBtn.setAttribute('aria-expanded', sidebar.classList.contains('open'));
+    document.body.classList.toggle('menu-open', sidebar.classList.contains('open'));
+    if(sidebar.classList.contains('open')) sidebar.querySelector('button').focus();
   });
   overlay.addEventListener('click', closeSidebar);
+  document.addEventListener('keydown', function(e){
+    if(!sidebar.classList.contains('open')) return;
+    if(e.key === 'Escape'){ closeSidebar(); menuBtn.focus(); }
+    if(e.key === 'Tab'){
+      var items = Array.from(sidebar.querySelectorAll('button, a')).filter(function(el){return el.closest('.acc-body') ? el.closest('.acc-group').classList.contains('open') : true;});
+      var first=items[0], last=items[items.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
 
   window.addEventListener('hashchange', function(){
     var id = location.hash.slice(1);
@@ -1819,5 +1847,6 @@
   });
 })();
 </script>
+<script src="refresh.js"></script>
 </body>
 </html>
