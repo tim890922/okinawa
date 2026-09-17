@@ -411,7 +411,7 @@
           <a class="nav-link" href="#spots" data-target="spots">🏝 景點清單</a>
           <a class="nav-link" href="#shopping" data-target="shopping">🛍 購物中心</a>
           <a class="nav-link" href="#highway" data-target="highway">🚘 交通規劃</a>
-          <a class="nav-link" href="#reservations" data-target="reservations">📋 預約清單</a>
+          <a class="nav-link" href="#todo" data-target="todo">✅ 行前代辦</a>
           <a class="nav-link" href="#budget" data-target="budget">💰 花費估算</a>
           <a class="nav-link" href="#tips" data-target="tips">💡 出發提醒</a>
           <a class="nav-link" href="#photos" data-target="photos">📷 圖片來源</a>
@@ -1248,23 +1248,16 @@
     </div>
   </section>
 
-  <!-- RESERVATIONS -->
-  <section class="panel sec" id="reservations" data-title="📋 預約清單（出發前先搞定）">
-    <h3>預約清單（出發前先搞定）</h3>
-    <ul class="check">
-      <li><span class="box"></span><div><b>Ocean BOO! 阿古豬涮涮鍋</b> <span>— Day 1 晚餐，那霸居酒屋，先訂位</span></div></li>
-      <li><span class="box"></span><div><b>美麗海水族館門票</b> <span>— <b>Day 3 早上用</b>，但要在 <b>Day 2 傍晚路過「道の駅 許田」（9:00–19:00）時買</b>，比現場票便宜約 ¥400／人；買不到就先在 Klook/KKday 買電子票</span></div></li>
-      <li><span class="box"></span><div><b>青之洞窟浮潛 / SUP（中文教練）</b> <span>— <b>Day 4 上午</b>，玩水組 2 人，先線上預約。<b>務必挑「含飯店接送」＋可免費改期</b>的方案（海況不穩，可能改船潛或停辦）</span></div></li>
-      <li><span class="box"></span><div><b>琉球村門票</b> <span>— Day 4 下午，現場可買；Klook/KKday 通常比 ¥2,000 原價便宜。最終受付 16:00。累了就不去，別提前買不能退的</span></div></li>
-      <li><span class="box"></span><div><b>島豚七輪燒 満味</b> <span>— Day 2 <b>預約 17:30</b>；營業狀況請先確認，地址名護市伊差川251，電話 0980-53-5383</span></div></li>
-      <li><span class="box"></span><div><b>The Flavor Design 調香</b> <span>— Day 5，可線上預約較安心</span></div></li>
-      <li><span class="box"></span><div><b>琉球的牛（A5 石垣牛）</b> <span>— Day 5 晚餐，官網提前訂位</span></div></li>
-      <li><span class="box"></span><div><b>Gangala 之谷導覽</b> <span>— Day 5，gangala.com 預約 10:00 場，09:40 前報到</span></div></li>
-      <li><span class="box"></span><div><b>幸福鬆餅（選配）</b> <span>— Day 6 瀨長島現場視食量與排隊狀況決定，不設固定預約</span></div></li>
-      <li><span class="box"></span><div><b>（選）Orion Happy Park 工廠見學</b> <span>— Day 5 上午的替代方案，需事先預約；開車的人不能試飲</span></div></li>
-      <li><span class="box"></span><div><b>住宿（全部已預訂 ✔）</b> <span>— Day 1 里士滿酒店那霸久茂地／Day 2 Churaumi On The Beach Motobu／Day 3–4 Yomitan Kukuru Resort 連住／Day 5 La’gent Hotel 那霸國際通</span></div></li>
-      <li><span class="box"></span><div><b>租車：OTS 臨空豐崎營業所（已預約 ✔）</b> <span>— Day 2  15:00 取車、Day 6  15:00 同店還車，共 96 小時。豊見城市豊崎3-37／098-856-8877／08:00–19:00。機場↔營業所免費接駁，<b>國內線航廈「10-A」上下車</b></span></div></li>
-    </ul>
+  <!-- TODO -->
+  <section class="panel sec" id="todo" data-title="✅ 行前代辦清單">
+    <h3>行前代辦清單</h3>
+    <p class="lead">狀態存在<b>這台裝置的瀏覽器</b>裡（localStorage），換手機、換瀏覽器或無痕模式都不會同步，三人請各自在自己手機上勾選。</p>
+    <div class="todo-bar">
+      <div class="todo-prog"><span id="todoBar"></span></div>
+      <div class="todo-count" id="todoCount" aria-live="polite"></div>
+      <button type="button" id="todoReset" class="todo-reset">清除勾選</button>
+    </div>
+    <div id="todoList"></div>
   </section>
 
   <!-- BUDGET -->
@@ -1376,15 +1369,7 @@
       </div>
     </div>
 
-    <ul class="tips">
-      <li><b>駕照日文譯本（最重要）</b>：台灣駕照要先在監理站辦免費日文譯本，帶正本＋譯本＋護照才能租車。</li>
-      <li><b>租車保險</b>：CDW（碰撞）＋NOC（營業損失）務必加保；右駕靠左行駛、路較窄，導航用 MapCode 最準。</li>
-      <li><b>取車 5 證件</b>：駕照正本、日文譯本、護照、預約確認信、主駕駛人信用卡。</li>
-      <li><b>入境</b>：護照效期滿 6 個月、台灣免簽 90 天；事先填好 Visit Japan Web 通關更快。</li>
-      <li><b>行動電源</b>：搭機請依航空公司規範，隨身攜帶、勿托運。</li>
-      <li><b>玩水</b>：水溫仍溫暖適合浮潛，但秋季留意颱風與海況，<b>Day 4的青之洞窟</b>依當天狀況可能改「船潛」甚至停辦，出發前跟店家確認，並優先訂<b>可免費改期</b>的方案——排在第 4 天的好處就是前面還有兩天可以挪。</li>
-      <li><b>網路</b>：eSIM 或網卡先買；那霸市區靠單軌、可買一日券。</li>
-    </ul>
+    <p class="lead">出發前的行動項目（駕照譯本、保險、證件、行李、eSIM 等）都移到<a href="#todo" data-nav="todo">「行前代辦清單」</a>統一勾選確認，這裡只保留背景知識。</p>
   </section>
 
 
@@ -1448,7 +1433,7 @@
 
 <script>
 (function(){
-  var order = ['d1','d2','d3','d4','d5','d6','map','audit','stay','food','spots','shopping','highway','reservations','budget','tips','photos'];
+  var order = ['d1','d2','d3','d4','d5','d6','map','audit','stay','food','spots','shopping','highway','todo','budget','tips','photos'];
   var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
   var sidebar = document.getElementById('sidebar');
@@ -1846,6 +1831,8 @@
   });
 })();
 </script>
+<script src="todo.js"></script>
+<script src="todo-render.js"></script>
 <script src="refresh.js"></script>
 </body>
 </html>
